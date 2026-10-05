@@ -859,7 +859,7 @@ const roster = [
     "sourceAbility": "概念と物体を消滅させる",
     "summary": "丁寧な言葉と絶対的な力で秩序を執行し、学園を実質的に統べる生徒会副会長。",
     "stats": {
-      "atk": 60,
+      "atk": 85,
       "hp": 2800,
       "speed": 7.2
     },
