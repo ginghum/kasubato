@@ -8,7 +8,7 @@ function persist(){try{localStorage.setItem(storeKey,JSON.stringify({names:$('na
 function load(){try{const s=JSON.parse(localStorage.getItem(storeKey)||'null');if(s){if(typeof s.names==='string')$('names').value=s.names;if(typeof s.seed==='string')$('seed').value=s.seed;if(typeof s.suddenDeath==='boolean')$('sudden-death').checked=s.suddenDeath;
  for(const [n,v] of Object.entries(s.overrides||{}))if(v&&roster.some(p=>p.id===v.skill)&&Number.isFinite(v.atk)&&v.atk>=1&&v.atk<=1000&&Number.isFinite(v.hp)&&v.hp>=1&&v.hp<=100000&&Number.isFinite(v.speed)&&v.speed>=.1&&v.speed<=30)overrides[n]=v;}}
  catch{}if(!$('names').value)$('names').value=sample.join('、');}
-function status(){const ns=parse($('names').value),known=ns.filter(find).length;$('mode-label').textContent=ns.length>0&&ns.length<=5?'少人数モード · 狭い会場 / 1.5倍表示':'通常モード · 時間・生存者数に応じて縮小';$('sudden-caption').textContent=$('sudden-death').checked?'50秒でサドンデス':'サドンデスなし（180秒で時間切れ）';$('start').disabled=ns.length<2||ns.length>60;$('input-status').textContent=ns.length>60?'60人まで参加できます。人数を減らしてください。':`${ns.length}人選択 / 名鑑キャラ ${known}人・自由入力 ${ns.length-known}人`;}
+function status(){const ns=parse($('names').value),known=ns.filter(find).length;$('mode-label').textContent=ns.length>0&&ns.length<=5?'少人数モード · 狭い会場 / 2倍表示':'通常モード · 時間・生存者数に応じて縮小';$('sudden-caption').textContent=$('sudden-death').checked?'50秒でサドンデス':'サドンデスなし（180秒で時間切れ）';$('start').disabled=ns.length<2||ns.length>60;$('input-status').textContent=ns.length>60?'60人まで参加できます。人数を減らしてください。':`${ns.length}人選択 / 名鑑キャラ ${known}人・自由入力 ${ns.length-known}人`;}
 function preview(){status();persist();if(started)return;const ns=parse($('names').value);world=ns.length&&ns.length<=60?new World(ns,{seed:'preview',overrides,suddenDeath:$('sudden-death').checked}):null;renderList();draw();}
 function setNames(ns){$('names').value=ns.join('、');preview();}
 function rosterRandom(list,n=20){const rng=random(Date.now()+Math.random());const a=[...list];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a.slice(0,n).map(p=>p.name);}
@@ -23,7 +23,7 @@ function renderList(){const fs=world?world.units.filter(f=>!f.minion):[];const o
 }
 function formatTime(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(Math.floor(t%60)).padStart(2,'0');}
 const canvas=$('arena'),ctx=canvas.getContext('2d');
-function draw(){ctx.clearRect(0,0,800,800);ctx.save();if(world?.smallMode){ctx.translate(400,400);ctx.scale(1.5,1.5);ctx.translate(-400,-400);}ctx.fillStyle='#12190f';ctx.fillRect(0,0,800,800);ctx.strokeStyle='#24301f';ctx.lineWidth=1;
+function draw(){ctx.clearRect(0,0,800,800);ctx.save();if(world?.smallMode){ctx.translate(400,400);ctx.scale(2,2);ctx.translate(-400,-400);}ctx.fillStyle='#12190f';ctx.fillRect(0,0,800,800);ctx.strokeStyle='#24301f';ctx.lineWidth=1;
  for(let i=0;i<=800;i+=40){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,800);ctx.moveTo(0,i);ctx.lineTo(800,i);ctx.stroke();}
  const r=world?.radius||385;ctx.beginPath();ctx.arc(400,400,r,0,Math.PI*2);ctx.fillStyle='#202c1b';ctx.fill();ctx.strokeStyle=world?.sudden?'#c35c4f':'#8d8559';ctx.lineWidth=3;ctx.stroke();
  for(const rad of [r*.66,r*.33]){ctx.beginPath();ctx.arc(400,400,rad,0,Math.PI*2);ctx.strokeStyle='#3a4730';ctx.lineWidth=1;ctx.stroke();}
