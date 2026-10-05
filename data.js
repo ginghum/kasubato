@@ -548,7 +548,7 @@ const roster = [
     "summary": "カース帝国と家族を愛し、強者が育つ学園を自らの農場として見守る現女帝にして真の生徒会長。",
     "stats": {
       "atk": 62,
-      "hp": 3300,
+      "hp": 1600,
       "speed": 6.5
     },
     "sourcePath": "characters-data/empress/profile.json"
