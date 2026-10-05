@@ -2,3 +2,5 @@
 
 /* Extra cohort preset must remain reachable on small screens. */
 .setup{overflow-y:auto;justify-content:safe center}
+
+.match-settings{margin:0 0 16px}.match-settings label{display:flex;align-items:center;flex-wrap:wrap;gap:6px}.match-settings input{accent-color:var(--gold);margin:0;width:16px;height:16px;flex:none}.match-settings label span{margin-left:0}.match-settings p{font-size:10px;margin:7px 0 0}

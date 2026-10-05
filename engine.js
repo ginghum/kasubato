@@ -12,10 +12,10 @@ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 function resolve(name){const p=find(name);return p?{profile:p,skill:p.id,stats:{...p.stats}}:{profile:null,skill:roster[hash(norm(name))%roster.length].id,stats:{atk:18,hp:1250,speed:5.5}};}
 class World {
  constructor(names,options={}){
-  this.rng=random(options.seed??Date.now());this.seed=String(options.seed??'');this.time=0;this.radius=385;this.units=[];this.shots=[];this.zones=[];this.effects=[];this.events=[];this.seq=0;this.finished=false;this.sudden=false;this.result=null;this.initialCount=names.length;this.tickCount=0;
+  this.rng=random(options.seed??Date.now());this.seed=String(options.seed??'');this.time=0;this.smallMode=names.length<=5;this.baseRadius=this.smallMode?250:385;this.radius=this.baseRadius;this.suddenDeath=options.suddenDeath!==false;this.units=[];this.shots=[];this.zones=[];this.effects=[];this.events=[];this.seq=0;this.finished=false;this.sudden=false;this.result=null;this.initialCount=names.length;this.tickCount=0;
   for(const name of names){const r=resolve(name),saved=Object.hasOwn(options.overrides||{},name)?options.overrides[name]:null;const s=saved?{...r.stats,...saved}:r.stats;const f=this.make(name,saved?.skill||r.skill,s,false);f.profile=r.profile;this.units.push(f);}
  }
- make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=80+this.rng()*210;const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};
+ make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=(80+this.rng()*210)*(this.baseRadius/385);const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};
   if(skill==='empress')f.powers.push(...['oriha','torie','milk','yuji'].map(id=>({id,scale:.65})));
   if(skill==='kagachi')f.radius=32;if(skill==='paster')f.radius=24;return f;
  }
@@ -175,8 +175,8 @@ class World {
  }
  step(dt=1/60){
   if(this.finished)return;this.time+=dt;this.tickCount++;const mains=this.units.filter(f=>f.alive&&!f.minion);
-  if(this.time>=50&&!this.sudden){this.sudden=true;for(const f of this.units)f.atk*=10;this.event('サドンデス：攻撃10倍・移動速度3倍');}
-  this.radius=Math.max(95,Math.min(385*Math.sqrt(mains.length/this.initialCount),385-this.time*4));
+  if(this.suddenDeath&&this.time>=50&&!this.sudden){this.sudden=true;for(const f of this.units)f.atk*=10;this.event('サドンデス：攻撃10倍・移動速度3倍');}
+  this.radius=Math.max(95*(this.baseRadius/385),Math.min(this.baseRadius*Math.sqrt(mains.length/this.initialCount),this.baseRadius-this.time*4*(this.baseRadius/385)));
   for(const f of this.units){if(!f.alive)continue;if(f.minion&&f.expires<=this.time){this.die(f);continue;}
    f.home??={x:f.x,y:f.y};if(this.tickCount%15===0){f.history.push({time:this.time,x:f.x,y:f.y,hp:f.hp});f.history=f.history.filter(h=>h.time>=this.time-4);}
    for(const d of f.dots)if(d.until>this.time&&d.next<=this.time){d.next+=.5;this.hit(d.owner,f,d.damage,d.type);}f.dots=f.dots.filter(d=>d.until>this.time);

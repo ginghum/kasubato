@@ -42,6 +42,22 @@ function duel(a,b){const w=new World([a,b],{seed:'mechanics'});w.rng=()=>.99;ret
 {
  const [w,a,b]=duel('プラス','タナカ');b.hp=b.maxHp*.5;w.cast(b,b.powers[0]);assert.equal(b.hp,b.maxHp);w.hit(a,b,99999);assert.equal(b.alive,false,'回復後でもHP0なら脱落');
 }
+
+{
+ const five=new World(roster.slice(0,5).map(p=>p.name),{seed:'small-mode'}),six=new World(roster.slice(0,6).map(p=>p.name),{seed:'small-mode'});
+ assert(five.smallMode);assert(!six.smallMode);assert(five.radius<six.radius);
+ for(const f of five.units)assert(Math.hypot(f.x-400,f.y-400)+f.radius<five.radius,'少人数の初期配置が会場内');
+ six.die(six.units[0]);six.step();assert(!six.smallMode,'途中で5人になっても開始モードを維持');
+}
+{
+ for(const suddenDeath of [true,false]){
+  const w=new World(['プラス','ヒヨコ'],{seed:'sudden-switch',suddenDeath});for(const f of w.units){f.powers=[];f.speed=0;}
+  w.contact=()=>{};const before=w.units.map(f=>f.atk);w.time=49.99;w.step();assert.equal(w.sudden,suddenDeath);assert.deepEqual(w.units.map(f=>f.atk),before.map(a=>a*(suddenDeath?10:1)));
+  w.step();assert.deepEqual(w.units.map(f=>f.atk),before.map(a=>a*(suddenDeath?10:1)),'強化は1回だけ');
+  if(!suddenDeath){w.time=179.99;w.step();assert(w.finished);assert(w.result.timeout);assert(!w.sudden);}
+ }
+}
+
 const summaries=[];
 for(let i=0;i<roster.length;i+=20){const ns=roster.slice(i,i+20).map(p=>p.name);const w=new World(ns,{seed:'coverage:'+i});while(!w.finished){w.step();for(const f of w.units)assert([f.hp,f.x,f.y,f.atk].every(Number.isFinite));assert(w.effects.length<=220);assert(w.zones.length<=150);}assert(!w.result.timeout);assert.equal(w.effects.length,0);assert.equal(w.shots.length,0);summaries.push({players:ns.length,seconds:Math.round(w.time),winner:w.result.winner?.name});}
 const ns=roster.slice(0,60).map(p=>p.name);function simulate(seed){const w=new World(ns,{seed});while(!w.finished)w.step();return [w.result.winner?.name,w.tickCount,w.result.ranking.map(f=>[f.name,f.kills,Math.round(f.damage)])];}assert.deepEqual(simulate('repro'),simulate('repro'));
