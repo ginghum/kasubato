@@ -16,7 +16,7 @@ function duel(a,b){const w=new World([a,b],{seed:'mechanics'});w.rng=()=>.99;ret
  const [w,a,b]=duel('プラス','ソイ');w.hit(a,b,99999,'erase');assert.equal(b.alive,true);assert.equal(b.hp,b.maxHp);w.hit(a,b,99999,'erase');assert.equal(b.alive,false);
 }
 {
- const [w,a,b]=duel('プラス','タナカ');w.hit(a,b,99999);assert.equal(b.alive,true);assert.equal(b.hp,b.maxHp);w.hit(a,b,99999);assert.equal(b.alive,false);
+ const [w,a,b]=duel('プラス','タナカ');w.hit(a,b,b.maxHp*.5);w.cast(b,b.powers[0]);assert.equal(b.alive,true);assert.equal(b.hp,b.maxHp);w.hit(a,b,99999);assert.equal(b.alive,false);
 }
 {
  const [w,a,b]=duel('エンプレス','コンケ');w.hit(a,b,99999,'erase');assert(a.powers.some(p=>p.id==='konke'));const count=a.powers.length;const c=w.make('コンケ2','konke',{atk:26,hp:1,speed:5},false);w.units.push(c);w.hit(a,c,99999,'erase');assert.equal(a.powers.length,count);const copied=a.powers.find(p=>p.id==='konke').scale;c.baseAtk=1000;assert.equal(a.powers.find(p=>p.id==='konke').scale,copied);
@@ -38,6 +38,9 @@ function duel(a,b){const w=new World([a,b],{seed:'mechanics'});w.rng=()=>.99;ret
 }
 {
  const [w,a,b]=duel('ミュー','プラス');w.cast(a,a.powers[0]);assert(w.units.some(f=>f.minion&&f.kind==='diamond'&&f.team===a.team));
+}
+{
+ const [w,a,b]=duel('プラス','タナカ');b.hp=b.maxHp*.5;w.cast(b,b.powers[0]);assert.equal(b.hp,b.maxHp);w.hit(a,b,99999);assert.equal(b.alive,false,'回復後でもHP0なら脱落');
 }
 const summaries=[];
 for(let i=0;i<roster.length;i+=20){const ns=roster.slice(i,i+20).map(p=>p.name);const w=new World(ns,{seed:'coverage:'+i});while(!w.finished){w.step();for(const f of w.units)assert([f.hp,f.x,f.y,f.atk].every(Number.isFinite));assert(w.effects.length<=220);assert(w.zones.length<=150);}assert(!w.result.timeout);assert.equal(w.effects.length,0);assert.equal(w.shots.length,0);summaries.push({players:ns.length,seconds:Math.round(w.time),winner:w.result.winner?.name});}

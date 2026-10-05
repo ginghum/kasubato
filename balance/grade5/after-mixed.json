@@ -1,0 +1,297 @@
+{
+  "mode": "mixed",
+  "matches": 1500,
+  "prefix": "grade5-final-mixed-v2",
+  "overrides": null,
+  "draws": 9,
+  "timeouts": 0,
+  "meanSeconds": 49.235866666665146,
+  "runtimeSeconds": 103.861,
+  "characters": [
+    {
+      "id": "x",
+      "name": "X（エックス）",
+      "stats": {
+        "atk": 42.3,
+        "hp": 2197,
+        "speed": 6
+      },
+      "games": 333,
+      "wins": 88,
+      "rankSum": 1231,
+      "damage": 3938030.4711757144,
+      "winRate": 0.26426426426426425,
+      "meanRank": 3.6966966966966965
+    },
+    {
+      "id": "ashara",
+      "name": "アシャラ",
+      "stats": {
+        "atk": 44,
+        "hp": 2306,
+        "speed": 6
+      },
+      "games": 325,
+      "wins": 99,
+      "rankSum": 1236,
+      "damage": 2952282.9375931923,
+      "winRate": 0.3046153846153846,
+      "meanRank": 3.8030769230769232
+    },
+    {
+      "id": "tanaka",
+      "name": "タナカ",
+      "stats": {
+        "atk": 26.5,
+        "hp": 1041,
+        "speed": 5.2
+      },
+      "games": 304,
+      "wins": 28,
+      "rankSum": 1564,
+      "damage": 341412.75432792254,
+      "winRate": 0.09210526315789473,
+      "meanRank": 5.144736842105263
+    },
+    {
+      "id": "titan",
+      "name": "タイタン",
+      "stats": {
+        "atk": 42.6,
+        "hp": 2381,
+        "speed": 5.7
+      },
+      "games": 352,
+      "wins": 42,
+      "rankSum": 1501,
+      "damage": 868086.4356911067,
+      "winRate": 0.11931818181818182,
+      "meanRank": 4.264204545454546
+    },
+    {
+      "id": "judge",
+      "name": "ジャッジ",
+      "stats": {
+        "atk": 33.4,
+        "hp": 1643,
+        "speed": 6
+      },
+      "games": 329,
+      "wins": 63,
+      "rankSum": 1179,
+      "damage": 792874.5045048806,
+      "winRate": 0.19148936170212766,
+      "meanRank": 3.5835866261398177
+    },
+    {
+      "id": "serena",
+      "name": "セレナ",
+      "stats": {
+        "atk": 35.8,
+        "hp": 1879,
+        "speed": 6.2
+      },
+      "games": 340,
+      "wins": 40,
+      "rankSum": 1290,
+      "damage": 588100.0212778577,
+      "winRate": 0.11764705882352941,
+      "meanRank": 3.7941176470588234
+    },
+    {
+      "id": "beret",
+      "name": "ベレー",
+      "stats": {
+        "atk": 36,
+        "hp": 1796,
+        "speed": 6
+      },
+      "games": 302,
+      "wins": 50,
+      "rankSum": 1560,
+      "damage": 721212.2888488842,
+      "winRate": 0.16556291390728478,
+      "meanRank": 5.1655629139072845
+    },
+    {
+      "id": "mu",
+      "name": "ミュー",
+      "stats": {
+        "atk": 23.6,
+        "hp": 1263,
+        "speed": 6
+      },
+      "games": 339,
+      "wins": 55,
+      "rankSum": 1354,
+      "damage": 882352.4472623618,
+      "winRate": 0.16224188790560473,
+      "meanRank": 3.994100294985251
+    },
+    {
+      "id": "tsukichiyo",
+      "name": "ツキチヨ",
+      "stats": {
+        "atk": 58.5,
+        "hp": 3141,
+        "speed": 7.6
+      },
+      "games": 340,
+      "wins": 50,
+      "rankSum": 1352,
+      "damage": 1822027.3236620557,
+      "winRate": 0.14705882352941177,
+      "meanRank": 3.976470588235294
+    },
+    {
+      "id": "clarine",
+      "name": "クラリーヌ",
+      "stats": {
+        "atk": 50.5,
+        "hp": 2725,
+        "speed": 6
+      },
+      "games": 335,
+      "wins": 31,
+      "rankSum": 1626,
+      "damage": 1336441.613624957,
+      "winRate": 0.09253731343283582,
+      "meanRank": 4.853731343283582
+    },
+    {
+      "id": "yaoi",
+      "name": "ヤオイ",
+      "stats": {
+        "atk": 36.9,
+        "hp": 1859,
+        "speed": 6
+      },
+      "games": 338,
+      "wins": 55,
+      "rankSum": 1360,
+      "damage": 1937281.357185986,
+      "winRate": 0.16272189349112426,
+      "meanRank": 4.023668639053255
+    },
+    {
+      "id": "ojo",
+      "name": "オジョー",
+      "stats": {
+        "atk": 48.3,
+        "hp": 2580,
+        "speed": 6
+      },
+      "games": 342,
+      "wins": 82,
+      "rankSum": 1361,
+      "damage": 2438113.282291973,
+      "winRate": 0.23976608187134502,
+      "meanRank": 3.97953216374269
+    },
+    {
+      "id": "mikael",
+      "name": "ミカエル",
+      "stats": {
+        "atk": 54.3,
+        "hp": 2744,
+        "speed": 6
+      },
+      "games": 354,
+      "wins": 35,
+      "rankSum": 1446,
+      "damage": 1457853.3129704227,
+      "winRate": 0.09887005649717515,
+      "meanRank": 4.084745762711864
+    },
+    {
+      "id": "kagachi",
+      "name": "カガチ",
+      "stats": {
+        "atk": 52.1,
+        "hp": 3639,
+        "speed": 4.2
+      },
+      "games": 327,
+      "wins": 46,
+      "rankSum": 1289,
+      "damage": 1470583.526485325,
+      "winRate": 0.14067278287461774,
+      "meanRank": 3.941896024464832
+    },
+    {
+      "id": "devil",
+      "name": "デビル",
+      "stats": {
+        "atk": 49.8,
+        "hp": 2751,
+        "speed": 6
+      },
+      "games": 340,
+      "wins": 58,
+      "rankSum": 1345,
+      "damage": 622794.7787160713,
+      "winRate": 0.17058823529411765,
+      "meanRank": 3.9558823529411766
+    },
+    {
+      "id": "gumon",
+      "name": "グモン",
+      "stats": {
+        "atk": 38.9,
+        "hp": 2226,
+        "speed": 5.6
+      },
+      "games": 320,
+      "wins": 25,
+      "rankSum": 1409,
+      "damage": 547061.4481958131,
+      "winRate": 0.078125,
+      "meanRank": 4.403125
+    },
+    {
+      "id": "minus",
+      "name": "マイナス",
+      "stats": {
+        "atk": 54,
+        "hp": 2985,
+        "speed": 6.8
+      },
+      "games": 318,
+      "wins": 63,
+      "rankSum": 1163,
+      "damage": 2752875.1313391253,
+      "winRate": 0.19811320754716982,
+      "meanRank": 3.657232704402516
+    },
+    {
+      "id": "paster",
+      "name": "パスター",
+      "stats": {
+        "atk": 51.7,
+        "hp": 2806,
+        "speed": 6
+      },
+      "games": 331,
+      "wins": 65,
+      "rankSum": 1224,
+      "damage": 1425028.8440311432,
+      "winRate": 0.19637462235649547,
+      "meanRank": 3.697885196374622
+    },
+    {
+      "id": "dancho",
+      "name": "ダンチョー",
+      "stats": {
+        "atk": 32.7,
+        "hp": 1600,
+        "speed": 6
+      },
+      "games": 298,
+      "wins": 42,
+      "rankSum": 1321,
+      "damage": 466832.9575130105,
+      "winRate": 0.14093959731543623,
+      "meanRank": 4.432885906040268
+    }
+  ]
+}

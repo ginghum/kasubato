@@ -43,8 +43,8 @@ const roster = [
     "sourceAbility": "雷を操る",
     "summary": "世界最強の決定力と華を独占し、学園内外の視線をさらう天才ストライカー。",
     "stats": {
-      "atk": 35,
-      "hp": 1764,
+      "atk": 44.0,
+      "hp": 2306,
       "speed": 6.0
     },
     "sourcePath": "characters-data/ashara/profile.json"
@@ -163,8 +163,8 @@ const roster = [
     "sourceAbility": "他人の運を吸い取る",
     "summary": "柔らかな笑顔の奥で他人の運を奪い、秘密ごと作品へ変える世界的な美術サークル部長。",
     "stats": {
-      "atk": 33,
-      "hp": 1628,
+      "atk": 36.0,
+      "hp": 1796,
       "speed": 6.0
     },
     "sourcePath": "characters-data/beret/profile.json"
@@ -316,7 +316,7 @@ const roster = [
   {
     "icon": "🪨",
     "title": "石化",
-    "desc": "近い敵を石化して停止させる。石化中の対象は硬くなる。",
+    "desc": "近い敵を石化して停止させる。石化中は硬くなるが、石化させた本人は弱点を捉えて攻撃できる。",
     "id": "clarine",
     "name": "クラリーヌ",
     "realName": "クラリーヌ・メイリィ",
@@ -331,8 +331,8 @@ const roster = [
     "sourceAbility": "石化",
     "summary": "期待に応えようと責任を抱え込みながら、吹奏楽サークルと生徒会を支える優等生。",
     "stats": {
-      "atk": 34,
-      "hp": 1680,
+      "atk": 50.5,
+      "hp": 2725,
       "speed": 6.0
     },
     "sourcePath": "characters-data/clarine/profile.json"
@@ -379,8 +379,8 @@ const roster = [
     "sourceAbility": "身体を泥と化す",
     "summary": "誰にも傷ついてほしくない一心で、平和を守る盾となる実直な応援団長。",
     "stats": {
-      "atk": 35,
-      "hp": 1764,
+      "atk": 32.7,
+      "hp": 1600,
       "speed": 6.0
     },
     "sourcePath": "characters-data/dancho/profile.json"
@@ -436,7 +436,7 @@ const roster = [
   {
     "icon": "🎮",
     "title": "機械掌握",
-    "desc": "敵の機械召喚を奪い、機械弾を無効化。機械のない相手には通常戦闘。",
+    "desc": "会場に用意された砲台を1台操作。敵の機械召喚を奪い、機械弾を無効化する。機械を生成する能力ではない。",
     "id": "devil",
     "name": "デビル",
     "realName": "マーク・チルド",
@@ -451,8 +451,8 @@ const roster = [
     "sourceAbility": "周囲の機械を操作する",
     "summary": "隠しゲームセンターに居座り、機械も対戦相手も思いどおりに動かす小柄な毒舌王者。",
     "stats": {
-      "atk": 33,
-      "hp": 1632,
+      "atk": 49.8,
+      "hp": 2751,
       "speed": 6.0
     },
     "sourcePath": "characters-data/devil/profile.json"
@@ -628,7 +628,7 @@ const roster = [
   {
     "icon": "✊",
     "title": "無敵化",
-    "desc": "5秒ごとに2秒間、通常攻撃と能力ダメージを無効。消滅・封印には対処できない。",
+    "desc": "6秒ごとに1.7秒間、通常攻撃と能力ダメージを無効。消滅・封印には対処できない。",
     "id": "gumon",
     "name": "グモン",
     "realName": "俺田愚門",
@@ -643,8 +643,8 @@ const roster = [
     "sourceAbility": "無敵になる",
     "summary": "無敵の拳で頂点に立ち、恋によって牙を抜かれた不良たちの王。",
     "stats": {
-      "atk": 42,
-      "hp": 2300,
+      "atk": 38.9,
+      "hp": 2226,
       "speed": 5.6
     },
     "sourcePath": "characters-data/gumon/profile.json"
@@ -907,8 +907,8 @@ const roster = [
     "sourceAbility": "嘘を真実にする",
     "summary": "公平な暴力舞台を愛し、存在しない妹を真実として生きる決闘委員会会長。",
     "stats": {
-      "atk": 33,
-      "hp": 1628,
+      "atk": 33.4,
+      "hp": 1643,
       "speed": 6.0
     },
     "sourcePath": "characters-data/judge/profile.json"
@@ -955,8 +955,8 @@ const roster = [
     "sourceAbility": "巨大化",
     "summary": "学園中の非公式飲食店を束ね、誰にでも腹いっぱい食べさせる巨大な敏腕社長。",
     "stats": {
-      "atk": 39,
-      "hp": 2800,
+      "atk": 52.1,
+      "hp": 3639,
       "speed": 4.2
     },
     "sourcePath": "characters-data/kagachi/profile.json"
@@ -1252,7 +1252,7 @@ const roster = [
   {
     "icon": "🌀",
     "title": "転移ゲート",
-    "desc": "対の転移門を設置。誰でも通れるが、本人は着地位置を把握する。",
+    "desc": "対の転移門を設置。標的の近くへ転移して接触攻撃を行い、着地直後は防御の構えを取る。誰でも門を通れる。",
     "id": "mikael",
     "name": "ミカエル",
     "realName": "三蛙貴託",
@@ -1267,8 +1267,8 @@ const roster = [
     "sourceAbility": "転移ゲートの作成",
     "summary": "学園の真実を知り、転移門の向こうへ引きこもった元決闘常連の少女。",
     "stats": {
-      "atk": 33,
-      "hp": 1632,
+      "atk": 54.3,
+      "hp": 2744,
       "speed": 6.0
     },
     "sourcePath": "characters-data/mikael/profile.json"
@@ -1339,8 +1339,8 @@ const roster = [
     "sourceAbility": "質量を変化させる",
     "summary": "木漏れ日の下で静かに本を開く、穏やかで人好きな学園最強の一角。",
     "stats": {
-      "atk": 46,
-      "hp": 2350,
+      "atk": 54.0,
+      "hp": 2985,
       "speed": 6.8
     },
     "sourcePath": "characters-data/minus/profile.json"
@@ -1372,7 +1372,7 @@ const roster = [
   {
     "icon": "💎",
     "title": "ダイヤ操作",
-    "desc": "ダイヤ兵を最大2体作って戦わせ、盾と結晶弾でも攻防を行う。",
+    "desc": "ダイヤ兵を最大1体作って戦わせ、盾と結晶弾でも攻防を行う。兵のHPは本人の24%、攻撃力50%。",
     "id": "mu",
     "name": "ミュー",
     "realName": "ミューライズ・スターダスト",
@@ -1387,8 +1387,8 @@ const roster = [
     "sourceAbility": "ダイヤモンドを操る",
     "summary": "誰もが憧れる完璧なアイドルを演じながら、その裏で不満と野心を隠さないS.O.Brightのリーダー。",
     "stats": {
-      "atk": 32,
-      "hp": 1620,
+      "atk": 23.6,
+      "hp": 1263,
       "speed": 6.0
     },
     "sourcePath": "characters-data/mu/profile.json"
@@ -1483,8 +1483,8 @@ const roster = [
     "sourceAbility": "爆発弾を操る",
     "summary": "誰の下にもつかず、爆炎さえ自らの美学へ変える高潔なお嬢様。",
     "stats": {
-      "atk": 33,
-      "hp": 1636,
+      "atk": 48.3,
+      "hp": 2580,
       "speed": 6.0
     },
     "sourcePath": "characters-data/ojo/profile.json"
@@ -1531,8 +1531,8 @@ const roster = [
     "sourceAbility": "フェンリルに変身する",
     "summary": "誰もが才能を自由に輝かせられる世界を夢見る、天文サークルのきらめくフェンリル少女。",
     "stats": {
-      "atk": 35,
-      "hp": 1736,
+      "atk": 51.7,
+      "hp": 2806,
       "speed": 6.0
     },
     "sourcePath": "characters-data/paster/profile.json"
@@ -1684,7 +1684,7 @@ const roster = [
   {
     "icon": "⚕",
     "title": "傷による治癒",
-    "desc": "医療技術で自身の傷へ処置して回復。相手への攻撃には反転治癒を適用しない。",
+    "desc": "医療技術で自身の傷へ処置して回復。4.5秒ごとに最大HPの10%回復し、継続ダメージを除く。",
     "id": "serena",
     "name": "セレナ",
     "realName": "セレナ・ミレイヌ",
@@ -1699,8 +1699,8 @@ const roster = [
     "sourceAbility": "傷を与えると傷が癒える",
     "summary": "確かな医療技術と優しい笑顔で生徒を治療する、善に優しく悪に厳しい保健委員会会長。",
     "stats": {
-      "atk": 39,
-      "hp": 2050,
+      "atk": 35.8,
+      "hp": 1879,
       "speed": 6.2
     },
     "sourcePath": "characters-data/serena/profile.json"
@@ -1804,7 +1804,7 @@ const roster = [
   {
     "icon": "🙂",
     "title": "普通の状態",
-    "desc": "大きく負傷すると肉体と状態異常を健康な状態へ戻す。再発動には8秒必要。",
+    "desc": "HPが55%未満になると肉体と状態異常を健康な状態へ戻す。再使用10秒。HP0からの復活はしない。",
     "id": "tanaka",
     "name": "タナカ",
     "realName": "田中聖",
@@ -1819,8 +1819,8 @@ const roster = [
     "sourceAbility": "普通の状態になる",
     "summary": "何もしなくていい安全地帯を守り、弱い生徒の平穏を支える飄々とした生徒会役員。",
     "stats": {
-      "atk": 18,
-      "hp": 1350,
+      "atk": 26.5,
+      "hp": 1041,
       "speed": 5.2
     },
     "sourcePath": "characters-data/tanaka/profile.json"
@@ -1843,8 +1843,8 @@ const roster = [
     "sourceAbility": "未来を読む",
     "summary": "誰かを守る強さを掲げる豪快な兄貴分であり、学園を内側から見張る生徒会の巨漢。",
     "stats": {
-      "atk": 49,
-      "hp": 2750,
+      "atk": 42.6,
+      "hp": 2381,
       "speed": 5.7
     },
     "sourcePath": "characters-data/titan/profile.json"
@@ -1876,7 +1876,7 @@ const roster = [
   {
     "icon": "👁",
     "title": "視覚操作",
-    "desc": "敵の視界を奪って狙いを乱す。自身は透明化・幻覚を見抜く。",
+    "desc": "敵の視界を奪って狙いを乱し、その隙に近接の一撃。自身は透明化・幻覚を見抜く。",
     "id": "tsukichiyo",
     "name": "ツキチヨ",
     "realName": "月千詠七女",
@@ -1891,8 +1891,8 @@ const roster = [
     "sourceAbility": "視覚を操る",
     "summary": "女帝への忠義を胸に、学園の秩序を影から守る盲目のくのいち。",
     "stats": {
-      "atk": 37,
-      "hp": 1700,
+      "atk": 58.5,
+      "hp": 3141,
       "speed": 7.6
     },
     "sourcePath": "characters-data/tsukichiyo/profile.json"
@@ -2063,8 +2063,8 @@ const roster = [
     "sourceAbility": "低温と高温を操る",
     "summary": "天才を自負し、校則違反を見逃さないプライドの高い生徒会役員。",
     "stats": {
-      "atk": 35,
-      "hp": 1740,
+      "atk": 42.3,
+      "hp": 2197,
       "speed": 6.0
     },
     "sourcePath": "characters-data/x/profile.json"
@@ -2087,8 +2087,8 @@ const roster = [
     "sourceAbility": "自然と化す",
     "summary": "締め切りから逃げ続ける、なんだこいつなGrade 5の腐女子サークル部長。",
     "stats": {
-      "atk": 33,
-      "hp": 1640,
+      "atk": 36.9,
+      "hp": 1859,
       "speed": 6.0
     },
     "sourcePath": "characters-data/yaoi/profile.json"

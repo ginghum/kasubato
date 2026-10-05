@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node tests/engine.cjs",
+    "test": "node --test tests/engine.cjs tests/grade5.cjs",
     "test:ui": "node tests/ui.cjs",
-    "serve": "python -m http.server 8000"
+    "serve": "python -m http.server 8000",
+    "simulate:grade5": "node scripts/simulate-grade5.cjs"
   },
   "devDependencies": {
     "jsdom": "30.1.2"

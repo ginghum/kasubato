@@ -35,7 +35,7 @@ class World {
   if(!t?.alive||amount<=0)return 0;
   if((this.has(t,'air')&&type==='contact')||(this.has(t,'invulnerable')&&this.enabled(t)&&type!=='erase'))return 0;
   const enabled=this.enabled(t);let evasion=0;
-  if(enabled){if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.32;
+  if(enabled){if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.24;
    if(type==='contact'&&['bonbori','vine','tsukuyomi'].some(id=>this.power(t,id)))evasion+=.22;
    if(this.power(t,'muchiko')&&this.has(t,'dash'))evasion+=.30;
    if(this.has(t,'hidden'))evasion+=.4;
@@ -47,7 +47,7 @@ class World {
    if(this.power(t,'dancho')&&type==='contact')amount*=.35;
    if(this.power(t,'hime')&&type==='contact'&&!this.has(t,'air'))amount*=.45;
    if(this.power(t,'yayoi')&&type==='contact')amount*=.6;
-   if(this.has(t,'guard'))amount*=.65;if(this.has(t,'stone'))amount*=.6;
+   if(this.has(t,'guard'))amount*=.65;if(this.has(t,'stone'))amount*=a?.id===t.stoneOwner?1.3:.6;
    const absorbed=Math.min(t.shield,amount);t.shield-=absorbed;amount-=absorbed;
    if(absorbed>0&&type==='spell'&&this.power(t,'torie')&&a?.alive&&!reflect)this.hit(t,a,absorbed*.5,'spell',true);
   }
@@ -56,7 +56,6 @@ class World {
   if(actual>0&&this.cd(t,'hitText',.3))this.effect(t,'−'+Math.round(actual),'#f4a29b');
   if(t.hp<=0){
    if(this.power(t,'soi')&&!t.revived){t.revived=true;t.hp=t.maxHp;this.event(t.name+'が一度限りの不死身で生還');this.effect(t,'不死身');}
-   else if(this.power(t,'tanaka')&&this.cd(t,'normal',8)&&type!=='erase'){t.hp=t.maxHp;t.status={};t.dots=[];this.effect(t,'普通の状態');}
    else this.die(t,a);
   }
   return actual;
@@ -80,7 +79,7 @@ class World {
   const id=p.id,t=this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.4:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,roster.find(q=>q.id===id)?.title||id);
   switch(id){
    case 'an':if(cd(3)){for(const e of near(155))this.dot(f,e,4,b*(.45+f.poison*.15));f.poison=Math.min(6,f.poison+1);label();}break;
-   case 'ashara':if(t&&cd(2.2))this.shot(f,t,b*5,'⚡',{chain:2,stun:.25});break;
+   case 'ashara':if(t&&cd(1.7))this.shot(f,t,b*6,'⚡',{chain:2,stun:.25,homing:true});break;
    case 'balalaika':if(t&&cd(2))this.volley(f,t,5,b*1.4,'•',{mechanical:true});break;
    case 'bane':if(cd(5))this.summon(f,'golem',2,.45,.75);break;
    case 'baroo':if(t&&cd(3.5)){const e=this.foes(f).find(e=>e!==t);if(e){const mx=(t.x+e.x)/2,my=(t.y+e.y)/2;t.x+=(mx-t.x)*.45;t.y+=(my-t.y)*.45;e.x+=(mx-e.x)*.45;e.y+=(my-e.y)*.45;this.hit(f,t,b*2);this.hit(f,e,b*2);}label();}break;
@@ -92,12 +91,12 @@ class World {
    case 'chaka':if(cd(5)){this.status(f,'thinking',2);f.cool['charge:chaka']=this.time+2;label();}break;
    case 'chick':if(cd(7)){const h=f.history.find(h=>h.time>=this.time-3);if(h){f.x=h.x;f.y=h.y;this.heal(f,Math.max(0,h.hp-f.hp));label();}}break;
    case 'chuba':if(t&&cd(2.8))this.volley(f,t,3,b*2.2,'♪');break;
-   case 'clarine':if(t&&distance(f,t)<200&&cd(4.2)){this.status(t,'stone',1.8);this.status(t,'stun',1.8);label();}break;
+   case 'clarine':if(t&&distance(f,t)<245&&cd(3.5)){t.stoneOwner=f.id;this.status(t,'stone',1.5);this.status(t,'stun',1.5);this.hit(f,t,b*3.2);label();}break;
    case 'dai':if(f.hp<f.maxHp*.65&&cd(5)){f.x=f.home?.x||400;f.y=f.home?.y||400;this.status(f,'hidden',.8);label();}break;
    case 'dancho':if(cd(6))this.status(f,'invulnerable',1);break;
    case 'dankachi':if(cd(4)){f.form=1-f.form;if(f.form)this.status(f,'guard',3);else this.status(f,'strong',3);label();}break;
    case 'deji':if(t&&cd(4)){this.shield(f,f.maxHp*.15);this.zone(f,t.x,t.y,65,3,'bind',b*.4);}break;
-   case 'devil':if(cd(2)){for(const e of near(280))if(e.minion&&e.kind==='machine'){e.team=f.team;this.event(f.name+'が砲台を掌握');}label();}break;
+   case 'devil':if(this.cd(f,'arenaTurret',7))this.summon(f,'machine',1,.4,1);if(cd(2)){for(const e of near(280))if(e.minion&&e.kind==='machine'){e.team=f.team;this.event(f.name+'が砲台を掌握');}label();}break;
    case 'doma':if(t&&cd(3))this.shot(f,t,b*4,'━',{pierce:true});break;
    case 'don':if(cd(6)){this.status(f,'hidden',3);label();}break;
    case 'doppel':if(cd(6)){f.form=1-f.form;for(const e of near(150))this.status(e,'blind',1);label();}break;
@@ -105,7 +104,7 @@ class World {
    case 'eris':if(t&&cd(2.8))this.shot(f,t,b*3,'〰',{push:60});break;
    case 'grav':if(t&&cd(4))this.zone(f,t.x,t.y,115,3,'gravity',b*.7);break;
    case 'guardian':if(cd(5)){this.shield(f,f.maxHp*.22);label();}break;
-   case 'gumon':if(cd(5)){this.status(f,'invulnerable',2);label();}break;
+   case 'gumon':if(cd(6)){this.status(f,'invulnerable',1.7);label();}break;
    case 'hat':if(cd(5)){this.status(f,'dash',2.5);for(const e of near(180))this.status(e,'slow',2.5);label();}break;
    case 'hattan':if(cd(4))this.summon(f,'clone',3,.28,.65);break;
    case 'helios':if(cd(6))this.summon(f,'animal',2,.22,.4);break;
@@ -128,32 +127,32 @@ class World {
    case 'mane':if(cd(3.6)){for(const e of near(170)){this.hit(f,e,b*2.6);this.push(f,e,65);this.status(e,'slow',1);}label();}break;
    case 'masa':f.atk=f.baseAtk*(1+Math.min(.8,this.time*.012))*(this.sudden?10:1);break;
    case 'meimei':if(t&&cd(3.5))this.shot(f,t,b*2,'➰',{stun:.8,pull:65});break;
-   case 'mikael':if(cd(8)){const a={x:f.x,y:f.y},ang=this.rng()*Math.PI*2;const z=this.radius*.75;this.zones.push({owner:f,x:a.x,y:a.y,r:24,end:this.time+6,kind:'gate',to:{x:400+Math.cos(ang)*z,y:400+Math.sin(ang)*z}});this.zones.push({owner:f,x:400+Math.cos(ang)*z,y:400+Math.sin(ang)*z,r:24,end:this.time+6,kind:'gate',to:a});label();}break;
+   case 'mikael':if(cd(6)){if(t){const a=Math.atan2(f.y-t.y,f.x-t.x);f.x=t.x+Math.cos(a)*30;f.y=t.y+Math.sin(a)*30;this.hit(f,t,b*6,'contact');this.status(f,'guard',1.5);}const a={x:f.x,y:f.y},ang=this.rng()*Math.PI*2;const z=this.radius*.75;this.zones.push({owner:f,x:a.x,y:a.y,r:24,end:this.time+6,kind:'gate',to:{x:400+Math.cos(ang)*z,y:400+Math.sin(ang)*z}});this.zones.push({owner:f,x:400+Math.cos(ang)*z,y:400+Math.sin(ang)*z,r:24,end:this.time+6,kind:'gate',to:a});label();}break;
    case 'milk':if(cd(3)){this.heal(f,f.maxHp*.09*p.scale);for(const a of this.units)if(a.alive&&a!==f&&a.team===f.team&&distance(f,a)<150)this.heal(a,a.maxHp*.1*p.scale);label();}break;
    case 'mimari':if(t&&cd(5)){const pet=this.foes(f).find(e=>e.minion&&distance(f,e)<220);if(pet){pet.team=f.team;this.event(f.name+'が支援者を洗脳');}this.status(t,'drunk',2.2);label();}break;
-   case 'minus':if(t&&cd(3)){this.status(t,'heavy',2.3);this.status(f,'dash',1.3);this.hit(f,t,b*5.5);label();}break;
+   case 'minus':if(t&&cd(3)){this.status(t,'heavy',2.3);this.status(f,'dash',1.3);this.hit(f,t,b*5.5);for(const e of near(175))if(e!==t){this.status(e,'slow',1.5);this.hit(f,e,b*2.4);}label();}break;
    case 'morpheus':{const sleeper=this.foes(f).find(e=>this.has(e,'sleep')&&distance(f,e)<240);if(sleeper&&cd(4.5)){this.status(sleeper,'sleep',2.5);label();}}break;
-   case 'mu':if(this.cd(f,'diamondSoldier',6))this.summon(f,'diamond',2,.32,.65);if(t&&cd(3)){this.shield(f,f.maxHp*.12);this.volley(f,t,3,b*2.4,'◆');}break;
+   case 'mu':if(this.cd(f,'diamondSoldier',6))this.summon(f,'diamond',1,.24,.5);if(t&&cd(3)){this.shield(f,f.maxHp*.12);this.volley(f,t,3,b*2.4,'◆');}break;
    case 'muchiko':if(cd(3)){this.status(f,'dash',1);if(t)f.angle=Math.atan2(t.y-f.y,t.x-f.x);label();}break;
    case 'natori':if(t&&cd(3.5))this.zone(f,t.x,t.y,75,3,'bind',b*.35);break;
-   case 'ojo':if(t&&cd(3))this.shot(f,t,b*5,'●',{homing:true,blast:85});break;
+   case 'ojo':if(t&&cd(2.5))this.shot(f,t,b*6.5,'●',{homing:true,blast:100});break;
    case 'paster':if(cd(6)){this.status(f,'strong',4);this.status(f,'guard',4);this.status(f,'dash',2);label();}break;
    case 'plus':if(cd(3)){f.form=1-f.form;this.status(f,f.form?'strong':'dash',2.8);label();}break;
    case 'rokka':if(t&&cd(4))this.zone(f,t.x,t.y,110,3,'snow',0);break;
    case 'romanchi':if(cd(4)){f.form=(f.form+1)%3;if(f.form===0)this.heal(f,150*p.scale);if(f.form===1)this.shield(f,170*p.scale);if(f.form===2&&t)this.volley(f,t,3,b*2,'✧');label();}break;
    case 'ruto':if(t&&distance(f,t)<105&&cd(3.5)){this.status(t,'seal',2.5);label();}break;
-   case 'serena':if(cd(3.5)){this.heal(f,f.maxHp*.17*p.scale);f.dots=[];label();}break;
+   case 'serena':if(cd(4.5)){this.heal(f,f.maxHp*.1*p.scale);f.dots=[];label();}break;
    case 'shiika':if(t&&cd(4.5))this.zone(f,t.x,t.y,110,3,'rain',0);break;
    case 'sigma':if(t&&cd(4)){this.status(t,'drunk',3);label();}break;
    case 'sunny':if(t&&cd(3)){this.shield(f,100*p.scale);this.volley(f,t,4,b*1.5,'◇');}break;
-   case 'tanaka':if(f.hp<f.maxHp*.55&&cd(8)){this.heal(f,f.maxHp);f.status={};f.dots=[];label();}break;
+   case 'tanaka':if(f.hp<f.maxHp*.55&&this.cd(f,'normal',10)){this.heal(f,f.maxHp);f.status={};f.dots=[];label();}break;
    case 'torie':if(cd(5)){this.shield(f,f.maxHp*.3*p.scale);label();}break;
-   case 'tsukichiyo':if(cd(4)){for(const e of near(200))this.status(e,'blind',2.4);label();}break;
+   case 'tsukichiyo':if(cd(3.5)){for(const e of near(210))this.status(e,'blind',2.4);if(t&&distance(f,t)<150)this.hit(f,t,b*4,'contact');label();}break;
    case 'tsukuri':if(cd(8)){this.shield(f,240*p.scale);label();}break;
    case 'van':if(cd(4.5)){f.form=1-f.form;for(const e of near(185)){if(f.form)this.status(e,'stun',1.1);else{this.hit(f,e,b*2);this.push(f,e,65);}}label();}break;
    case 'will':if(t&&cd(4))this.zone(f,t.x,t.y,50,3,'pit',b*2);break;
-   case 'x':if(cd(3.5)){f.form=1-f.form;for(const e of near(200)){if(f.form){this.hit(f,e,b*3);this.dot(f,e,2,b*.6,'spell');}else{this.status(e,'stun',1.2);this.hit(f,e,b*1.8);}}label();}break;
-   case 'yaoi':if(cd(5.5)){this.status(f,'invulnerable',1.5);for(const e of near(155)){this.hit(f,e,b*2.5);this.status(e,'slow',1);}label();}break;
+   case 'x':if(cd(2.7)){f.form=1-f.form;for(const e of near(245)){if(f.form){this.hit(f,e,b*4);this.dot(f,e,2,b*.7,'spell');}else{this.status(e,'stun',1.2);this.hit(f,e,b*1.8);}}label();}break;
+   case 'yaoi':if(cd(4.5)){this.status(f,'invulnerable',1.5);for(const e of near(180)){this.hit(f,e,b*4);this.status(e,'slow',1);}label();}break;
    case 'yuhi':if(cd(6)){this.status(f,'air',3);label();}break;
    case 'yuji':if(cd(3.5)){for(const e of near(110))this.push(f,e,60);label();}break;
    case 'yukimero':if(t&&cd(4)){this.shield(f,f.maxHp*.16);this.zone(f,t.x,t.y,90,3,'cotton',0);}break;
