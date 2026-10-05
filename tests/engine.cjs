@@ -45,9 +45,11 @@ function duel(a,b){const w=new World([a,b],{seed:'mechanics'});w.rng=()=>.99;ret
 
 {
  const five=new World(roster.slice(0,5).map(p=>p.name),{seed:'small-mode'}),six=new World(roster.slice(0,6).map(p=>p.name),{seed:'small-mode'});
- assert(five.smallMode);assert(!six.smallMode);assert(five.radius<six.radius);
+ assert(five.smallMode);assert(six.mediumMode);assert(!six.smallMode);assert(five.radius<six.radius);assert.equal(five.viewScale,2);assert.equal(six.viewScale,1.5);
+ const twenty=new World(roster.slice(0,20).map(p=>p.name)),twentyOne=new World(roster.slice(0,21).map(p=>p.name));assert(twenty.mediumMode);assert.equal(twentyOne.mode,'normal');assert.equal(twentyOne.viewScale,1);assert(six.radius<twentyOne.radius);
+ twentyOne.die(twentyOne.units[0]);twentyOne.step();assert.equal(twentyOne.mode,'normal','途中で20人になっても通常モードを維持');
  for(const f of five.units)assert(Math.hypot(f.x-400,f.y-400)+f.radius<five.radius,'少人数の初期配置が会場内');
- six.die(six.units[0]);six.step();assert(!six.smallMode,'途中で5人になっても開始モードを維持');
+ six.die(six.units[0]);six.step();assert(!six.smallMode,'途中で5人になっても開始モードを維持');assert(six.mediumMode);
 }
 {
  for(const suddenDeath of [true,false]){
