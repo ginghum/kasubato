@@ -4,3 +4,9 @@
 .setup{overflow-y:auto;justify-content:safe center}
 
 .match-settings{margin:0 0 16px}.match-settings label{display:flex;align-items:center;flex-wrap:wrap;gap:6px}.match-settings input{accent-color:var(--gold);margin:0;width:16px;height:16px;flex:none}.match-settings label span{margin-left:0}.match-settings p{font-size:10px;margin:7px 0 0}
+
+/* Head sprites use the unchanged user artwork and silhouette clips, without its captions. */
+.portrait{--icon-size:36px;display:inline-block;position:relative;width:var(--icon-size);height:var(--icon-size);flex:none;background:transparent;overflow:visible}
+.face-sprite{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-image:url('assets/character-sheet.jpg');background-repeat:no-repeat}
+.catalog-card .portrait{--icon-size:34px;width:var(--icon-size);height:var(--icon-size)}
+.icons-unavailable .face-sprite{display:none}.icons-unavailable .portrait::after{content:attr(data-fallback);display:block;text-align:center;font-size:calc(var(--icon-size)*.7)}
