@@ -1,0 +1,387 @@
+{
+  "checkedAt": "2026-10-05",
+  "battle": {
+    "repository": "ginghum/battle",
+    "commit": "8cd2a760b32a37c22a7725884bf0c7d3dc3b6688"
+  },
+  "catalog": {
+    "repository": "ginghum/START",
+    "commit": "350d11086d1efd3faf3f14252bc825b8a792b29a",
+    "characters": 93,
+    "files": [
+      {
+        "path": "characters-data/an/profile.json",
+        "sha": "e2f1c2a2fd5109849b55853f1067950450dc242e"
+      },
+      {
+        "path": "characters-data/ashara/profile.json",
+        "sha": "080a0c0d269f7f4e2c167758530823fb5094c7b1"
+      },
+      {
+        "path": "characters-data/balalaika/profile.json",
+        "sha": "08be552bdab5a1d2c31ef1a3269d87ab197e389f"
+      },
+      {
+        "path": "characters-data/bane/profile.json",
+        "sha": "ee7d15f83eda5c838679e13babb475eec26964df"
+      },
+      {
+        "path": "characters-data/baroo/profile.json",
+        "sha": "0e00498a2f82c073ce6e649cd20b953c4e99f4fd"
+      },
+      {
+        "path": "characters-data/bell/profile.json",
+        "sha": "fd500fdcc5b49d82ac8cd338e3cc399e90281626"
+      },
+      {
+        "path": "characters-data/beret/profile.json",
+        "sha": "1524e5b7c48b393a3bb0478bed961de25fc7615a"
+      },
+      {
+        "path": "characters-data/bonbori/profile.json",
+        "sha": "4f20d9f21aed0b55bde96139efe7c055ea57901e"
+      },
+      {
+        "path": "characters-data/bug/profile.json",
+        "sha": "12a5496a0d5bec6f2e7701735f027811fa0f830f"
+      },
+      {
+        "path": "characters-data/bunbu/profile.json",
+        "sha": "1d4ccd0cf2b6ce44f98e5eb7731c40ac02216c80"
+      },
+      {
+        "path": "characters-data/chaka/profile.json",
+        "sha": "92c51ceef2af3a101526a3521c3b191744986b63"
+      },
+      {
+        "path": "characters-data/chick/profile.json",
+        "sha": "84fd0b38f62d369863fa989455cb32c263f07ec2"
+      },
+      {
+        "path": "characters-data/chuba/profile.json",
+        "sha": "1e82e46d12025cfa05e07c05def36523ce8bfaae"
+      },
+      {
+        "path": "characters-data/clarine/profile.json",
+        "sha": "862f291b78aa44c66e7bfac119f93084326d3830"
+      },
+      {
+        "path": "characters-data/dai/profile.json",
+        "sha": "4811ee1c7d7abbedb445654c71a80047897f3ac4"
+      },
+      {
+        "path": "characters-data/dancho/profile.json",
+        "sha": "118f508b945e729421775980b0563970f96d5aa4"
+      },
+      {
+        "path": "characters-data/dankachi/profile.json",
+        "sha": "62c19de186c9a4756f0e05a3adf5d5b83b238c80"
+      },
+      {
+        "path": "characters-data/deji/profile.json",
+        "sha": "54dc57e879ecbdd0f96e2225fc310f773d896a4e"
+      },
+      {
+        "path": "characters-data/devil/profile.json",
+        "sha": "301b63fc06279891244a1aa30061d3bc0e5a7831"
+      },
+      {
+        "path": "characters-data/doma/profile.json",
+        "sha": "b3c857e6759d8e853e91af4bb8777304c3786eb8"
+      },
+      {
+        "path": "characters-data/don/profile.json",
+        "sha": "96a077e4ce93b8322349c59948b5c46c94344a00"
+      },
+      {
+        "path": "characters-data/doppel/profile.json",
+        "sha": "d16a8c591e729ab85d52758934d789c9f04ec8dd"
+      },
+      {
+        "path": "characters-data/empress/profile.json",
+        "sha": "07ca4c6edfb36d338ee2db87272fc34bd5db42ac"
+      },
+      {
+        "path": "characters-data/eris/profile.json",
+        "sha": "910824fc54adb0384c5d6f93e2ed94368e833e9e"
+      },
+      {
+        "path": "characters-data/grav/profile.json",
+        "sha": "2622422bed1014de9e2331ee8fff79209bd76577"
+      },
+      {
+        "path": "characters-data/guardian/profile.json",
+        "sha": "30ef138c8a6bb67afe12b3ce164af27649b8aa6b"
+      },
+      {
+        "path": "characters-data/gumon/profile.json",
+        "sha": "914433291403c1e2bffac5eefc9729a5a18a5242"
+      },
+      {
+        "path": "characters-data/hat/profile.json",
+        "sha": "e8c225b77132c219c32245f2d3911df31b482684"
+      },
+      {
+        "path": "characters-data/hattan/profile.json",
+        "sha": "bccf66dae469efe5f3a91224355e36c2a3f359b9"
+      },
+      {
+        "path": "characters-data/helios/profile.json",
+        "sha": "d01fb05546aae0ccfcbaa413edc8438c00416e3d"
+      },
+      {
+        "path": "characters-data/hikaru/profile.json",
+        "sha": "d82c7c68d9cff0615d80417668b4755f1ee0ba03"
+      },
+      {
+        "path": "characters-data/hime/profile.json",
+        "sha": "670dbecc4b9afa6bdb9e5e2e946883de4551d086"
+      },
+      {
+        "path": "characters-data/himeyuri/profile.json",
+        "sha": "9921ee3ecd2c33ee21ef935bd965595d7f4959e7"
+      },
+      {
+        "path": "characters-data/hiyoko/profile.json",
+        "sha": "79d036b90ff91a4b78cbd7db79d6b40a06cf5189"
+      },
+      {
+        "path": "characters-data/hoozuki/profile.json",
+        "sha": "4d984070f0b273f9250b82dd637161d4c73c089f"
+      },
+      {
+        "path": "characters-data/itoguchi/profile.json",
+        "sha": "5a77732ce44a2689122a8d3d18ad2a8c136415ab"
+      },
+      {
+        "path": "characters-data/jend/profile.json",
+        "sha": "9ffe9b8e40d7d618d49abd7980a816fde4ab4dd6"
+      },
+      {
+        "path": "characters-data/judge/profile.json",
+        "sha": "68bc2e0c51fabb55bf6593eb996a78ae20cba930"
+      },
+      {
+        "path": "characters-data/junko/profile.json",
+        "sha": "7b42c513c8925a867b176537f8833600a3e0733d"
+      },
+      {
+        "path": "characters-data/kagachi/profile.json",
+        "sha": "3f1c2b6d119ab3842471cc9c03945a047d686e0c"
+      },
+      {
+        "path": "characters-data/kamatsuka/profile.json",
+        "sha": "6c63c144b39676f9a7dfaaaf5cb637ec1f245667"
+      },
+      {
+        "path": "characters-data/kirara/profile.json",
+        "sha": "d4c02e137f5d4aca3896a2dd5050cd99a8219ec6"
+      },
+      {
+        "path": "characters-data/kobal/profile.json",
+        "sha": "2e51cad69f20b126ca52b0e2cbf0bb99e40b5b7e"
+      },
+      {
+        "path": "characters-data/konke/profile.json",
+        "sha": "80fb660eaea648d7d67b3f6d09977ceae4da5c24"
+      },
+      {
+        "path": "characters-data/lance/profile.json",
+        "sha": "7765c633135ba08f00447acff994f77a6f4bf7b5"
+      },
+      {
+        "path": "characters-data/leorka/profile.json",
+        "sha": "53832df6912489b8042def51d4e961c9d05c55aa"
+      },
+      {
+        "path": "characters-data/lusai/profile.json",
+        "sha": "7c5b9a5c0f4ed8134f5d4d47bd8feef97d65d6a1"
+      },
+      {
+        "path": "characters-data/machio/profile.json",
+        "sha": "a34b020f4bb702c7b79dc3c7676715d3ef9214de"
+      },
+      {
+        "path": "characters-data/makura/profile.json",
+        "sha": "1142f860d255d307235e8f3a8fed928c5f9b10c1"
+      },
+      {
+        "path": "characters-data/mane/profile.json",
+        "sha": "36907c83f66167d47030c7d28ecdf73afafa1953"
+      },
+      {
+        "path": "characters-data/masa/profile.json",
+        "sha": "bf2e219cd2fe6fd5c58711ea7bb0af4d1cd4b593"
+      },
+      {
+        "path": "characters-data/meimei/profile.json",
+        "sha": "624d950b682c10e15d5850b42d04433db3d5f6d5"
+      },
+      {
+        "path": "characters-data/mikael/profile.json",
+        "sha": "a3d7781fd99c279fc07809ad42b9ea65606918d1"
+      },
+      {
+        "path": "characters-data/milk/profile.json",
+        "sha": "9523bc3f7e181ec7baa3de37b494975fb9aaa51b"
+      },
+      {
+        "path": "characters-data/mimari/profile.json",
+        "sha": "2dfce141d609d2f5e23704053565ec5aab87543c"
+      },
+      {
+        "path": "characters-data/minus/profile.json",
+        "sha": "c5a0c1aa5f390f1e72336a14e30e520611f4e59e"
+      },
+      {
+        "path": "characters-data/morpheus/profile.json",
+        "sha": "efddaad00a1161e95fbdd5c5b0d76045cf519965"
+      },
+      {
+        "path": "characters-data/mu/profile.json",
+        "sha": "c3627ec2068bacefae864256dc50e665bde138ee"
+      },
+      {
+        "path": "characters-data/muchiko/profile.json",
+        "sha": "6d2eb00ea77dfc315b10a12411d17e2489965be4"
+      },
+      {
+        "path": "characters-data/natori/profile.json",
+        "sha": "25137d7c3c1b6ac2ba5ccdbae6bc39e23a9da7f9"
+      },
+      {
+        "path": "characters-data/oga/profile.json",
+        "sha": "1936b685e35d533f0671cc86db9a1df5af5cb545"
+      },
+      {
+        "path": "characters-data/ojo/profile.json",
+        "sha": "5b50dd4258090893d671aa5cd9fafd83f040de5c"
+      },
+      {
+        "path": "characters-data/oriha/profile.json",
+        "sha": "21cce90d52dd4b405dfa0fe144a9dbb5d03fe283"
+      },
+      {
+        "path": "characters-data/paster/profile.json",
+        "sha": "3c5ba36526313885c9107203d949f56f3d289507"
+      },
+      {
+        "path": "characters-data/plus/profile.json",
+        "sha": "e32beec87d5c9dcca6b7f6e9de812dbc0dd08a4a"
+      },
+      {
+        "path": "characters-data/rindou/profile.json",
+        "sha": "1098b1ba37cf145824c4d3e951fd1d7935bd0425"
+      },
+      {
+        "path": "characters-data/rokka/profile.json",
+        "sha": "58e5f1222de9130cdee21debcea7910d83e7f150"
+      },
+      {
+        "path": "characters-data/romanchi/profile.json",
+        "sha": "38b8c9845bb56630ea963c9d2531e827524f820f"
+      },
+      {
+        "path": "characters-data/ruto/profile.json",
+        "sha": "40e62bb3453a3bd058586ac646d3dcd494e4d8cc"
+      },
+      {
+        "path": "characters-data/sakuo/profile.json",
+        "sha": "05eac9a275917d25cd274367c12ff5dab09737bb"
+      },
+      {
+        "path": "characters-data/serena/profile.json",
+        "sha": "4b8a3cbc60deef3eda3cc295efb8955a34f5cc9a"
+      },
+      {
+        "path": "characters-data/shiika/profile.json",
+        "sha": "7e64360d11e1c655c46286badecd330d3fd3c39f"
+      },
+      {
+        "path": "characters-data/sigma/profile.json",
+        "sha": "82723885e83d358be557bdaa5c0bc3859145ac5d"
+      },
+      {
+        "path": "characters-data/soi/profile.json",
+        "sha": "a8eb322e29d6d73e1cec1ed825d3094f02defb02"
+      },
+      {
+        "path": "characters-data/sunny/profile.json",
+        "sha": "deb3291ce9425f2e661e0caa85374f51d15430d1"
+      },
+      {
+        "path": "characters-data/tanaka/profile.json",
+        "sha": "69257190e08c8a1eb87aa838f43208423bf9996e"
+      },
+      {
+        "path": "characters-data/titan/profile.json",
+        "sha": "3fcaa36f3669a8b64859797afd31c08906cc6868"
+      },
+      {
+        "path": "characters-data/torie/profile.json",
+        "sha": "515db61ba024e12463669b61611470babd77bc13"
+      },
+      {
+        "path": "characters-data/tsukichiyo/profile.json",
+        "sha": "96a22b15f2f81d0e2783ec915bfb7a4aa85155b5"
+      },
+      {
+        "path": "characters-data/tsukuri/profile.json",
+        "sha": "6613c0ab395bb49f14d0ff758b8319cc071f930d"
+      },
+      {
+        "path": "characters-data/tsukuyomi/profile.json",
+        "sha": "e818de2f72ca8a1b2e2a93c09e4e1f217fca3f8b"
+      },
+      {
+        "path": "characters-data/van/profile.json",
+        "sha": "a39768941f4b58eb3f87ac3f6592d05a8475991e"
+      },
+      {
+        "path": "characters-data/vine/profile.json",
+        "sha": "6d0e9278af35ed159164a9446b741e67f5f4b1a8"
+      },
+      {
+        "path": "characters-data/wan/profile.json",
+        "sha": "f5510765d3198ddeb1090ca704ef6530dde01a48"
+      },
+      {
+        "path": "characters-data/will/profile.json",
+        "sha": "982bc03d52c1f591489213d2e9ce8d98a21bb903"
+      },
+      {
+        "path": "characters-data/x/profile.json",
+        "sha": "8cd23a0f6afd4e6e4ea702dc17f9cd8e0a739598"
+      },
+      {
+        "path": "characters-data/yaoi/profile.json",
+        "sha": "7847be8f0a65bb7fd45efa1e6a205c15d162da81"
+      },
+      {
+        "path": "characters-data/yayoi/profile.json",
+        "sha": "afd747677792ecb484968190e3d2109106c422d1"
+      },
+      {
+        "path": "characters-data/yuhi/profile.json",
+        "sha": "bb29a75de595d694e645987e9e06a44dec72dea6"
+      },
+      {
+        "path": "characters-data/yuji/profile.json",
+        "sha": "f1b299950c9987c560b373306b072f596fca7832"
+      },
+      {
+        "path": "characters-data/yukimero/profile.json",
+        "sha": "b9b391407a1aaeca598b99d0f6a7911274ad6970"
+      },
+      {
+        "path": "characters-data/zenomura/profile.json",
+        "sha": "bf34599fb23600824a41120561a63c5038da5ce4"
+      },
+      {
+        "path": "characters-data/zeta/profile.json",
+        "sha": "dd520f7ba9b05e155bfc91969e82783344dd39ee"
+      }
+    ]
+  },
+  "combatStats": "Simulator estimates based on Grade, height and descriptions; not canonical numerical stats."
+}

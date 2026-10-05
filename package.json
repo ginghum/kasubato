@@ -1,0 +1,16 @@
+{
+  "name": "kasukou-battle",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/engine.cjs",
+    "test:ui": "node tests/ui.cjs",
+    "serve": "python -m http.server 8000"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
