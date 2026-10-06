@@ -1,0 +1,179 @@
+{
+  "count": 500,
+  "prefix": "grade4-validation-v1",
+  "mode": "all",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "stats": {
+    "アン": {
+      "atk": 29,
+      "hp": 1510,
+      "speed": 5.8
+    },
+    "バラライカ": {
+      "atk": 30,
+      "hp": 1558,
+      "speed": 5.8
+    },
+    "デヂ": {
+      "atk": 28,
+      "hp": 1438,
+      "speed": 5.8
+    },
+    "グラブ": {
+      "atk": 31,
+      "hp": 1590,
+      "speed": 5.8
+    },
+    "ハット": {
+      "atk": 31,
+      "hp": 1598,
+      "speed": 5.8
+    },
+    "ハッタン": {
+      "atk": 31,
+      "hp": 1614,
+      "speed": 5.8
+    },
+    "ヒカル": {
+      "atk": 31,
+      "hp": 1606,
+      "speed": 5.8
+    },
+    "コバル": {
+      "atk": 27,
+      "hp": 1650,
+      "speed": 5.2
+    },
+    "レオルカ": {
+      "atk": 31,
+      "hp": 1602,
+      "speed": 5.8
+    },
+    "マサ": {
+      "atk": 31,
+      "hp": 1610,
+      "speed": 5.8
+    },
+    "オーガ": {
+      "atk": 31,
+      "hp": 2050,
+      "speed": 5.3
+    },
+    "トリエ": {
+      "atk": 31,
+      "hp": 1590,
+      "speed": 5.8
+    },
+    "ヴァン": {
+      "atk": 31,
+      "hp": 1614,
+      "speed": 5.8
+    },
+    "ゆきめろ": {
+      "atk": 28,
+      "hp": 1454,
+      "speed": 5.8
+    },
+    "ゼノムラ": {
+      "atk": 30,
+      "hp": 1554,
+      "speed": 5.8
+    }
+  },
+  "rows": {
+    "アン": {
+      "id": "an",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "バラライカ": {
+      "id": "balalaika",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "デヂ": {
+      "id": "deji",
+      "played": 500,
+      "wins": 9,
+      "winRate": 0.018
+    },
+    "グラブ": {
+      "id": "grav",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ハット": {
+      "id": "hat",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ハッタン": {
+      "id": "hattan",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ヒカル": {
+      "id": "hikaru",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "コバル": {
+      "id": "kobal",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "レオルカ": {
+      "id": "leorka",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "マサ": {
+      "id": "masa",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "オーガ": {
+      "id": "oga",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "トリエ": {
+      "id": "torie",
+      "played": 500,
+      "wins": 489,
+      "winRate": 0.978
+    },
+    "ヴァン": {
+      "id": "van",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ゆきめろ": {
+      "id": "yukimero",
+      "played": 500,
+      "wins": 2,
+      "winRate": 0.004
+    },
+    "ゼノムラ": {
+      "id": "zenomura",
+      "played": 500,
+      "wins": 0,
+      "winRate": 0
+    }
+  },
+  "draws": 0,
+  "timeouts": 0,
+  "meanSeconds": 50.85293333333175
+}

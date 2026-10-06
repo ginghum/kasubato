@@ -19,8 +19,8 @@ const roster = [
     "sourceAbility": "毒を蓄積する",
     "summary": "毒と実験を愛し、不死身の部長ソイを容赦なく巻き込む、薬学サークルの愉快な副部長。",
     "stats": {
-      "atk": 29,
-      "hp": 1510,
+      "atk": 27,
+      "hp": 1450,
       "speed": 5.8
     },
     "sourcePath": "characters-data/an/profile.json"
@@ -67,8 +67,8 @@ const roster = [
     "sourceAbility": "体を銃器に変える",
     "summary": "祖国への忠義と規律を胸に、自分にも部員にも厳しい鍛錬を課す、軍事サークルの鬼教官。",
     "stats": {
-      "atk": 30,
-      "hp": 1558,
+      "atk": 33,
+      "hp": 1800,
       "speed": 5.8
     },
     "sourcePath": "characters-data/balalaika/profile.json"
@@ -428,7 +428,7 @@ const roster = [
     "summary": "愚痴をこぼしながら誰より確実に現場を回す、建設サークルの小さな姉貴分。",
     "stats": {
       "atk": 28,
-      "hp": 1438,
+      "hp": 1000,
       "speed": 5.8
     },
     "sourcePath": "characters-data/deji/profile.json"
@@ -595,8 +595,8 @@ const roster = [
     "sourceAbility": "重力操作",
     "summary": "弱者には重く、強者には軽い態度を取る、ハッタン付きの小心なチンピラ。",
     "stats": {
-      "atk": 31,
-      "hp": 1590,
+      "atk": 37,
+      "hp": 1950,
       "speed": 5.8
     },
     "sourcePath": "characters-data/grav/profile.json"
@@ -667,8 +667,8 @@ const roster = [
     "sourceAbility": "体感速度を操る",
     "summary": "自らを万能の天才と信じ、学園で人気の映画を監督・編集する、演劇サークルの自信家な部長。",
     "stats": {
-      "atk": 31,
-      "hp": 1598,
+      "atk": 42,
+      "hp": 2450,
       "speed": 5.8
     },
     "sourcePath": "characters-data/hat/profile.json"
@@ -691,8 +691,8 @@ const roster = [
     "sourceAbility": "分身する",
     "summary": "軽薄な笑顔と無数の手駒で不良たちを操る、嘘つきの知能派フィクサー。",
     "stats": {
-      "atk": 31,
-      "hp": 1614,
+      "atk": 34,
+      "hp": 1800,
       "speed": 5.8
     },
     "sourcePath": "characters-data/hattan/profile.json"
@@ -739,8 +739,8 @@ const roster = [
     "sourceAbility": "物体を変形させる",
     "summary": "美しいものだけを手元に置く、コスプレサークルという名の美術館の支配者。",
     "stats": {
-      "atk": 31,
-      "hp": 1606,
+      "atk": 38,
+      "hp": 1950,
       "speed": 5.8
     },
     "sourcePath": "characters-data/hikaru/profile.json"
@@ -1027,8 +1027,8 @@ const roster = [
     "sourceAbility": "チャージパンチを放つ",
     "summary": "あらゆる作品を語れる、心優しき二次元愛者。オタクサークルの部長。",
     "stats": {
-      "atk": 27,
-      "hp": 1650,
+      "atk": 33,
+      "hp": 1950,
       "speed": 5.2
     },
     "sourcePath": "characters-data/kobal/profile.json"
@@ -1099,8 +1099,8 @@ const roster = [
     "sourceAbility": "手のひらサイズの物体を生成する",
     "summary": "紳士の微笑みで導火線を見つめ、校舎さえ作品へ変える美術サークルの爆発芸術家。",
     "stats": {
-      "atk": 31,
-      "hp": 1602,
+      "atk": 33,
+      "hp": 1850,
       "speed": 5.8
     },
     "sourcePath": "characters-data/leorka/profile.json"
@@ -1219,8 +1219,8 @@ const roster = [
     "sourceAbility": "筋力が上昇する",
     "summary": "己の正義を旗印に、グレード制度へ真っ向から拳を突きつける自由サークル部長。",
     "stats": {
-      "atk": 31,
-      "hp": 1610,
+      "atk": 38,
+      "hp": 2100,
       "speed": 5.8
     },
     "sourcePath": "characters-data/masa/profile.json"
@@ -1459,8 +1459,8 @@ const roster = [
     "sourceAbility": "他人の能力を強化する",
     "summary": "怪物じみた姿で仲間の生活を支える、不良サークルの世話焼き副部長。",
     "stats": {
-      "atk": 31,
-      "hp": 2050,
+      "atk": 38,
+      "hp": 2250,
       "speed": 5.3
     },
     "sourcePath": "characters-data/oga/profile.json"
@@ -1868,7 +1868,7 @@ const roster = [
     "summary": "ベレーの作品を無言で守り、その横顔をノートへ描き続ける美術サークルの寡黙な副部長。",
     "stats": {
       "atk": 31,
-      "hp": 1590,
+      "hp": 750,
       "speed": 5.8
     },
     "sourcePath": "characters-data/torie/profile.json"
@@ -1963,8 +1963,8 @@ const roster = [
     "sourceAbility": "言葉を現実にする",
     "summary": "規則と時間を守り、白熱しすぎた決闘を収める決闘委員会の厳格な副会長。",
     "stats": {
-      "atk": 31,
-      "hp": 1614,
+      "atk": 37,
+      "hp": 1900,
       "speed": 5.8
     },
     "sourcePath": "characters-data/van/profile.json"
@@ -2184,7 +2184,7 @@ const roster = [
     "summary": "アニメキャラのような装いで皆から愛される、ローブを着ないオタサーの姫。",
     "stats": {
       "atk": 28,
-      "hp": 1454,
+      "hp": 1050,
       "speed": 5.8
     },
     "sourcePath": "characters-data/yukimero/profile.json"
@@ -2207,8 +2207,8 @@ const roster = [
     "sourceAbility": "幻覚を見せる",
     "summary": "報酬次第で依頼を請け負い、学内の表も裏も渡り歩く、なんでも屋サークルの若き代表。",
     "stats": {
-      "atk": 30,
-      "hp": 1554,
+      "atk": 40,
+      "hp": 2150,
       "speed": 5.8
     },
     "sourcePath": "characters-data/zenomura/profile.json"
