@@ -2242,6 +2242,7 @@ const roster = [
 const finalSpecs=[
  {baseId:'plus',title:'最終モード・質量支配',desc:'軽量化で加速し、重量化で攻撃と防御を強化。重量化時は周囲へ質量の衝撃波を放つ。',stats:{atk:52,hp:2800,speed:6.4}},
  {baseId:'hikaru',title:'最終モード・万物変形',desc:'敵の盾を大きく変形させて削り、物体を4本の貫通刃へ変えて連射する。',stats:{atk:50,hp:2700,speed:6.2}},
+ {baseId:'hattan',title:'最終モード・多重分身',desc:'自分の強化分身を最大4体作る。分身は本体の攻撃力・HPを元に戦い、本体脱落で消える。',stats:{atk:42,hp:2400,speed:6.2}},
  {baseId:'kobal',title:'最終モード・極限チャージパンチ',desc:'1秒で力を溜め、軽い防御をまとう。次の接触で8倍のチャージパンチを放つ。',stats:{atk:48,hp:2650,speed:6.0}}
 ];
 const finalModes=finalSpecs.map(spec=>{const base=roster.find(p=>p.id===spec.baseId);return {...base,...spec,id:base.id+'_final',name:base.name+'+',realName:base.realName+'+',aliases:base.aliases.filter(Boolean).map(n=>n+'+'),grade:'5',finalMode:true,summary:base.name+'のゲーム用最終モード。名前の末尾に「+」を付けて参加。'};});

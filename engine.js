@@ -2,6 +2,7 @@
 (function(root){
 'use strict';
 const roster=typeof module!=='undefined'?require('./data.js'):root.KASU_ROSTER;
+const overflows=typeof module!=='undefined'?require('./overflow.js'):(root.KASU_OVERFLOWS||{});
 const finalModes=roster.finalModes||[],profiles=[...roster,...finalModes];
 const norm=s=>String(s).normalize('NFKC').toLowerCase().replace(/[\s・･]/g,'');
 const aliases=new Map();for(const p of profiles)for(const n of p.aliases.filter(Boolean))aliases.set(norm(n),p);
@@ -16,7 +17,7 @@ class World {
   this.rng=random(options.seed??Date.now());this.seed=String(options.seed??'');this.time=0;this.smallMode=names.length<=5;this.mediumMode=names.length>=6&&names.length<=20;this.mode=this.smallMode?'small':this.mediumMode?'medium':'normal';this.viewScale=this.smallMode?2:this.mediumMode?1.5:1;this.baseRadius=this.smallMode?185:this.mediumMode?250:385;this.radius=this.baseRadius;this.suddenDeath=options.suddenDeath!==false;this.units=[];this.shots=[];this.zones=[];this.effects=[];this.events=[];this.seq=0;this.finished=false;this.sudden=false;this.result=null;this.initialCount=names.length;this.tickCount=0;
   for(const name of names){const r=resolve(name),saved=Object.hasOwn(options.overrides||{},name)?options.overrides[name]:null;const s=saved?{...r.stats,...saved}:r.stats;const f=this.make(name,saved?.skill||r.skill,s,false);f.profile=r.profile;this.units.push(f);}
  }
- make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=(80+this.rng()*210)*(this.baseRadius/385);const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};
+ make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=(80+this.rng()*210)*(this.baseRadius/385);const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,overflowUsed:false,overflowAt:null,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};
   if(skill==='empress')f.powers.push(...['oriha','torie','milk','yuji'].map(id=>({id,scale:.65})));
   if(skill==='kagachi')f.radius=32;if(skill==='paster')f.radius=24;return f;
  }
@@ -36,7 +37,7 @@ class World {
   if(!t?.alive||amount<=0)return 0;
   if((this.has(t,'air')&&type==='contact')||(this.has(t,'invulnerable')&&this.enabled(t)&&type!=='erase'))return 0;
   const enabled=this.enabled(t);let evasion=0;
-  if(enabled){if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.24;
+  if(enabled){if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.24;if(this.has(t,'foresight'))evasion+=.41;if(this.has(t,'overflowLuck'))evasion+=.30;
    if(type==='contact'&&['bonbori','vine','tsukuyomi'].some(id=>this.power(t,id)))evasion+=.22;
    if(this.power(t,'muchiko')&&this.has(t,'dash'))evasion+=.30;
    if(this.has(t,'hidden'))evasion+=.4;
@@ -59,6 +60,8 @@ class World {
    if(this.power(t,'soi')&&!t.revived){t.revived=true;t.hp=t.maxHp;this.event(t.name+'が一度限りの不死身で生還');this.effect(t,'不死身');}
    else this.die(t,a);
   }
+  if(a&&actual>0&&this.has(a,'woundReversal')&&this.enabled(a))this.heal(a,actual*.5);
+  this.tryOverflow(t);
   return actual;
  }
  die(t,a){t.alive=false;t.hp=0;t.deathTime=this.time;this.event(t.name+' 脱落'+(a?' ← '+a.name:''));
@@ -139,6 +142,7 @@ class World {
    case 'ojo':if(t&&cd(2.5))this.shot(f,t,b*6.5,'●',{homing:true,blast:100});break;
    case 'paster':if(cd(6)){this.status(f,'strong',4);this.status(f,'guard',4);this.status(f,'dash',2);label();}break;
    case 'plus_final':if(cd(2.4)){f.form=1-f.form;if(f.form){this.status(f,'strong',2.2);this.status(f,'guard',2.2);for(const e of near(130)){this.hit(f,e,b*2.2);if(e.alive)this.push(f,e,40);}}else this.status(f,'dash',2.2);label();}break;
+   case 'hattan_final':if(cd(3.5))this.summon(f,'clone',4,.3,.7);break;
    case 'hikaru_final':if(t&&cd(2.7)){t.shield*=.15;this.volley(f,t,4,b*2,'◆',{pierce:true});label();}break;
    case 'kobal_final':if(!f.ready&&!f.cool['charge:'+id]&&cd(3.8)){this.status(f,'thinking',1);this.status(f,'guard',1.5);f.cool['charge:'+id]=this.time+1;label();}break;
    case 'plus':if(cd(3)){f.form=1-f.form;this.status(f,f.form?'strong':'dash',2.8);label();}break;
@@ -168,11 +172,39 @@ class World {
   if(['chaka','kobal','kobal_final'].includes(id)&&f.cool['charge:'+id]&&f.cool['charge:'+id]<=this.time){f.ready=true;delete f.cool['charge:'+id];}
   if(id==='oga'&&cd(3))for(const a of this.units)if(a.alive&&a.team===f.team&&a!==f&&distance(f,a)<200)this.status(a,'boost',3.5);
  }
+ tryOverflow(f){
+  const spec=overflows[f.skill];
+  if(this.finished||!spec||!f.alive||f.minion||f.overflowUsed||f.hp<=0||f.hp>f.maxHp*.2||!this.enabled(f)||this.units.filter(e=>e.alive&&!e.minion).length>5)return false;
+  // Mark first: retaliatory damage can trigger another fighter's ultimate.
+  f.overflowUsed=true;f.overflowAt=this.time;this.status(f,'overflowFlash',2);
+  this.event(f.name+' オーバーフロー：'+spec.title);this.effect(f,'OF：'+spec.title,'#d4a2ff');
+  const b=f.atk,t=this.target(f),near=r=>this.nearby(f,r),mains=this.foes(f).filter(e=>!e.minion);
+  switch(f.skill){
+   case 'x':for(const e of near(300)){this.status(e,'stun',1.8);this.hit(f,e,b*2.4);if(e.alive)this.dot(f,e,4,b*.7,'spell');}break;
+   case 'ashara':for(const e of mains)this.volley(f,e,3,b*1.7,'⚡',{homing:true,targetId:e.id,chain:1,stun:.4});break;
+   case 'mu':this.shield(f,f.maxHp*.45);for(let i=0;i<3;i++)this.summon(f,'diamond',3,.35,.9);if(t)this.volley(f,t,6,b*1.8,'◆',{pierce:true});break;
+   case 'ojo':if(t)this.volley(f,t,5,b*2.5,'●',{homing:true,blast:135});break;
+   case 'titan':this.status(f,'foresight',8);this.status(f,'guard',8);break;
+   case 'tsukichiyo':for(const e of this.foes(f)){this.status(e,'blind',6);this.status(e,'stun',.8);}this.status(f,'hidden',5);if(t)this.hit(f,t,b*5,'contact');break;
+   case 'beret':f.luck=9;this.status(f,'overflowLuck',8);for(const e of this.foes(f))this.status(e,'unlucky',7);break;
+   case 'minus':this.status(f,'dash',5);this.status(f,'guard',5);for(const e of near(300)){this.status(e,'heavy',5);this.push(f,e,-60);this.hit(f,e,b*6);}break;
+   case 'plus_final':this.shield(f,f.maxHp*.4);this.status(f,'strong',6);this.status(f,'guard',6);this.status(f,'dash',3);for(const e of near(280)){this.hit(f,e,b*5);if(e.alive)this.push(f,e,110);}break;
+   case 'gumon':this.status(f,'invulnerable',6);break;
+   case 'judge':this.heal(f,f.maxHp*.45);this.shield(f,f.maxHp*.3);if(t){t.shield=0;this.hit(f,t,b*6,'erase');}break;
+   case 'serena':this.heal(f,f.maxHp);f.dots=[];for(const k of ['stun','sleep','blind','drunk','unlucky','heavy','slow','thinking','weak','stone','hidden'])delete f.status[k];this.status(f,'woundReversal',6);break;
+   case 'hattan_final':{
+    for(let i=0;i<8;i++)this.summon(f,'clone',8,.42,.9);
+    for(const clone of this.units)if(clone.alive&&clone.minion&&clone.kind==='clone'&&clone.team===f.team){clone.maxHp=f.maxHp*.42;clone.hp=clone.maxHp;clone.atk=f.atk*.9;clone.baseAtk=f.baseAtk*.9;clone.expires=this.time+14;this.status(clone,'dash',3);}
+    this.status(f,'hidden',4);this.shield(f,f.maxHp*.2);break;
+   }
+  }
+  return true;
+ }
  contact(f,t){if(!f.alive||!t.alive||this.has(f,'stun')||this.has(f,'sleep')||!this.cd(f,'contact:'+t.id,this.power(f,'sakuo')?.22:.4))return;
   let b=f.atk*(.85+this.rng()*.3);if(this.has(f,'strong'))b*=1.7;if(this.has(f,'weak'))b*=.6;
   if(this.power(f,'lance'))b*=1.45;if(this.power(f,'kagachi'))b*=1.6;
   if(this.power(f,'kirara'))b*=1+(1-t.hp/t.maxHp)*2;
-  if((this.power(f,'beret')&&this.rng()<Math.min(.6,.12+f.luck*.04))||(this.power(f,'titan')&&this.rng()<.28))b*=2.5;
+  if((this.enabled(f)&&(this.has(f,'foresight')||this.has(f,'overflowLuck')))||(this.power(f,'beret')&&this.rng()<Math.min(.6,.12+f.luck*.04))||(this.power(f,'titan')&&this.rng()<.28))b*=2.5;
   if(f.ready){b*=this.power(f,'kobal_final')?8:this.power(f,'kobal')?7:3;f.ready=false;this.effect(f,'会心');}
   this.hit(f,t,b,'contact');if(this.power(f,'kirara')&&t.alive)this.dot(f,t,2,b*.2,'spell');
   if(this.power(f,'yayoi')||this.power(f,'bunbu'))this.push(f,t,35);delete f.status.hidden;
@@ -186,6 +218,7 @@ class World {
    for(const d of f.dots)if(d.until>this.time&&d.next<=this.time){d.next+=.5;this.hit(d.owner,f,d.damage,d.type);}f.dots=f.dots.filter(d=>d.until>this.time);
    if(!f.alive)continue;
    if(f.hp<f.maxHp*.25&&!this.has(f,'sleep')&&this.cd(f,'rest',12)){this.status(f,'sleep',1.2);this.effect(f,'休息');}
+   this.tryOverflow(f);if(!f.alive)continue;
    if(this.enabled(f)&&!this.has(f,'stun')&&!this.has(f,'sleep'))for(const p of [...f.powers])this.cast(f,p);
    if(f.kind==='machine'){const t=this.target(f);if(t&&this.cd(f,'turret',1.2))this.shot(f,t,f.atk*3,'•',{mechanical:true});}
    if(this.has(f,'drunk')&&this.cd(f,'drunkAngle',.3))f.angle+=(this.rng()-.5)*2;
@@ -202,7 +235,7 @@ class World {
   if(remaining.length<=1||this.time>=180){this.finished=true;this.result={winner:remaining.length===1?remaining[0]:null,draw:remaining.length===0,timeout:remaining.length>1,time:this.time,ranking:this.units.filter(f=>!f.minion).sort((a,b)=>(b.alive-a.alive)||((b.deathTime||Infinity)-(a.deathTime||Infinity))||b.kills-a.kills)};this.shots=[];this.zones=[];this.effects=[];}
  }
  updateShots(dt){for(const s of this.shots){if(s.end<=this.time)continue;
-  if(s.homing){const t=this.target(s.owner);if(t){const a=Math.atan2(t.y-s.y,t.x-s.x);s.vx=Math.cos(a)*400;s.vy=Math.sin(a)*400;}}
+  if(s.homing){const t=(s.targetId&&this.units.find(u=>u.id===s.targetId&&u.alive&&u.team!==s.owner.team))||this.target(s.owner);if(t){const a=Math.atan2(t.y-s.y,t.x-s.x);s.vx=Math.cos(a)*400;s.vy=Math.sin(a)*400;}}
   s.x+=s.vx*dt;s.y+=s.vy*dt;
   if(Math.hypot(s.x-400,s.y-400)>this.radius+20){s.end=0;continue;}
   for(const t of this.units){if(!t.alive||t.team===s.owner.team||s.hit.has(t.id)||distance(s,t)>t.radius+9)continue;
@@ -227,5 +260,5 @@ class World {
   }
  }this.zones=this.zones.filter(z=>z.end>this.time&&!z.exploded);}
 }
-const api={World,roster,finalModes,profiles,find,resolve,norm,hash,random};if(typeof module!=='undefined')module.exports=api;else root.KasuBattle=api;
+const api={World,roster,finalModes,profiles,overflows,find,resolve,norm,hash,random};if(typeof module!=='undefined')module.exports=api;else root.KasuBattle=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/engine.cjs tests/grade5.cjs tests/grade4.cjs tests/grade3.cjs tests/final-modes.cjs",
-    "test:ui": "node tests/ui.cjs && node tests/ui-hold.cjs",
+    "test": "node --test tests/engine.cjs tests/grade5.cjs tests/grade4.cjs tests/grade3.cjs tests/final-modes.cjs tests/overflow.cjs",
+    "test:ui": "node tests/ui.cjs && node tests/ui-hold.cjs && node tests/ui-overflow.cjs",
     "serve": "python -m http.server 8000",
     "simulate:grade5": "node scripts/simulate-grade5.cjs",
     "simulate:grade4": "node scripts/simulate-grade4.cjs",

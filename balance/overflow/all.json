@@ -1,0 +1,139 @@
+{
+  "count": 100,
+  "mode": "all",
+  "prefix": "overflow-validation-v1",
+  "suddenDeath": true,
+  "players": 25,
+  "dt": 0.016666666666666666,
+  "rows": {
+    "アシャラ": {
+      "played": 100,
+      "wins": 4,
+      "activated": 16
+    },
+    "ベレー": {
+      "played": 100,
+      "wins": 0,
+      "activated": 9
+    },
+    "クラリーヌ": {
+      "played": 100,
+      "wins": 3,
+      "activated": 0
+    },
+    "ダンチョー": {
+      "played": 100,
+      "wins": 6,
+      "activated": 0
+    },
+    "デビル": {
+      "played": 100,
+      "wins": 1,
+      "activated": 0
+    },
+    "グモン": {
+      "played": 100,
+      "wins": 6,
+      "activated": 36
+    },
+    "イトグチ": {
+      "played": 100,
+      "wins": 4,
+      "activated": 0
+    },
+    "ジェンド": {
+      "played": 100,
+      "wins": 0,
+      "activated": 0
+    },
+    "ジャッジ": {
+      "played": 100,
+      "wins": 10,
+      "activated": 9
+    },
+    "カガチ": {
+      "played": 100,
+      "wins": 0,
+      "activated": 0
+    },
+    "ミカエル": {
+      "played": 100,
+      "wins": 2,
+      "activated": 0
+    },
+    "マイナス": {
+      "played": 100,
+      "wins": 2,
+      "activated": 5
+    },
+    "ミュー": {
+      "played": 100,
+      "wins": 4,
+      "activated": 7
+    },
+    "オジョー": {
+      "played": 100,
+      "wins": 0,
+      "activated": 9
+    },
+    "パスター": {
+      "played": 100,
+      "wins": 1,
+      "activated": 0
+    },
+    "セレナ": {
+      "played": 100,
+      "wins": 2,
+      "activated": 8
+    },
+    "タナカ": {
+      "played": 100,
+      "wins": 1,
+      "activated": 0
+    },
+    "タイタン": {
+      "played": 100,
+      "wins": 8,
+      "activated": 28
+    },
+    "ツキチヨ": {
+      "played": 100,
+      "wins": 4,
+      "activated": 31
+    },
+    "X": {
+      "played": 100,
+      "wins": 4,
+      "activated": 10
+    },
+    "ヤオイ": {
+      "played": 100,
+      "wins": 5,
+      "activated": 0
+    },
+    "プラス+": {
+      "played": 100,
+      "wins": 31,
+      "activated": 35
+    },
+    "ヒカル+": {
+      "played": 100,
+      "wins": 0,
+      "activated": 0
+    },
+    "ハッタン+": {
+      "played": 100,
+      "wins": 0,
+      "activated": 3
+    },
+    "コバル+": {
+      "played": 100,
+      "wins": 2,
+      "activated": 0
+    }
+  },
+  "draws": 0,
+  "timeouts": 0,
+  "maxUnits": 33,
+  "meanSeconds": 32.43833333333278
+}
