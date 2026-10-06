@@ -2238,5 +2238,13 @@ const roster = [
     "sourcePath": "characters-data/zeta/profile.json"
   }
 ];
-if(typeof module!=="undefined") module.exports=roster; else root.KASU_ROSTER=roster;
+// Name-triggered simulator forms; canonical profiles and random pools stay unchanged.
+const finalSpecs=[
+ {baseId:'plus',title:'最終モード・質量支配',desc:'軽量化で加速し、重量化で攻撃と防御を強化。重量化時は周囲へ質量の衝撃波を放つ。',stats:{atk:52,hp:2800,speed:6.4}},
+ {baseId:'hikaru',title:'最終モード・万物変形',desc:'敵の盾を大きく変形させて削り、物体を4本の貫通刃へ変えて連射する。',stats:{atk:50,hp:2700,speed:6.2}},
+ {baseId:'kobal',title:'最終モード・極限チャージパンチ',desc:'1秒で力を溜め、軽い防御をまとう。次の接触で8倍のチャージパンチを放つ。',stats:{atk:48,hp:2650,speed:6.0}}
+];
+const finalModes=finalSpecs.map(spec=>{const base=roster.find(p=>p.id===spec.baseId);return {...base,...spec,id:base.id+'_final',name:base.name+'+',realName:base.realName+'+',aliases:base.aliases.filter(Boolean).map(n=>n+'+'),grade:'5',finalMode:true,summary:base.name+'のゲーム用最終モード。名前の末尾に「+」を付けて参加。'};});
+Object.defineProperty(roster,'finalModes',{value:finalModes});
+if(typeof module!=="undefined") module.exports=roster; else {root.KASU_ROSTER=roster;root.KASU_FINAL_MODES=finalModes;}
 })(typeof globalThis!=="undefined"?globalThis:this);

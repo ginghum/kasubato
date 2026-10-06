@@ -1,0 +1,35 @@
+{
+  "count": 100,
+  "mode": "duel",
+  "prefix": "final-duel",
+  "suddenDeath": true,
+  "rows": [
+    {
+      "name": "プラス+",
+      "opponent": "プラス",
+      "played": 100,
+      "wins": 100,
+      "winRate": 1,
+      "draws": 0,
+      "timeouts": 0
+    },
+    {
+      "name": "ヒカル+",
+      "opponent": "ヒカル",
+      "played": 100,
+      "wins": 100,
+      "winRate": 1,
+      "draws": 0,
+      "timeouts": 0
+    },
+    {
+      "name": "コバル+",
+      "opponent": "コバル",
+      "played": 100,
+      "wins": 100,
+      "winRate": 1,
+      "draws": 0,
+      "timeouts": 0
+    }
+  ]
+}

@@ -2,8 +2,9 @@
 (function(root){
 'use strict';
 const roster=typeof module!=='undefined'?require('./data.js'):root.KASU_ROSTER;
+const finalModes=roster.finalModes||[],profiles=[...roster,...finalModes];
 const norm=s=>String(s).normalize('NFKC').toLowerCase().replace(/[\s・･]/g,'');
-const aliases=new Map();for(const p of roster)for(const n of p.aliases.filter(Boolean))aliases.set(norm(n),p);
+const aliases=new Map();for(const p of profiles)for(const n of p.aliases.filter(Boolean))aliases.set(norm(n),p);
 function hash(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Math.imul(h,16777619);}return h>>>0;}
 function random(seed){let a=hash(String(seed));return()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
 const find=s=>aliases.get(norm(s))||null;
@@ -62,7 +63,7 @@ class World {
  }
  die(t,a){t.alive=false;t.hp=0;t.deathTime=this.time;this.event(t.name+' 脱落'+(a?' ← '+a.name:''));
   if(a?.alive&&!t.minion){a.kills++;if(this.power(a,'empress')){
-   for(const p of t.powers)if(p.id!=='empress'&&!a.powers.some(q=>q.id===p.id)){a.powers.push({id:p.id,scale:p.scale*t.baseAtk/a.baseAtk});this.event(a.name+'が'+(roster.find(q=>q.id===p.id)?.title||p.id)+'を獲得');}
+   for(const p of t.powers)if(p.id!=='empress'&&!a.powers.some(q=>q.id===p.id)){a.powers.push({id:p.id,scale:p.scale*t.baseAtk/a.baseAtk});this.event(a.name+'が'+(profiles.find(q=>q.id===p.id)?.title||p.id)+'を獲得');}
    this.heal(a,a.maxHp*.12);
   }}
   if(!t.minion)for(const m of this.units)if(m.minion&&m.team===t.team){m.alive=false;m.hp=0;}
@@ -76,7 +77,7 @@ class World {
   const m=this.make(f.name+'の'+({golem:'ゴーレム',clone:'分身',animal:'友達',machine:'砲台',diamond:'ダイヤ兵'}[kind]||kind),'basic',{atk:f.atk*atk,hp:f.maxHp*hp,speed:kind==='machine'?0:4.2},true,f.team);m.kind=kind;m.x=f.x+20;m.y=f.y+20;m.radius=kind==='golem'?19:11;m.expires=this.time+(kind==='clone'?12:18);this.units.push(m);this.effect(f,'支援 '+kind);
  }
  cast(f,p){
-  const id=p.id,t=this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.4:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,roster.find(q=>q.id===id)?.title||id);
+  const id=p.id,t=this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.4:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,profiles.find(q=>q.id===id)?.title||id);
   switch(id){
    case 'an':if(cd(3)){for(const e of near(155))this.dot(f,e,4,b*(.45+f.poison*.15));f.poison=Math.min(6,f.poison+1);label();}break;
    case 'ashara':if(t&&cd(1.7))this.shot(f,t,b*6,'⚡',{chain:2,stun:.25,homing:true});break;
@@ -137,6 +138,9 @@ class World {
    case 'natori':if(t&&cd(3.5))this.zone(f,t.x,t.y,75,3,'bind',b*.35);break;
    case 'ojo':if(t&&cd(2.5))this.shot(f,t,b*6.5,'●',{homing:true,blast:100});break;
    case 'paster':if(cd(6)){this.status(f,'strong',4);this.status(f,'guard',4);this.status(f,'dash',2);label();}break;
+   case 'plus_final':if(cd(2.4)){f.form=1-f.form;if(f.form){this.status(f,'strong',2.2);this.status(f,'guard',2.2);for(const e of near(130)){this.hit(f,e,b*2.2);if(e.alive)this.push(f,e,40);}}else this.status(f,'dash',2.2);label();}break;
+   case 'hikaru_final':if(t&&cd(2.7)){t.shield*=.15;this.volley(f,t,4,b*2,'◆',{pierce:true});label();}break;
+   case 'kobal_final':if(!f.ready&&!f.cool['charge:'+id]&&cd(3.8)){this.status(f,'thinking',1);this.status(f,'guard',1.5);f.cool['charge:'+id]=this.time+1;label();}break;
    case 'plus':if(cd(3)){f.form=1-f.form;this.status(f,f.form?'strong':'dash',2.8);label();}break;
    case 'rokka':if(t&&cd(4))this.zone(f,t.x,t.y,110,3,'snow',0);break;
    case 'romanchi':if(cd(4)){f.form=(f.form+1)%3;if(f.form===0)this.heal(f,150*p.scale);if(f.form===1)this.shield(f,170*p.scale);if(f.form===2&&t)this.volley(f,t,3,b*2,'✧');label();}break;
@@ -161,7 +165,7 @@ class World {
    case 'basic':break;
    default:throw Error('Unimplemented ability: '+id);
   }
-  if(['chaka','kobal'].includes(id)&&f.cool['charge:'+id]&&f.cool['charge:'+id]<=this.time){f.ready=true;delete f.cool['charge:'+id];}
+  if(['chaka','kobal','kobal_final'].includes(id)&&f.cool['charge:'+id]&&f.cool['charge:'+id]<=this.time){f.ready=true;delete f.cool['charge:'+id];}
   if(id==='oga'&&cd(3))for(const a of this.units)if(a.alive&&a.team===f.team&&a!==f&&distance(f,a)<200)this.status(a,'boost',3.5);
  }
  contact(f,t){if(!f.alive||!t.alive||this.has(f,'stun')||this.has(f,'sleep')||!this.cd(f,'contact:'+t.id,this.power(f,'sakuo')?.22:.4))return;
@@ -169,7 +173,7 @@ class World {
   if(this.power(f,'lance'))b*=1.45;if(this.power(f,'kagachi'))b*=1.6;
   if(this.power(f,'kirara'))b*=1+(1-t.hp/t.maxHp)*2;
   if((this.power(f,'beret')&&this.rng()<Math.min(.6,.12+f.luck*.04))||(this.power(f,'titan')&&this.rng()<.28))b*=2.5;
-  if(f.ready){b*=this.power(f,'kobal')?7:3;f.ready=false;this.effect(f,'会心');}
+  if(f.ready){b*=this.power(f,'kobal_final')?8:this.power(f,'kobal')?7:3;f.ready=false;this.effect(f,'会心');}
   this.hit(f,t,b,'contact');if(this.power(f,'kirara')&&t.alive)this.dot(f,t,2,b*.2,'spell');
   if(this.power(f,'yayoi')||this.power(f,'bunbu'))this.push(f,t,35);delete f.status.hidden;
  }
@@ -223,5 +227,5 @@ class World {
   }
  }this.zones=this.zones.filter(z=>z.end>this.time&&!z.exploded);}
 }
-const api={World,roster,find,resolve,norm,hash,random};if(typeof module!=='undefined')module.exports=api;else root.KasuBattle=api;
+const api={World,roster,finalModes,profiles,find,resolve,norm,hash,random};if(typeof module!=='undefined')module.exports=api;else root.KasuBattle=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

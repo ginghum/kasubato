@@ -1,6 +1,7 @@
 'use strict';
 (() => {
- const roster = globalThis.KASU_ROSTER;
+ const baseRoster = globalThis.KASU_ROSTER;
+ const roster = Array.isArray(baseRoster) ? [...baseRoster, ...(globalThis.KASU_FINAL_MODES || [])] : null;
  const $ = id => document.getElementById(id);
  const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const normalize = s => String(s).normalize('NFKC').toLowerCase().replace(/[\s・･]/g, '');
@@ -28,7 +29,7 @@
   const list = roster.filter(p => (!grade || p.grade === grade) && normalize([p.name,p.realName,p.title,p.desc,p.sourceAbility,p.club,...p.aliases,notes[p.id] || ''].join(' ')).includes(query));
   list.sort((a,b) => (sort === 'grade' ? Number(b.grade)-Number(a.grade) : sort === 'name' ? 0 : b.stats[sort]-a.stats[sort]) || a.name.localeCompare(b.name, 'ja'));
   $('count').textContent = `${list.length} / ${roster.length}人`;
-  $('character-list').innerHTML = list.length ? list.map(p => `<article class="char"><div class="char-head"><span class="char-icon" aria-hidden="true">${escape(p.icon)}</span><div><h3>${escape(p.name)}</h3><small>Grade ${escape(p.grade)} / ${escape(p.club)}</small></div></div><p>${escape(p.realName)}</p><div class="ability">${escape(p.title)}</div><p>${escape(p.desc)}</p><div class="stats"><span>ATK ${p.stats.atk}</span><span>HP ${p.stats.hp}</span><span>SPD ${p.stats.speed}</span></div>${notes[p.id] ? `<p class="tip">${escape(notes[p.id])}</p>` : ''}<a href="https://ginghum.github.io/START/characters/${encodeURIComponent(p.id)}.html" target="_blank" rel="noopener">名鑑で設定を読む ↗</a></article>`).join('') : '<p class="empty">該当するキャラクターがいません。検索語やGradeを変えてください。</p>';
+  $('character-list').innerHTML = list.length ? list.map(p => `<article class="char"><div class="char-head"><span class="char-icon" aria-hidden="true">${escape(p.icon)}</span><div><h3>${escape(p.name)}</h3><small>Grade ${escape(p.grade)} / ${escape(p.club)}</small></div></div><p>${escape(p.realName)}</p><div class="ability">${escape(p.title)}</div><p>${escape(p.desc)}</p><div class="stats"><span>ATK ${p.stats.atk}</span><span>HP ${p.stats.hp}</span><span>SPD ${p.stats.speed}</span></div>${notes[p.id] ? `<p class="tip">${escape(notes[p.id])}</p>` : ''}<a href="https://ginghum.github.io/START/characters/${encodeURIComponent(p.baseId || p.id)}.html" target="_blank" rel="noopener">名鑑で設定を読む ↗</a></article>`).join('') : '<p class="empty">該当するキャラクターがいません。検索語やGradeを変えてください。</p>';
  }
  $('query').addEventListener('input', render);
  $('grade').addEventListener('change', render);
