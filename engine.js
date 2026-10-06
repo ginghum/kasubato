@@ -25,7 +25,7 @@ class World {
  startingPredationPowers(){
   if(this.predationStart)return this.predationStart.map(p=>({...p}));
   const groups=new Map();for(const p of profiles){const family=p.baseId||p.id;if(p.id==='empress'||this.participantFamilies.has(family))continue;if(!groups.has(family))groups.set(family,[]);groups.get(family).push(p);}
-  const pool=[...groups.values()],powers=[];for(let i=0;i<3&&pool.length;i++){const choices=pool.splice(Math.floor(this.rng()*pool.length),1)[0],p=choices[choices.length===1?0:Math.floor(this.rng()*choices.length)];powers.push({id:p.id,scale:.65});}this.predationStart=powers;return powers.map(p=>({...p}));
+  const pool=[...groups.values()],powers=[];for(let i=0;i<10&&pool.length;i++){const choices=pool.splice(Math.floor(this.rng()*pool.length),1)[0],p=choices[choices.length===1?0:Math.floor(this.rng()*choices.length)];powers.push({id:p.id,scale:.65});}this.predationStart=powers;return powers.map(p=>({...p}));
  }
  enabled(f){return !this.has(f,'seal');}
  power(f,id){return this.enabled(f)&&f.powers.some(p=>p.id===id);}
