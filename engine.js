@@ -15,11 +15,17 @@ function resolve(name){const p=find(name);return p?{profile:p,skill:p.id,stats:{
 class World {
  constructor(names,options={}){
   this.rng=random(options.seed??Date.now());this.seed=String(options.seed??'');this.time=0;this.smallMode=names.length<=5;this.mediumMode=names.length>=6&&names.length<=20;this.mode=this.smallMode?'small':this.mediumMode?'medium':'normal';this.viewScale=this.smallMode?2:this.mediumMode?1.5:1;this.baseRadius=this.smallMode?185:this.mediumMode?250:385;this.radius=this.baseRadius;this.suddenDeath=options.suddenDeath!==false;this.units=[];this.shots=[];this.zones=[];this.effects=[];this.events=[];this.seq=0;this.finished=false;this.sudden=false;this.result=null;this.initialCount=names.length;this.tickCount=0;
+  this.participantFamilies=new Set(names.map(find).filter(Boolean).map(p=>p.baseId||p.id));
   for(const name of names){const r=resolve(name),saved=Object.hasOwn(options.overrides||{},name)?options.overrides[name]:null;const s=saved?{...r.stats,...saved}:r.stats;const f=this.make(name,saved?.skill||r.skill,s,false);f.profile=r.profile;this.units.push(f);}
  }
  make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=(80+this.rng()*210)*(this.baseRadius/385);const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};
-  if(skill==='empress')f.powers.push(...['oriha','torie','milk','yuji'].map(id=>({id,scale:.65})));
+  if(skill==='empress'){f.powers.push(...this.startingPredationPowers());this.event(name+'の開始能力：'+f.powers.slice(1).map(p=>profiles.find(q=>q.id===p.id).name).join('、'));}
   if(skill==='kagachi')f.radius=32;if(skill==='paster')f.radius=24;return f;
+ }
+ startingPredationPowers(){
+  if(this.predationStart)return this.predationStart.map(p=>({...p}));
+  const groups=new Map();for(const p of profiles){const family=p.baseId||p.id;if(p.id==='empress'||this.participantFamilies.has(family))continue;if(!groups.has(family))groups.set(family,[]);groups.get(family).push(p);}
+  const pool=[...groups.values()],powers=[];for(let i=0;i<3&&pool.length;i++){const choices=pool.splice(Math.floor(this.rng()*pool.length),1)[0],p=choices[choices.length===1?0:Math.floor(this.rng()*choices.length)];powers.push({id:p.id,scale:.65});}this.predationStart=powers;return powers.map(p=>({...p}));
  }
  enabled(f){return !this.has(f,'seal');}
  power(f,id){return this.enabled(f)&&f.powers.some(p=>p.id===id);}
