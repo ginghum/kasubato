@@ -211,8 +211,8 @@ const roster = [
     "sourceAbility": "網を飛ばす",
     "summary": "虫を見つければ笑顔がさらに輝く、裏山育ちの素直な昆虫部長。",
     "stats": {
-      "atk": 25,
-      "hp": 1360,
+      "atk": 35,
+      "hp": 2050,
       "speed": 5.7
     },
     "sourcePath": "characters-data/bug/profile.json"
@@ -235,7 +235,7 @@ const roster = [
     "sourceAbility": "球体になる",
     "summary": "無邪気な笑顔でダンベルを掲げ、強さと優しさを覚えようとするボディビルサークルの巨漢。",
     "stats": {
-      "atk": 31,
+      "atk": 30,
       "hp": 2000,
       "speed": 4.8
     },
@@ -307,8 +307,8 @@ const roster = [
     "sourceAbility": "音弾を飛ばす",
     "summary": "卓越した演奏技術と冷静な印象操作で、部長へ静かに重圧をかける吹奏楽サークルの実力者。",
     "stats": {
-      "atk": 26,
-      "hp": 1388,
+      "atk": 29,
+      "hp": 1900,
       "speed": 5.7
     },
     "sourcePath": "characters-data/chuba/profile.json"
@@ -523,8 +523,8 @@ const roster = [
     "sourceAbility": "性別を変更する",
     "summary": "姿を変えながら、案内から実況まで軽やかにこなす決闘委員会の万能役。",
     "stats": {
-      "atk": 26,
-      "hp": 1416,
+      "atk": 35,
+      "hp": 2100,
       "speed": 5.7
     },
     "sourcePath": "characters-data/doppel/profile.json"
@@ -620,7 +620,7 @@ const roster = [
     "summary": "気難しい言葉でゴール前に立ちはだかる、世界最強格チームの堅実な守護神。",
     "stats": {
       "atk": 26,
-      "hp": 1420,
+      "hp": 850,
       "speed": 5.7
     },
     "sourcePath": "characters-data/guardian/profile.json"
@@ -787,8 +787,8 @@ const roster = [
     "sourceAbility": "人の感情を操る",
     "summary": "男役も女役も華麗にこなす、中性的な美貌とプリンスのたたずまいを持つ演劇サークルの看板俳優。",
     "stats": {
-      "atk": 27,
-      "hp": 1432,
+      "atk": 35,
+      "hp": 2125,
       "speed": 5.7
     },
     "sourcePath": "characters-data/himeyuri/profile.json"
@@ -1051,8 +1051,8 @@ const roster = [
     "sourceAbility": "毒を生成する",
     "summary": "悪ぶり方はまだ修行中。毒と小細工で勝ちにいく、不良サークルの新人。",
     "stats": {
-      "atk": 27,
-      "hp": 1428,
+      "atk": 30,
+      "hp": 2000,
       "speed": 5.7
     },
     "sourcePath": "characters-data/konke/profile.json"
@@ -1195,8 +1195,8 @@ const roster = [
     "sourceAbility": "水を操る",
     "summary": "悪役も別人のように演じきり、監督の無茶に振り回されながら撮影を支える、演劇サークルの実力派。",
     "stats": {
-      "atk": 27,
-      "hp": 1440,
+      "atk": 25,
+      "hp": 1800,
       "speed": 5.7
     },
     "sourcePath": "characters-data/mane/profile.json"
@@ -1243,8 +1243,8 @@ const roster = [
     "sourceAbility": "縄を生成する",
     "summary": "本物の忍者へ一直線、底なしの笑顔で忍者サークルを引っ張る自称くのいち。",
     "stats": {
-      "atk": 26,
-      "hp": 1408,
+      "atk": 33,
+      "hp": 2050,
       "speed": 5.7
     },
     "sourcePath": "characters-data/meimei/profile.json"
@@ -1315,8 +1315,8 @@ const roster = [
     "sourceAbility": "洗脳する",
     "summary": "アシャラだけを一途に見つめ、可愛い笑顔の裏で周囲を計算どおりに動かすマネージャー。",
     "stats": {
-      "atk": 25,
-      "hp": 1336,
+      "atk": 35,
+      "hp": 2150,
       "speed": 5.7
     },
     "sourcePath": "characters-data/mimari/profile.json"
@@ -1507,8 +1507,8 @@ const roster = [
     "sourceAbility": "体をオリハルコンに変える",
     "summary": "憧れの冷笑系キャラを演じながら、決闘で鬱憤を晴らす長身オタク女子。",
     "stats": {
-      "atk": 26,
-      "hp": 1420,
+      "atk": 28,
+      "hp": 1175,
       "speed": 5.7
     },
     "sourcePath": "characters-data/oriha/profile.json"
@@ -1579,8 +1579,8 @@ const roster = [
     "sourceAbility": "物と物をくっつける",
     "summary": "おしゃべりと軽いノリで評判を集め、治療の失敗はセレナに任せがちな保健委員会副会長。",
     "stats": {
-      "atk": 26,
-      "hp": 1424,
+      "atk": 35,
+      "hp": 2100,
       "speed": 5.7
     },
     "sourcePath": "characters-data/rindou/profile.json"
@@ -1627,8 +1627,8 @@ const roster = [
     "sourceAbility": "無限収納のポケット",
     "summary": "無限のポケットと隙のない気配りで令嬢たちを支える、薔薇を携えた万能執事。",
     "stats": {
-      "atk": 27,
-      "hp": 1452,
+      "atk": 25,
+      "hp": 1250,
       "speed": 5.7
     },
     "sourcePath": "characters-data/romanchi/profile.json"
@@ -1651,8 +1651,8 @@ const roster = [
     "sourceAbility": "影を踏んだ相手の能力を封じる",
     "summary": "裏山の夜に後輩を連れ出し、怪しい笑い声とともにUFOを待つオカルト部長。",
     "stats": {
-      "atk": 26,
-      "hp": 1400,
+      "atk": 36,
+      "hp": 2100,
       "speed": 5.7
     },
     "sourcePath": "characters-data/ruto/profile.json"
@@ -1747,8 +1747,8 @@ const roster = [
     "sourceAbility": "人を酔わせられる",
     "summary": "マイナスの幸せだけを願い、今日も笑顔で付きまとう自称・運命の側近。",
     "stats": {
-      "atk": 27,
-      "hp": 1428,
+      "atk": 35,
+      "hp": 2100,
       "speed": 5.7
     },
     "sourcePath": "characters-data/sigma/profile.json"
@@ -1771,8 +1771,8 @@ const roster = [
     "sourceAbility": "一日一回の不死身",
     "summary": "優しすぎるがゆえに副部長の実験に付き合い、毎日不憫な目に遭う薬学サークル部長。",
     "stats": {
-      "atk": 26,
-      "hp": 1412,
+      "atk": 29,
+      "hp": 1150,
       "speed": 5.7
     },
     "sourcePath": "characters-data/soi/profile.json"
@@ -1795,8 +1795,8 @@ const roster = [
     "sourceAbility": "ガラスを操る",
     "summary": "公平な審判役を務めながら、自らも星取りに熱くなる明るい決闘委員。",
     "stats": {
-      "atk": 25,
-      "hp": 1356,
+      "atk": 19,
+      "hp": 925,
       "speed": 5.7
     },
     "sourcePath": "characters-data/sunny/profile.json"
@@ -2035,8 +2035,8 @@ const roster = [
     "sourceAbility": "落とし穴をつくる",
     "summary": "公平な決闘運営を目指し、消えたGrade 0の生徒を案じ続ける心配性な審判員。",
     "stats": {
-      "atk": 26,
-      "hp": 1412,
+      "atk": 34,
+      "hp": 2050,
       "speed": 5.7
     },
     "sourcePath": "characters-data/will/profile.json"
@@ -2135,7 +2135,7 @@ const roster = [
     "sourceAbility": "空を飛ぶ",
     "summary": "噂も弱みも記事に変え、学園中へ飛ばす陽気なスクープ編集長。",
     "stats": {
-      "atk": 26,
+      "atk": 28,
       "hp": 1400,
       "speed": 5.7
     },

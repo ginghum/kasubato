@@ -1,0 +1,223 @@
+{
+  "count": 1000,
+  "prefix": "grade3-final-v2",
+  "mode": "all",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "stats": {
+    "バグ": {
+      "atk": 35,
+      "hp": 2050,
+      "speed": 5.7
+    },
+    "ブンブ": {
+      "atk": 30,
+      "hp": 2000,
+      "speed": 4.8
+    },
+    "チュウバ": {
+      "atk": 29,
+      "hp": 1900,
+      "speed": 5.7
+    },
+    "ドッペル": {
+      "atk": 35,
+      "hp": 2100,
+      "speed": 5.7
+    },
+    "ガーディアン": {
+      "atk": 26,
+      "hp": 850,
+      "speed": 5.7
+    },
+    "ヒメユリ": {
+      "atk": 35,
+      "hp": 2125,
+      "speed": 5.7
+    },
+    "コンケ": {
+      "atk": 30,
+      "hp": 2000,
+      "speed": 5.7
+    },
+    "マーネ": {
+      "atk": 25,
+      "hp": 1800,
+      "speed": 5.7
+    },
+    "メイメイ": {
+      "atk": 33,
+      "hp": 2050,
+      "speed": 5.7
+    },
+    "ミマリ": {
+      "atk": 35,
+      "hp": 2150,
+      "speed": 5.7
+    },
+    "オリハ": {
+      "atk": 28,
+      "hp": 1175,
+      "speed": 5.7
+    },
+    "リンドウ": {
+      "atk": 35,
+      "hp": 2100,
+      "speed": 5.7
+    },
+    "ロマンチ": {
+      "atk": 25,
+      "hp": 1250,
+      "speed": 5.7
+    },
+    "ルト": {
+      "atk": 36,
+      "hp": 2100,
+      "speed": 5.7
+    },
+    "シグマ": {
+      "atk": 35,
+      "hp": 2100,
+      "speed": 5.7
+    },
+    "ソイ": {
+      "atk": 29,
+      "hp": 1150,
+      "speed": 5.7
+    },
+    "サニー": {
+      "atk": 19,
+      "hp": 925,
+      "speed": 5.7
+    },
+    "ウィル": {
+      "atk": 34,
+      "hp": 2050,
+      "speed": 5.7
+    },
+    "ユーヒ": {
+      "atk": 28,
+      "hp": 1400,
+      "speed": 5.7
+    }
+  },
+  "rows": {
+    "バグ": {
+      "id": "bug",
+      "played": 1000,
+      "wins": 45,
+      "winRate": 0.045
+    },
+    "ブンブ": {
+      "id": "bunbu",
+      "played": 1000,
+      "wins": 99,
+      "winRate": 0.099
+    },
+    "チュウバ": {
+      "id": "chuba",
+      "played": 1000,
+      "wins": 17,
+      "winRate": 0.017
+    },
+    "ドッペル": {
+      "id": "doppel",
+      "played": 1000,
+      "wins": 48,
+      "winRate": 0.048
+    },
+    "ガーディアン": {
+      "id": "guardian",
+      "played": 1000,
+      "wins": 10,
+      "winRate": 0.01
+    },
+    "ヒメユリ": {
+      "id": "himeyuri",
+      "played": 1000,
+      "wins": 64,
+      "winRate": 0.064
+    },
+    "コンケ": {
+      "id": "konke",
+      "played": 1000,
+      "wins": 30,
+      "winRate": 0.03
+    },
+    "マーネ": {
+      "id": "mane",
+      "played": 1000,
+      "wins": 34,
+      "winRate": 0.034
+    },
+    "メイメイ": {
+      "id": "meimei",
+      "played": 1000,
+      "wins": 48,
+      "winRate": 0.048
+    },
+    "ミマリ": {
+      "id": "mimari",
+      "played": 1000,
+      "wins": 63,
+      "winRate": 0.063
+    },
+    "オリハ": {
+      "id": "oriha",
+      "played": 1000,
+      "wins": 85,
+      "winRate": 0.085
+    },
+    "リンドウ": {
+      "id": "rindou",
+      "played": 1000,
+      "wins": 60,
+      "winRate": 0.06
+    },
+    "ロマンチ": {
+      "id": "romanchi",
+      "played": 1000,
+      "wins": 20,
+      "winRate": 0.02
+    },
+    "ルト": {
+      "id": "ruto",
+      "played": 1000,
+      "wins": 37,
+      "winRate": 0.037
+    },
+    "シグマ": {
+      "id": "sigma",
+      "played": 1000,
+      "wins": 51,
+      "winRate": 0.051
+    },
+    "ソイ": {
+      "id": "soi",
+      "played": 1000,
+      "wins": 133,
+      "winRate": 0.133
+    },
+    "サニー": {
+      "id": "sunny",
+      "played": 1000,
+      "wins": 4,
+      "winRate": 0.004
+    },
+    "ウィル": {
+      "id": "will",
+      "played": 1000,
+      "wins": 49,
+      "winRate": 0.049
+    },
+    "ユーヒ": {
+      "id": "yuhi",
+      "played": 1000,
+      "wins": 101,
+      "winRate": 0.101
+    }
+  },
+  "draws": 2,
+  "timeouts": 0,
+  "meanSeconds": 32.72224999999941
+}
