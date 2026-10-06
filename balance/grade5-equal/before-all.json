@@ -1,0 +1,182 @@
+{
+  "count": 3000,
+  "mode": "all",
+  "prefix": "grade5-no-elites-20261006-speed-v1",
+  "suddenDeath": true,
+  "pool": [
+    "ashara",
+    "beret",
+    "clarine",
+    "dancho",
+    "devil",
+    "gumon",
+    "jend",
+    "judge",
+    "kagachi",
+    "mikael",
+    "minus",
+    "mu",
+    "ojo",
+    "paster",
+    "serena",
+    "tanaka",
+    "titan",
+    "tsukichiyo",
+    "x",
+    "yaoi",
+    "plus_final",
+    "hikaru_final",
+    "hattan_final",
+    "kobal_final"
+  ],
+  "stats": [
+    {
+      "name": "プラス+",
+      "atk": 52,
+      "hp": 2800,
+      "speed": 6.4
+    },
+    {
+      "name": "ヒカル+",
+      "atk": 50,
+      "hp": 2700,
+      "speed": 6.2
+    },
+    {
+      "name": "ハッタン+",
+      "atk": 42,
+      "hp": 2400,
+      "speed": 6.2
+    },
+    {
+      "name": "コバル+",
+      "atk": 48,
+      "hp": 2650,
+      "speed": 6
+    }
+  ],
+  "rows": {
+    "アシャラ": {
+      "played": 3000,
+      "wins": 90,
+      "winRate": 0.03
+    },
+    "ベレー": {
+      "played": 3000,
+      "wins": 152,
+      "winRate": 0.050666666666666665
+    },
+    "クラリーヌ": {
+      "played": 3000,
+      "wins": 76,
+      "winRate": 0.025333333333333333
+    },
+    "ダンチョー": {
+      "played": 3000,
+      "wins": 239,
+      "winRate": 0.07966666666666666
+    },
+    "デビル": {
+      "played": 3000,
+      "wins": 112,
+      "winRate": 0.037333333333333336
+    },
+    "グモン": {
+      "played": 3000,
+      "wins": 156,
+      "winRate": 0.052
+    },
+    "ジェンド": {
+      "played": 3000,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ジャッジ": {
+      "played": 3000,
+      "wins": 82,
+      "winRate": 0.027333333333333334
+    },
+    "カガチ": {
+      "played": 3000,
+      "wins": 138,
+      "winRate": 0.046
+    },
+    "ミカエル": {
+      "played": 3000,
+      "wins": 131,
+      "winRate": 0.043666666666666666
+    },
+    "マイナス": {
+      "played": 3000,
+      "wins": 100,
+      "winRate": 0.03333333333333333
+    },
+    "ミュー": {
+      "played": 3000,
+      "wins": 76,
+      "winRate": 0.025333333333333333
+    },
+    "オジョー": {
+      "played": 3000,
+      "wins": 111,
+      "winRate": 0.037
+    },
+    "パスター": {
+      "played": 3000,
+      "wins": 117,
+      "winRate": 0.039
+    },
+    "セレナ": {
+      "played": 3000,
+      "wins": 80,
+      "winRate": 0.02666666666666667
+    },
+    "タナカ": {
+      "played": 3000,
+      "wins": 100,
+      "winRate": 0.03333333333333333
+    },
+    "タイタン": {
+      "played": 3000,
+      "wins": 155,
+      "winRate": 0.051666666666666666
+    },
+    "ツキチヨ": {
+      "played": 3000,
+      "wins": 171,
+      "winRate": 0.057
+    },
+    "X": {
+      "played": 3000,
+      "wins": 97,
+      "winRate": 0.03233333333333333
+    },
+    "ヤオイ": {
+      "played": 3000,
+      "wins": 175,
+      "winRate": 0.058333333333333334
+    },
+    "プラス+": {
+      "played": 3000,
+      "wins": 231,
+      "winRate": 0.077
+    },
+    "ヒカル+": {
+      "played": 3000,
+      "wins": 98,
+      "winRate": 0.03266666666666666
+    },
+    "ハッタン+": {
+      "played": 3000,
+      "wins": 22,
+      "winRate": 0.007333333333333333
+    },
+    "コバル+": {
+      "played": 3000,
+      "wins": 279,
+      "winRate": 0.093
+    }
+  },
+  "draws": 12,
+  "timeouts": 0
+}

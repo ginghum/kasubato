@@ -43,9 +43,9 @@ const roster = [
     "sourceAbility": "雷を操る",
     "summary": "世界最強の決定力と華を独占し、学園内外の視線をさらう天才ストライカー。",
     "stats": {
-      "atk": 44.0,
-      "hp": 2306,
-      "speed": 6.0
+      "atk": 44.7,
+      "hp": 2375,
+      "speed": 6
     },
     "sourcePath": "characters-data/ashara/profile.json"
   },
@@ -163,9 +163,9 @@ const roster = [
     "sourceAbility": "他人の運を吸い取る",
     "summary": "柔らかな笑顔の奥で他人の運を奪い、秘密ごと作品へ変える世界的な美術サークル部長。",
     "stats": {
-      "atk": 36.0,
-      "hp": 1796,
-      "speed": 6.0
+      "atk": 35.5,
+      "hp": 1835,
+      "speed": 6
     },
     "sourcePath": "characters-data/beret/profile.json"
   },
@@ -331,9 +331,9 @@ const roster = [
     "sourceAbility": "石化",
     "summary": "期待に応えようと責任を抱え込みながら、吹奏楽サークルと生徒会を支える優等生。",
     "stats": {
-      "atk": 50.5,
-      "hp": 2725,
-      "speed": 6.0
+      "atk": 48.2,
+      "hp": 2855,
+      "speed": 6
     },
     "sourcePath": "characters-data/clarine/profile.json"
   },
@@ -379,9 +379,9 @@ const roster = [
     "sourceAbility": "身体を泥と化す",
     "summary": "誰にも傷ついてほしくない一心で、平和を守る盾となる実直な応援団長。",
     "stats": {
-      "atk": 32.7,
-      "hp": 1600,
-      "speed": 6.0
+      "atk": 30,
+      "hp": 1564,
+      "speed": 6
     },
     "sourcePath": "characters-data/dancho/profile.json"
   },
@@ -451,9 +451,9 @@ const roster = [
     "sourceAbility": "周囲の機械を操作する",
     "summary": "隠しゲームセンターに居座り、機械も対戦相手も思いどおりに動かす小柄な毒舌王者。",
     "stats": {
-      "atk": 49.8,
-      "hp": 2751,
-      "speed": 6.0
+      "atk": 50.2,
+      "hp": 2804,
+      "speed": 6
     },
     "sourcePath": "characters-data/devil/profile.json"
   },
@@ -643,8 +643,8 @@ const roster = [
     "sourceAbility": "無敵になる",
     "summary": "無敵の拳で頂点に立ち、恋によって牙を抜かれた不良たちの王。",
     "stats": {
-      "atk": 38.9,
-      "hp": 2226,
+      "atk": 39.2,
+      "hp": 2180,
       "speed": 5.6
     },
     "sourcePath": "characters-data/gumon/profile.json"
@@ -859,8 +859,8 @@ const roster = [
     "sourceAbility": "概念と物体を消滅させる",
     "summary": "丁寧な言葉と絶対的な力で秩序を執行し、学園を実質的に統べる生徒会副会長。",
     "stats": {
-      "atk": 85,
-      "hp": 2800,
+      "atk": 103,
+      "hp": 3560,
       "speed": 7.2
     },
     "sourcePath": "characters-data/itoguchi/profile.json"
@@ -883,9 +883,9 @@ const roster = [
     "sourceAbility": "現実を嘘にする",
     "summary": "ジャッジの双子の妹として振る舞い、星を失った生徒を無邪気に管理する幻。",
     "stats": {
-      "atk": 33,
-      "hp": 1628,
-      "speed": 6.0
+      "atk": 55,
+      "hp": 2810,
+      "speed": 6
     },
     "sourcePath": "characters-data/jend/profile.json"
   },
@@ -907,9 +907,9 @@ const roster = [
     "sourceAbility": "嘘を真実にする",
     "summary": "公平な暴力舞台を愛し、存在しない妹を真実として生きる決闘委員会会長。",
     "stats": {
-      "atk": 33.4,
-      "hp": 1643,
-      "speed": 6.0
+      "atk": 36,
+      "hp": 1770,
+      "speed": 6
     },
     "sourcePath": "characters-data/judge/profile.json"
   },
@@ -955,8 +955,8 @@ const roster = [
     "sourceAbility": "巨大化",
     "summary": "学園中の非公式飲食店を束ね、誰にでも腹いっぱい食べさせる巨大な敏腕社長。",
     "stats": {
-      "atk": 52.1,
-      "hp": 3639,
+      "atk": 52.7,
+      "hp": 3641,
       "speed": 4.2
     },
     "sourcePath": "characters-data/kagachi/profile.json"
@@ -1267,9 +1267,9 @@ const roster = [
     "sourceAbility": "転移ゲートの作成",
     "summary": "学園の真実を知り、転移門の向こうへ引きこもった元決闘常連の少女。",
     "stats": {
-      "atk": 54.3,
-      "hp": 2744,
-      "speed": 6.0
+      "atk": 56,
+      "hp": 2738,
+      "speed": 6
     },
     "sourcePath": "characters-data/mikael/profile.json"
   },
@@ -1339,8 +1339,8 @@ const roster = [
     "sourceAbility": "質量を変化させる",
     "summary": "木漏れ日の下で静かに本を開く、穏やかで人好きな学園最強の一角。",
     "stats": {
-      "atk": 54.0,
-      "hp": 2985,
+      "atk": 56.1,
+      "hp": 3071,
       "speed": 6.8
     },
     "sourcePath": "characters-data/minus/profile.json"
@@ -1387,9 +1387,9 @@ const roster = [
     "sourceAbility": "ダイヤモンドを操る",
     "summary": "誰もが憧れる完璧なアイドルを演じながら、その裏で不満と野心を隠さないS.O.Brightのリーダー。",
     "stats": {
-      "atk": 23.6,
-      "hp": 1263,
-      "speed": 6.0
+      "atk": 23.7,
+      "hp": 1450,
+      "speed": 6
     },
     "sourcePath": "characters-data/mu/profile.json"
   },
@@ -1483,9 +1483,9 @@ const roster = [
     "sourceAbility": "爆発弾を操る",
     "summary": "誰の下にもつかず、爆炎さえ自らの美学へ変える高潔なお嬢様。",
     "stats": {
-      "atk": 48.3,
-      "hp": 2580,
-      "speed": 6.0
+      "atk": 56.5,
+      "hp": 2582,
+      "speed": 6
     },
     "sourcePath": "characters-data/ojo/profile.json"
   },
@@ -1531,9 +1531,9 @@ const roster = [
     "sourceAbility": "フェンリルに変身する",
     "summary": "誰もが才能を自由に輝かせられる世界を夢見る、天文サークルのきらめくフェンリル少女。",
     "stats": {
-      "atk": 51.7,
-      "hp": 2806,
-      "speed": 6.0
+      "atk": 54.9,
+      "hp": 2816,
+      "speed": 6
     },
     "sourcePath": "characters-data/paster/profile.json"
   },
@@ -1699,8 +1699,8 @@ const roster = [
     "sourceAbility": "傷を与えると傷が癒える",
     "summary": "確かな医療技術と優しい笑顔で生徒を治療する、善に優しく悪に厳しい保健委員会会長。",
     "stats": {
-      "atk": 35.8,
-      "hp": 1879,
+      "atk": 35,
+      "hp": 2040,
       "speed": 6.2
     },
     "sourcePath": "characters-data/serena/profile.json"
@@ -1819,8 +1819,8 @@ const roster = [
     "sourceAbility": "普通の状態になる",
     "summary": "何もしなくていい安全地帯を守り、弱い生徒の平穏を支える飄々とした生徒会役員。",
     "stats": {
-      "atk": 26.5,
-      "hp": 1041,
+      "atk": 26.4,
+      "hp": 1123,
       "speed": 5.2
     },
     "sourcePath": "characters-data/tanaka/profile.json"
@@ -1843,8 +1843,8 @@ const roster = [
     "sourceAbility": "未来を読む",
     "summary": "誰かを守る強さを掲げる豪快な兄貴分であり、学園を内側から見張る生徒会の巨漢。",
     "stats": {
-      "atk": 42.6,
-      "hp": 2381,
+      "atk": 43.8,
+      "hp": 2326,
       "speed": 5.7
     },
     "sourcePath": "characters-data/titan/profile.json"
@@ -1891,8 +1891,8 @@ const roster = [
     "sourceAbility": "視覚を操る",
     "summary": "女帝への忠義を胸に、学園の秩序を影から守る盲目のくのいち。",
     "stats": {
-      "atk": 58.5,
-      "hp": 3141,
+      "atk": 59.1,
+      "hp": 3021,
       "speed": 7.6
     },
     "sourcePath": "characters-data/tsukichiyo/profile.json"
@@ -2063,9 +2063,9 @@ const roster = [
     "sourceAbility": "低温と高温を操る",
     "summary": "天才を自負し、校則違反を見逃さないプライドの高い生徒会役員。",
     "stats": {
-      "atk": 42.3,
-      "hp": 2197,
-      "speed": 6.0
+      "atk": 46.8,
+      "hp": 2187,
+      "speed": 6
     },
     "sourcePath": "characters-data/x/profile.json"
   },
@@ -2087,9 +2087,9 @@ const roster = [
     "sourceAbility": "自然と化す",
     "summary": "締め切りから逃げ続ける、なんだこいつなGrade 5の腐女子サークル部長。",
     "stats": {
-      "atk": 36.9,
-      "hp": 1859,
-      "speed": 6.0
+      "atk": 38.6,
+      "hp": 1802,
+      "speed": 6
     },
     "sourcePath": "characters-data/yaoi/profile.json"
   },
@@ -2240,10 +2240,10 @@ const roster = [
 ];
 // Name-triggered simulator forms; canonical profiles and random pools stay unchanged.
 const finalSpecs=[
- {baseId:'plus',title:'最終モード・質量支配',desc:'軽量化で加速し、重量化で攻撃と防御を強化。重量化時は周囲へ質量の衝撃波を放つ。',stats:{atk:52,hp:2800,speed:6.4}},
- {baseId:'hikaru',title:'最終モード・万物変形',desc:'敵の盾を大きく変形させて削り、物体を4本の貫通刃へ変えて連射する。',stats:{atk:50,hp:2700,speed:6.2}},
- {baseId:'hattan',title:'最終モード・多重分身',desc:'自分の強化分身を最大4体作る。分身は本体の攻撃力・HPを元に戦い、本体脱落で消える。',stats:{atk:42,hp:2400,speed:6.2}},
- {baseId:'kobal',title:'最終モード・極限チャージパンチ',desc:'1秒で力を溜め、軽い防御をまとう。次の接触で8倍のチャージパンチを放つ。',stats:{atk:48,hp:2650,speed:6.0}}
+ {baseId:'plus',title:'最終モード・質量支配',desc:'軽量化で加速し、重量化で攻撃と防御を強化。重量化時は周囲へ質量の衝撃波を放つ。',stats:{atk:47.2,hp:2732,speed:6.4}},
+ {baseId:'hikaru',title:'最終モード・万物変形',desc:'敵の盾を大きく変形させて削り、物体を4本の貫通刃へ変えて連射する。',stats:{atk:52.9,hp:2760,speed:6.2}},
+ {baseId:'hattan',title:'最終モード・多重分身',desc:'自分の強化分身を最大4体作る。分身は本体の攻撃力・HPを元に戦い、本体脱落で消える。',stats:{atk:48,hp:2818,speed:6.2}},
+ {baseId:'kobal',title:'最終モード・極限チャージパンチ',desc:'1秒で力を溜め、軽い防御をまとう。次の接触で8倍のチャージパンチを放つ。',stats:{atk:44.7,hp:2525,speed:6}}
 ];
 const finalModes=finalSpecs.map(spec=>{const base=roster.find(p=>p.id===spec.baseId);return {...base,...spec,id:base.id+'_final',name:base.name+'+',realName:base.realName+'+',aliases:base.aliases.filter(Boolean).map(n=>n+'+'),grade:'5',finalMode:true,summary:base.name+'のゲーム用最終モード。名前の末尾に「+」を付けて参加。'};});
 Object.defineProperty(roster,'finalModes',{value:finalModes});

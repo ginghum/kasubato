@@ -4,6 +4,7 @@
 const roster=typeof module!=='undefined'?require('./data.js'):root.KASU_ROSTER;
 const finalModes=roster.finalModes||[],profiles=[...roster,...finalModes];
 const norm=s=>String(s).normalize('NFKC').toLowerCase().replace(/[\s・･]/g,'');
+const passivePowers=new Set(['basic','bonbori','hoozuki','hime','oriha','oga','sakuo','titan','tsukuyomi','vine','wan','yayoi','soi','kagachi']);
 const aliases=new Map();for(const p of profiles)for(const n of p.aliases.filter(Boolean))aliases.set(norm(n),p);
 function hash(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Math.imul(h,16777619);}return h>>>0;}
 function random(seed){let a=hash(String(seed));return()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
@@ -26,7 +27,7 @@ class World {
  status(f,s,seconds){if(f.alive)f.status[s]=Math.max(f.status[s]||0,this.time+seconds);}
  cd(f,key,seconds){if((f.cool[key]??0)>this.time)return false;f.cool[key]=this.time+seconds;return true;}
  foes(f){return this.units.filter(e=>e.alive&&e.team!==f.team);}
- target(f){const reveal=['hoozuki','tsukichiyo','wan'].some(id=>this.power(f,id));return this.foes(f).filter(e=>!this.has(e,'hidden')||reveal||distance(e,f)<55).sort((a,b)=>distance(a,f)-distance(b,f))[0];}
+ target(f){const reveal=['hoozuki','tsukichiyo','wan'].some(id=>this.power(f,id));let closest,best=Infinity;for(const e of this.units){if(!e.alive||e.team===f.team)continue;const d=distance(e,f);if(this.has(e,'hidden')&&!reveal&&d>=55)continue;if(d<best){best=d;closest=e;}}return closest;}
  nearby(f,r){return this.foes(f).filter(e=>distance(e,f)<r);}
  effect(f,text,color='#eab963'){this.effects.push({x:f.x,y:f.y,text,color,end:this.time+.8});if(this.effects.length>220)this.effects.shift();}
  event(text){this.events.push({time:this.time,text});if(this.events.length>100)this.events.shift();}
@@ -78,7 +79,7 @@ class World {
   const m=this.make(f.name+'の'+({golem:'ゴーレム',clone:'分身',animal:'友達',machine:'砲台',diamond:'ダイヤ兵'}[kind]||kind),'basic',{atk:f.atk*atk,hp:f.maxHp*hp,speed:kind==='machine'?0:4.2},true,f.team);m.kind=kind;m.x=f.x+20;m.y=f.y+20;m.radius=kind==='golem'?19:11;m.expires=this.time+(kind==='clone'?12:18);this.units.push(m);this.effect(f,'支援 '+kind);
  }
  cast(f,p){
-  const id=p.id,t=this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.4:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,profiles.find(q=>q.id===id)?.title||id);
+  const id=p.id,t=passivePowers.has(id)?null:this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.4:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,profiles.find(q=>q.id===id)?.title||id);
   switch(id){
    case 'an':if(cd(3)){for(const e of near(155))this.dot(f,e,4,b*(.45+f.poison*.15));f.poison=Math.min(6,f.poison+1);label();}break;
    case 'ashara':if(t&&cd(1.7))this.shot(f,t,b*6,'⚡',{chain:2,stun:.25,homing:true});break;
@@ -93,7 +94,7 @@ class World {
    case 'chaka':if(cd(5)){this.status(f,'thinking',2);f.cool['charge:chaka']=this.time+2;label();}break;
    case 'chick':if(cd(7)){const h=f.history.find(h=>h.time>=this.time-3);if(h){f.x=h.x;f.y=h.y;this.heal(f,Math.max(0,h.hp-f.hp));label();}}break;
    case 'chuba':if(t&&cd(2.8))this.volley(f,t,3,b*2.2,'♪');break;
-   case 'clarine':if(t&&distance(f,t)<245&&cd(3.5)){t.stoneOwner=f.id;this.status(t,'stone',1.5);this.status(t,'stun',1.5);this.hit(f,t,b*3.2);label();}break;
+   case 'clarine':if(t&&distance(f,t)<245&&cd(3.5)){t.stoneOwner=f.id;this.status(t,'stone',1.0);this.status(t,'stun',1.0);this.hit(f,t,b*3.2);label();}break;
    case 'dai':if(f.hp<f.maxHp*.65&&cd(5)){f.x=f.home?.x||400;f.y=f.home?.y||400;this.status(f,'hidden',.8);label();}break;
    case 'dancho':if(cd(6))this.status(f,'invulnerable',1);break;
    case 'dankachi':if(cd(4)){f.form=1-f.form;if(f.form)this.status(f,'guard',3);else this.status(f,'strong',3);label();}break;
@@ -134,7 +135,7 @@ class World {
    case 'mimari':if(t&&cd(5)){const pet=this.foes(f).find(e=>e.minion&&distance(f,e)<220);if(pet){pet.team=f.team;this.event(f.name+'が支援者を洗脳');}this.status(t,'drunk',2.2);label();}break;
    case 'minus':if(t&&cd(3)){this.status(t,'heavy',2.3);this.status(f,'dash',1.3);this.hit(f,t,b*5.5);for(const e of near(175))if(e!==t){this.status(e,'slow',1.5);this.hit(f,e,b*2.4);}label();}break;
    case 'morpheus':{const sleeper=this.foes(f).find(e=>this.has(e,'sleep')&&distance(f,e)<240);if(sleeper&&cd(4.5)){this.status(sleeper,'sleep',2.5);label();}}break;
-   case 'mu':if(this.cd(f,'diamondSoldier',6))this.summon(f,'diamond',1,.24,.5);if(t&&cd(3)){this.shield(f,f.maxHp*.12);this.volley(f,t,3,b*2.4,'◆');}break;
+   case 'mu':if(this.cd(f,'diamondSoldier',6))this.summon(f,'diamond',1,.24,.5);if(t&&cd(3)){this.shield(f,f.maxHp*.11);this.volley(f,t,3,b*2.4,'◆');}break;
    case 'muchiko':if(cd(3)){this.status(f,'dash',1);if(t)f.angle=Math.atan2(t.y-f.y,t.x-f.x);label();}break;
    case 'natori':if(t&&cd(3.5))this.zone(f,t.x,t.y,75,3,'bind',b*.35);break;
    case 'ojo':if(t&&cd(2.5))this.shot(f,t,b*6.5,'●',{homing:true,blast:100});break;
