@@ -4,7 +4,7 @@ const dom=new JSDOM(fs.readFileSync('index.html','utf8'),{runScripts:'outside-on
 let now=0,seq=0;const timers=new Map();w.Date.now=()=>now;w.setTimeout=(fn,ms)=>{const id=++seq;timers.set(id,{fn,due:now+ms});return id;};w.clearTimeout=id=>timers.delete(id);
 const advance=ms=>{now+=ms;for(const [id,t] of [...timers])if(t.due<=now){timers.delete(id);t.fn();}};
 w.Image=class{set src(v){}};w.HTMLCanvasElement.prototype.getContext=()=>new Proxy({},{get:()=>()=>{},set:()=>true});w.requestAnimationFrame=()=>1;w.cancelAnimationFrame=()=>{};w.HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','');};w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open');this.dispatchEvent(new w.Event('close'));};
-for(const f of ['data.js','overflow.js','engine.js','icons.js','app.js'])w.eval(fs.readFileSync(f,'utf8')+(f==='app.js'?'\nwindow.inspect=()=>({world});':''));
+for(const f of ['data.js','engine.js','icons.js','app.js'])w.eval(fs.readFileSync(f,'utf8')+(f==='app.js'?'\nwindow.inspect=()=>({world});':''));
 const el=id=>d.getElementById(id),card=id=>d.querySelector('[data-id="'+id+'"]');
 const names=value=>{el('names').value=value;el('names').dispatchEvent(new w.Event('input'));};
 const pointer=(target,type,extra={})=>{const e=new w.MouseEvent(type,{bubbles:true,cancelable:true,button:0,clientX:20,clientY:20,...extra});Object.defineProperty(e,'pointerId',{value:1});Object.defineProperty(e,'isPrimary',{value:true});target.dispatchEvent(e);};
