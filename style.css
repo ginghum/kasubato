@@ -10,3 +10,5 @@
 .face-sprite{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-image:url('assets/character-sheet.jpg');background-repeat:no-repeat}
 .catalog-card .portrait{--icon-size:34px;width:var(--icon-size);height:var(--icon-size)}
 .icons-unavailable .face-sprite{display:none}.icons-unavailable .portrait::after{content:attr(data-fallback);display:block;text-align:center;font-size:calc(var(--icon-size)*.7)}
+
+.uniform-settings{margin:0 0 14px}.uniform-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.uniform-row select{flex:1 1 200px;min-width:0;max-width:100%;padding:8px;font-size:12px}.uniform-row button{font-size:11px;padding:7px 10px}.uniform-settings #uniform-status{font-size:11px;color:var(--green);margin-top:6px}.setup .uniform-settings p{font-size:10px;margin:5px 0 0}
