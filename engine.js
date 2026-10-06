@@ -35,7 +35,8 @@ class World {
  hit(a,t,amount,type='spell',reflect=false){
   if(!t?.alive||amount<=0)return 0;
   if((this.has(t,'air')&&type==='contact')||(this.has(t,'invulnerable')&&this.enabled(t)&&type!=='erase'))return 0;
-  const enabled=this.enabled(t);let evasion=0;
+  // Base SPD adds at most 5 percentage points, independent of movement buffs and ability sealing.
+  const enabled=this.enabled(t);let evasion=Math.min(.05,Math.max(0,t.speed)*.005);
   if(enabled){if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.24;
    if(type==='contact'&&['bonbori','vine','tsukuyomi'].some(id=>this.power(t,id)))evasion+=.22;
    if(this.power(t,'muchiko')&&this.has(t,'dash'))evasion+=.30;
