@@ -16,6 +16,12 @@ class World {
  constructor(names,options={}){
   this.rng=random(options.seed??Date.now());this.seed=String(options.seed??'');this.time=0;this.smallMode=names.length<=5;this.mediumMode=names.length>=6&&names.length<=20;this.mode=this.smallMode?'small':this.mediumMode?'medium':'normal';this.viewScale=this.smallMode?2:this.mediumMode?1.5:1;this.baseRadius=this.smallMode?185:this.mediumMode?250:385;this.radius=this.baseRadius;this.suddenDeath=options.suddenDeath!==false;this.units=[];this.shots=[];this.zones=[];this.effects=[];this.events=[];this.seq=0;this.finished=false;this.sudden=false;this.result=null;this.initialCount=names.length;this.tickCount=0;
   this.participantFamilies=new Set(names.map(find).filter(Boolean).map(p=>p.baseId||p.id));
+  // Full Grade 1/2 cohorts use a seeded turn order, avoiding fixed catalog-order advantages.
+  const entrants=names.map(name=>({name,profile:find(name)})),grade=entrants[0]?.profile?.grade;
+  if(['1','2'].includes(grade)&&entrants.every(e=>e.profile?.grade===grade)&&new Set(entrants.map(e=>e.profile.id)).size===names.length&&names.length===roster.filter(p=>p.grade===grade).length){
+   names=entrants.sort((a,b)=>a.profile.id<b.profile.id?-1:a.profile.id>b.profile.id?1:0).map(e=>e.name);
+   for(let i=names.length-1;i>0;i--){const j=Math.floor(this.rng()*(i+1));[names[i],names[j]]=[names[j],names[i]];}
+  }
   for(const name of names){const r=resolve(name),saved=Object.hasOwn(options.overrides||{},name)?options.overrides[name]:null;const s=saved?{...r.stats,...saved}:r.stats;const f=this.make(name,saved?.skill||r.skill,s,false);f.profile=r.profile;this.units.push(f);}
  }
  make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=(80+this.rng()*210)*(this.baseRadius/385);const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};

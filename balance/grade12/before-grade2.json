@@ -1,0 +1,114 @@
+{
+  "grade": "2",
+  "count": 600,
+  "prefix": "grade12-baseline-v1",
+  "mode": "all",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "stats": {
+    "ベイン": {
+      "atk": 23,
+      "hp": 1290,
+      "speed": 5.5
+    },
+    "ベル": {
+      "atk": 21,
+      "hp": 1222,
+      "speed": 5.5
+    },
+    "エリス": {
+      "atk": 22,
+      "hp": 1274,
+      "speed": 5.5
+    },
+    "カマツカ": {
+      "atk": 21,
+      "hp": 1202,
+      "speed": 5.5
+    },
+    "キララ": {
+      "atk": 20,
+      "hp": 1174,
+      "speed": 5.5
+    },
+    "マチオ": {
+      "atk": 21,
+      "hp": 1210,
+      "speed": 5.5
+    },
+    "ムチコ": {
+      "atk": 17,
+      "hp": 1050,
+      "speed": 8
+    },
+    "ナトリ": {
+      "atk": 23,
+      "hp": 1286,
+      "speed": 5.5
+    },
+    "ワン": {
+      "atk": 22,
+      "hp": 1270,
+      "speed": 5.5
+    }
+  },
+  "rows": {
+    "ベイン": {
+      "id": "bane",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ベル": {
+      "id": "bell",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "エリス": {
+      "id": "eris",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "カマツカ": {
+      "id": "kamatsuka",
+      "played": 600,
+      "wins": 600,
+      "winRate": 1
+    },
+    "キララ": {
+      "id": "kirara",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "マチオ": {
+      "id": "machio",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ムチコ": {
+      "id": "muchiko",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ナトリ": {
+      "id": "natori",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ワン": {
+      "id": "wan",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    }
+  },
+  "draws": 0,
+  "timeouts": 0,
+  "meanSeconds": 44.61330555555427
+}

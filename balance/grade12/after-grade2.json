@@ -1,0 +1,114 @@
+{
+  "grade": "2",
+  "count": 1200,
+  "prefix": "grade12-final-order-20261007",
+  "mode": "ordered",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "stats": {
+    "ベイン": {
+      "atk": 46,
+      "hp": 1457,
+      "speed": 5.5
+    },
+    "ベル": {
+      "atk": 48,
+      "hp": 1502,
+      "speed": 5.5
+    },
+    "エリス": {
+      "atk": 49,
+      "hp": 1566,
+      "speed": 5.5
+    },
+    "カマツカ": {
+      "atk": 19,
+      "hp": 744,
+      "speed": 5.5
+    },
+    "キララ": {
+      "atk": 41,
+      "hp": 1427,
+      "speed": 5.5
+    },
+    "マチオ": {
+      "atk": 56,
+      "hp": 1626,
+      "speed": 5.5
+    },
+    "ムチコ": {
+      "atk": 59,
+      "hp": 1830,
+      "speed": 8
+    },
+    "ナトリ": {
+      "atk": 56,
+      "hp": 1618,
+      "speed": 5.5
+    },
+    "ワン": {
+      "atk": 59,
+      "hp": 1846,
+      "speed": 5.5
+    }
+  },
+  "rows": {
+    "ベイン": {
+      "id": "bane",
+      "played": 1200,
+      "wins": 153,
+      "winRate": 0.1275
+    },
+    "ベル": {
+      "id": "bell",
+      "played": 1200,
+      "wins": 126,
+      "winRate": 0.105
+    },
+    "エリス": {
+      "id": "eris",
+      "played": 1200,
+      "wins": 146,
+      "winRate": 0.12166666666666667
+    },
+    "カマツカ": {
+      "id": "kamatsuka",
+      "played": 1200,
+      "wins": 165,
+      "winRate": 0.1375
+    },
+    "キララ": {
+      "id": "kirara",
+      "played": 1200,
+      "wins": 179,
+      "winRate": 0.14916666666666667
+    },
+    "マチオ": {
+      "id": "machio",
+      "played": 1200,
+      "wins": 130,
+      "winRate": 0.10833333333333334
+    },
+    "ムチコ": {
+      "id": "muchiko",
+      "played": 1200,
+      "wins": 93,
+      "winRate": 0.0775
+    },
+    "ナトリ": {
+      "id": "natori",
+      "played": 1200,
+      "wins": 107,
+      "winRate": 0.08916666666666667
+    },
+    "ワン": {
+      "id": "wan",
+      "played": 1200,
+      "wins": 101,
+      "winRate": 0.08416666666666667
+    }
+  },
+  "draws": 0,
+  "timeouts": 0,
+  "meanSeconds": 28.353388888888595
+}

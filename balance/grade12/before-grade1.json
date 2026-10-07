@@ -1,0 +1,312 @@
+{
+  "grade": "1",
+  "count": 600,
+  "prefix": "grade12-baseline-v1",
+  "mode": "all",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "stats": {
+    "バルー": {
+      "atk": 16,
+      "hp": 1024,
+      "speed": 5.4
+    },
+    "ボンボリ": {
+      "atk": 17,
+      "hp": 1068,
+      "speed": 5.4
+    },
+    "チャカ": {
+      "atk": 19,
+      "hp": 1152,
+      "speed": 5.4
+    },
+    "チック": {
+      "atk": 18,
+      "hp": 1124,
+      "speed": 5.4
+    },
+    "ダイ": {
+      "atk": 19,
+      "hp": 1148,
+      "speed": 5.4
+    },
+    "ダンカチ": {
+      "atk": 17,
+      "hp": 1052,
+      "speed": 5.4
+    },
+    "ドーマ": {
+      "atk": 17,
+      "hp": 1060,
+      "speed": 5.4
+    },
+    "ドン": {
+      "atk": 18,
+      "hp": 1112,
+      "speed": 5.4
+    },
+    "ヘリオス": {
+      "atk": 18,
+      "hp": 1100,
+      "speed": 5.4
+    },
+    "ヒメ": {
+      "atk": 19,
+      "hp": 1144,
+      "speed": 5.4
+    },
+    "ヒヨコ": {
+      "atk": 17,
+      "hp": 1044,
+      "speed": 5.4
+    },
+    "ホオズキ": {
+      "atk": 17,
+      "hp": 1068,
+      "speed": 5.4
+    },
+    "ジュンコ": {
+      "atk": 17,
+      "hp": 1052,
+      "speed": 5.4
+    },
+    "ランス": {
+      "atk": 29,
+      "hp": 1450,
+      "speed": 5.8
+    },
+    "ルサイ": {
+      "atk": 17,
+      "hp": 1100,
+      "speed": 5.6
+    },
+    "マクラ": {
+      "atk": 18,
+      "hp": 1100,
+      "speed": 5.4
+    },
+    "モルペウス": {
+      "atk": 18,
+      "hp": 1080,
+      "speed": 5.4
+    },
+    "プラス": {
+      "atk": 19,
+      "hp": 1156,
+      "speed": 5.4
+    },
+    "ロッカ": {
+      "atk": 19,
+      "hp": 1132,
+      "speed": 5.4
+    },
+    "サクオ": {
+      "atk": 19,
+      "hp": 1140,
+      "speed": 5.4
+    },
+    "シイカ": {
+      "atk": 17,
+      "hp": 1068,
+      "speed": 5.4
+    },
+    "ツクリ": {
+      "atk": 17,
+      "hp": 1048,
+      "speed": 5.4
+    },
+    "ツクヨミ": {
+      "atk": 18,
+      "hp": 1092,
+      "speed": 5.4
+    },
+    "ヴァイン": {
+      "atk": 17,
+      "hp": 1068,
+      "speed": 5.4
+    },
+    "ヤヨイ": {
+      "atk": 17,
+      "hp": 1060,
+      "speed": 5.4
+    },
+    "ユージ": {
+      "atk": 18,
+      "hp": 1120,
+      "speed": 5.4
+    },
+    "ゼータ": {
+      "atk": 17,
+      "hp": 1048,
+      "speed": 5.4
+    }
+  },
+  "rows": {
+    "バルー": {
+      "id": "baroo",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ボンボリ": {
+      "id": "bonbori",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "チャカ": {
+      "id": "chaka",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "チック": {
+      "id": "chick",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ダイ": {
+      "id": "dai",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ダンカチ": {
+      "id": "dankachi",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ドーマ": {
+      "id": "doma",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ドン": {
+      "id": "don",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ヘリオス": {
+      "id": "helios",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ヒメ": {
+      "id": "hime",
+      "played": 600,
+      "wins": 25,
+      "winRate": 0.041666666666666664
+    },
+    "ヒヨコ": {
+      "id": "hiyoko",
+      "played": 600,
+      "wins": 483,
+      "winRate": 0.805
+    },
+    "ホオズキ": {
+      "id": "hoozuki",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ジュンコ": {
+      "id": "junko",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ランス": {
+      "id": "lance",
+      "played": 600,
+      "wins": 2,
+      "winRate": 0.0033333333333333335
+    },
+    "ルサイ": {
+      "id": "lusai",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "マクラ": {
+      "id": "makura",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "モルペウス": {
+      "id": "morpheus",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "プラス": {
+      "id": "plus",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ロッカ": {
+      "id": "rokka",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "サクオ": {
+      "id": "sakuo",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "シイカ": {
+      "id": "shiika",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ツクリ": {
+      "id": "tsukuri",
+      "played": 600,
+      "wins": 90,
+      "winRate": 0.15
+    },
+    "ツクヨミ": {
+      "id": "tsukuyomi",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ヴァイン": {
+      "id": "vine",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ヤヨイ": {
+      "id": "yayoi",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ユージ": {
+      "id": "yuji",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    },
+    "ゼータ": {
+      "id": "zeta",
+      "played": 600,
+      "wins": 0,
+      "winRate": 0
+    }
+  },
+  "draws": 0,
+  "timeouts": 0,
+  "meanSeconds": 52.85891666666486
+}

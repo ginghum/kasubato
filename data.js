@@ -91,8 +91,8 @@ const roster = [
     "sourceAbility": "ゴーレムを操る",
     "summary": "気だるげな返事とは裏腹に、ゴーレムと確かな仕事で依頼を片づける、なんでも屋の現場担当。",
     "stats": {
-      "atk": 23,
-      "hp": 1290,
+      "atk": 46,
+      "hp": 1457,
       "speed": 5.5
     },
     "sourcePath": "characters-data/bane/profile.json"
@@ -115,8 +115,8 @@ const roster = [
     "sourceAbility": "物同士を引き合わせる",
     "summary": "広い交友関係から噂を引き寄せ、笑顔で新聞を売り歩く情報通のギャル。",
     "stats": {
-      "atk": 16,
-      "hp": 1024,
+      "atk": 36,
+      "hp": 1570,
       "speed": 5.4
     },
     "sourcePath": "characters-data/baroo/profile.json"
@@ -139,8 +139,8 @@ const roster = [
     "sourceAbility": "なんでも作り方がわかる",
     "summary": "思いついた遊びを機械へ変え、秘密のゲームセンターを賑やかにする発明少女。",
     "stats": {
-      "atk": 21,
-      "hp": 1222,
+      "atk": 48,
+      "hp": 1502,
       "speed": 5.5
     },
     "sourcePath": "characters-data/bell/profile.json"
@@ -187,8 +187,8 @@ const roster = [
     "sourceAbility": "超聴覚",
     "summary": "明るい笑顔と超聴覚で巨大な美食組織を支える、カガチの小さな片腕。",
     "stats": {
-      "atk": 17,
-      "hp": 1068,
+      "atk": 33,
+      "hp": 1342,
       "speed": 5.4
     },
     "sourcePath": "characters-data/bonbori/profile.json"
@@ -259,8 +259,8 @@ const roster = [
     "sourceAbility": "目を閉じるとIQが上がる",
     "summary": "勉強を心から楽しみ、明るさと遠慮のない一言で周囲を揺さぶる勉強オタク。",
     "stats": {
-      "atk": 19,
-      "hp": 1152,
+      "atk": 42,
+      "hp": 1499,
       "speed": 5.4
     },
     "sourcePath": "characters-data/chaka/profile.json"
@@ -283,8 +283,8 @@ const roster = [
     "sourceAbility": "少しだけ時間を戻す",
     "summary": "表舞台をユーヒに任せ、咳をこらえて紙面を完成させる新聞部の裏方編集者。",
     "stats": {
-      "atk": 18,
-      "hp": 1124,
+      "atk": 28,
+      "hp": 1148,
       "speed": 5.4
     },
     "sourcePath": "characters-data/chick/profile.json"
@@ -355,8 +355,8 @@ const roster = [
     "sourceAbility": "マーク地点への瞬間移動",
     "summary": "疑わしい新聞さえ爽やかに売り込む、顔も足も広い敏腕営業マン。",
     "stats": {
-      "atk": 19,
-      "hp": 1148,
+      "atk": 42,
+      "hp": 1615,
       "speed": 5.4
     },
     "sourcePath": "characters-data/dai/profile.json"
@@ -403,8 +403,8 @@ const roster = [
     "sourceAbility": "どんな道具も使いこなす",
     "summary": "道具だけなら一人前、判断力はまだ下っ端。恐れ知らずに現場へ飛び込む建設サークルの元気印。",
     "stats": {
-      "atk": 17,
-      "hp": 1052,
+      "atk": 35,
+      "hp": 1424,
       "speed": 5.4
     },
     "sourcePath": "characters-data/dankachi/profile.json"
@@ -475,8 +475,8 @@ const roster = [
     "sourceAbility": "レーザー",
     "summary": "真面目すぎてロボットのように見える、素直で愛されるポンコツ勉強家。",
     "stats": {
-      "atk": 17,
-      "hp": 1060,
+      "atk": 35,
+      "hp": 1605,
       "speed": 5.4
     },
     "sourcePath": "characters-data/doma/profile.json"
@@ -499,8 +499,8 @@ const roster = [
     "sourceAbility": "色を塗り変える",
     "summary": "自信はなくても、誰かの危機には体が先に動く勉強サークルのネガティブ青年。",
     "stats": {
-      "atk": 18,
-      "hp": 1112,
+      "atk": 39,
+      "hp": 1559,
       "speed": 5.4
     },
     "sourcePath": "characters-data/don/profile.json"
@@ -571,8 +571,8 @@ const roster = [
     "sourceAbility": "風を操る",
     "summary": "冷静な受付と揺るがない判断で依頼を整理し、なんでも屋の仕事を滞りなく回す実務担当。",
     "stats": {
-      "atk": 22,
-      "hp": 1274,
+      "atk": 49,
+      "hp": 1566,
       "speed": 5.5
     },
     "sourcePath": "characters-data/eris/profile.json"
@@ -715,8 +715,8 @@ const roster = [
     "sourceAbility": "動物を惹きつける",
     "summary": "動物たちを友達と呼び、優しい手当てと医学の勉強に励む保健委員会の一年生。",
     "stats": {
-      "atk": 18,
-      "hp": 1100,
+      "atk": 39,
+      "hp": 1542,
       "speed": 5.4
     },
     "sourcePath": "characters-data/helios/profile.json"
@@ -763,8 +763,8 @@ const roster = [
     "sourceAbility": "ダメージを地面に流す",
     "summary": "あらゆる同人ジャンルを自然体で受け入れ、女子ばかりの腐女子サークルにも雲のように馴染む青年。",
     "stats": {
-      "atk": 19,
-      "hp": 1144,
+      "atk": 21,
+      "hp": 882,
       "speed": 5.4
     },
     "sourcePath": "characters-data/hime/profile.json"
@@ -811,8 +811,8 @@ const roster = [
     "sourceAbility": "土を操る",
     "summary": "都会に来てもほどほどの頑張りを崩さない、素朴で自由な勉強サークルの一年生。",
     "stats": {
-      "atk": 17,
-      "hp": 1044,
+      "atk": 14,
+      "hp": 504,
       "speed": 5.4
     },
     "sourcePath": "characters-data/hiyoko/profile.json"
@@ -835,8 +835,8 @@ const roster = [
     "sourceAbility": "超視力",
     "summary": "ボンボリの言葉に「ですでーす！」と重ねる、そっくり笑顔のもう一人の片腕。",
     "stats": {
-      "atk": 17,
-      "hp": 1068,
+      "atk": 38,
+      "hp": 1787,
       "speed": 5.4
     },
     "sourcePath": "characters-data/hoozuki/profile.json"
@@ -931,8 +931,8 @@ const roster = [
     "sourceAbility": "針を飛ばす",
     "summary": "純愛だけを正義と信じ、文句を言いながらも頼まれた原稿は断れない腐女子サークルの過激派絵師。",
     "stats": {
-      "atk": 17,
-      "hp": 1052,
+      "atk": 36,
+      "hp": 1480,
       "speed": 5.4
     },
     "sourcePath": "characters-data/junko/profile.json"
@@ -979,8 +979,8 @@ const roster = [
     "sourceAbility": "布を操る",
     "summary": "何もしない生活サークルを実務で支え、タナカを静かに見守る真面目な副部長。",
     "stats": {
-      "atk": 21,
-      "hp": 1202,
+      "atk": 19,
+      "hp": 744,
       "speed": 5.5
     },
     "sourcePath": "characters-data/kamatsuka/profile.json"
@@ -1003,8 +1003,8 @@ const roster = [
     "sourceAbility": "傷を悪化させる",
     "summary": "お嬢様然とした優雅な振る舞いの裏で、血と涙に彩られた猟奇的な愛へ静かに陶酔する腐女子サークルの一年生。",
     "stats": {
-      "atk": 20,
-      "hp": 1174,
+      "atk": 41,
+      "hp": 1427,
       "speed": 5.5
     },
     "sourcePath": "characters-data/kirara/profile.json"
@@ -1075,8 +1075,8 @@ const roster = [
     "sourceAbility": "金属を生成する",
     "summary": "高い決闘実力を持ちながら、何よりもゆきめろへの愛を優先する戦士。",
     "stats": {
-      "atk": 29,
-      "hp": 1450,
+      "atk": 36,
+      "hp": 1536,
       "speed": 5.8
     },
     "sourcePath": "characters-data/lance/profile.json"
@@ -1123,8 +1123,8 @@ const roster = [
     "sourceAbility": "透明化",
     "summary": "手作りスイーツと世話焼きぶりでXを支える、飄々としたパティシエ副部長。",
     "stats": {
-      "atk": 17,
-      "hp": 1100,
+      "atk": 38,
+      "hp": 1596,
       "speed": 5.6
     },
     "sourcePath": "characters-data/lusai/profile.json"
@@ -1147,8 +1147,8 @@ const roster = [
     "sourceAbility": "金縛り",
     "summary": "面白そうな騒ぎには何でも飛び込み、嫌がる相手まで明るく煽り続ける腐女子サークルの陽気なギャル。",
     "stats": {
-      "atk": 21,
-      "hp": 1210,
+      "atk": 56,
+      "hp": 1626,
       "speed": 5.5
     },
     "sourcePath": "characters-data/machio/profile.json"
@@ -1171,8 +1171,8 @@ const roster = [
     "sourceAbility": "相手をネガティブにする",
     "summary": "誰より人を疑いながら、一度だけ振り絞った勇気をマサに拾われた自由サークルの毒舌家。",
     "stats": {
-      "atk": 18,
-      "hp": 1100,
+      "atk": 39,
+      "hp": 1569,
       "speed": 5.4
     },
     "sourcePath": "characters-data/makura/profile.json"
@@ -1363,8 +1363,8 @@ const roster = [
     "sourceAbility": "夢を見せる",
     "summary": "頼まれれば断れず、眠い目をこすりながら編集作業を支える、心優しい夢見せ役。",
     "stats": {
-      "atk": 18,
-      "hp": 1080,
+      "atk": 39,
+      "hp": 1715,
       "speed": 5.4
     },
     "sourcePath": "characters-data/morpheus/profile.json"
@@ -1411,9 +1411,9 @@ const roster = [
     "sourceAbility": "高速移動",
     "summary": "逃げる部長と奔放な部員たちを黙って支え、締め切りだけは絶対に見捨てない腐女子サークルの苦労人副部長。",
     "stats": {
-      "atk": 17,
-      "hp": 1050,
-      "speed": 8.0
+      "atk": 59,
+      "hp": 1830,
+      "speed": 8
     },
     "sourcePath": "characters-data/muchiko/profile.json"
   },
@@ -1435,8 +1435,8 @@ const roster = [
     "sourceAbility": "糸を作り出す",
     "summary": "努力も実力も自分の美しさの証明に変える、折れない自信のナルシスト。",
     "stats": {
-      "atk": 23,
-      "hp": 1286,
+      "atk": 56,
+      "hp": 1618,
       "speed": 5.5
     },
     "sourcePath": "characters-data/natori/profile.json"
@@ -1555,8 +1555,8 @@ const roster = [
     "sourceAbility": "質量を変化させる",
     "summary": "記憶のない転校生。夢は、学園の全員と友達になること。",
     "stats": {
-      "atk": 19,
-      "hp": 1156,
+      "atk": 42,
+      "hp": 1799,
       "speed": 5.4
     },
     "sourcePath": "characters-data/plus/profile.json"
@@ -1603,8 +1603,8 @@ const roster = [
     "sourceAbility": "雪を作り出す",
     "summary": "面倒事を避け続けながら、最後には冷静な判断と雪で仲間を救う自由サークルの常識人。",
     "stats": {
-      "atk": 19,
-      "hp": 1132,
+      "atk": 42,
+      "hp": 1665,
       "speed": 5.4
     },
     "sourcePath": "characters-data/rokka/profile.json"
@@ -1675,8 +1675,8 @@ const roster = [
     "sourceAbility": "正確な時間が分かる",
     "summary": "正確な時刻と空疎な雑談を淡々と告げる、感情の読めない勉強サークル部員。",
     "stats": {
-      "atk": 19,
-      "hp": 1140,
+      "atk": 42,
+      "hp": 1665,
       "speed": 5.4
     },
     "sourcePath": "characters-data/sakuo/profile.json"
@@ -1723,8 +1723,8 @@ const roster = [
     "sourceAbility": "雨雲をつくる",
     "summary": "雨の日を好み、どんな作業も自分のペースで丁寧に進める勉強サークルの天然少女。",
     "stats": {
-      "atk": 17,
-      "hp": 1068,
+      "atk": 38,
+      "hp": 1637,
       "speed": 5.4
     },
     "sourcePath": "characters-data/shiika/profile.json"
@@ -1915,8 +1915,8 @@ const roster = [
     "sourceAbility": "鍵を開ける",
     "summary": "弱気でも安全確認は譲らない、ドーマを見守る合理派リアクション担当。",
     "stats": {
-      "atk": 17,
-      "hp": 1048,
+      "atk": 16,
+      "hp": 606,
       "speed": 5.4
     },
     "sourcePath": "characters-data/tsukuri/profile.json"
@@ -1939,8 +1939,8 @@ const roster = [
     "sourceAbility": "物を喋らせる",
     "summary": "仲間の笑顔を守るため自分を後回しにし、物の声まで聞き取る自由サークルの優しい弟分。",
     "stats": {
-      "atk": 18,
-      "hp": 1092,
+      "atk": 36,
+      "hp": 1287,
       "speed": 5.4
     },
     "sourcePath": "characters-data/tsukuyomi/profile.json"
@@ -1987,8 +1987,8 @@ const roster = [
     "sourceAbility": "相手の心を読む",
     "summary": "吸血鬼らしい威厳を夢見て、今日も決めポーズを研究する生真面目な中二病少女。",
     "stats": {
-      "atk": 17,
-      "hp": 1068,
+      "atk": 36,
+      "hp": 1356,
       "speed": 5.4
     },
     "sourcePath": "characters-data/vine/profile.json"
@@ -2011,8 +2011,8 @@ const roster = [
     "sourceAbility": "念写",
     "summary": "変人ではなく普通だと言い張りながら、夜中の先輩たちを見捨てられない苦労人。",
     "stats": {
-      "atk": 22,
-      "hp": 1270,
+      "atk": 59,
+      "hp": 1846,
       "speed": 5.5
     },
     "sourcePath": "characters-data/wan/profile.json"
@@ -2111,8 +2111,8 @@ const roster = [
     "sourceAbility": "ゴムになる",
     "summary": "世話を焼かずにいられず、勉強サークルの全員を朝から叩き起こす真面目な一年生。",
     "stats": {
-      "atk": 17,
-      "hp": 1060,
+      "atk": 27,
+      "hp": 1106,
       "speed": 5.4
     },
     "sourcePath": "characters-data/yayoi/profile.json"
@@ -2159,8 +2159,8 @@ const roster = [
     "sourceAbility": "空中でものを弾く",
     "summary": "プラスを案内する最初の友人。大声だけど弱気な常識人。",
     "stats": {
-      "atk": 18,
-      "hp": 1120,
+      "atk": 39,
+      "hp": 1477,
       "speed": 5.4
     },
     "sourcePath": "characters-data/yuji/profile.json"
@@ -2231,8 +2231,8 @@ const roster = [
     "sourceAbility": "年齢を操る",
     "summary": "優しいお姉さんアイドルの笑顔の裏に、元マネージャーという秘密と人一倍の目立ちたがりを隠す新人メンバー。",
     "stats": {
-      "atk": 17,
-      "hp": 1048,
+      "atk": 38,
+      "hp": 1754,
       "speed": 5.4
     },
     "sourcePath": "characters-data/zeta/profile.json"
