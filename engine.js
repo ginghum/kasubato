@@ -12,8 +12,24 @@ const find=s=>aliases.get(norm(s))||null;
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 function resolve(name){const p=find(name);return p?{profile:p,skill:p.id,stats:{...p.stats}}:{profile:null,skill:roster[hash(norm(name))%roster.length].id,stats:{atk:18,hp:1250,speed:5.5}};}
+// Each parenthesized group is a separate alliance; names retain their original spelling.
+function parseEntries(input){
+ const entries=[],seen=new Set();let text='',depth=0,literalDepth=0,group=null,seq=0;
+ const flush=()=>{const name=text.trim();text='';if(name&&!seen.has(name)){seen.add(name);entries.push({name,team:group});}};
+ const source=String(input).replace(/（/g,'(').replace(/）/g,')');
+ for(let i=0;i<source.length;i++){const c=source[i];
+  if(c==='('){if(text.trim()||literalDepth){text+=c;literalDepth++;}else{flush();if(depth===0&&source.indexOf(')',i+1)!==-1)group='alliance:'+ ++seq;depth++;}}
+  else if(c===')'){if(literalDepth){text+=c;literalDepth--;}else if(depth){flush();depth--;if(!depth)group=null;}else text+=c;}
+  else if(/[,，、\n\r]/.test(c))flush();else text+=c;
+ }flush();return entries;
+}
+function formatEntries(entries){
+ const parts=[],groups=new Map();for(const e of entries){if(e.team==null){parts.push(e.name);continue;}if(!groups.has(e.team)){const group=[];groups.set(e.team,group);parts.push(group);}groups.get(e.team).push(e.name);}
+ return parts.map(p=>Array.isArray(p)?'('+p.join('、')+')':p).join('、');
+}
 class World {
  constructor(names,options={}){
+  const entries=typeof names==='string'?parseEntries(names):names.map(name=>({name,team:options.teams?.[name]??null}));names=entries.map(e=>e.name);const teams=new Map(entries.map(e=>[e.name,e.team]));
   this.rng=random(options.seed??Date.now());this.seed=String(options.seed??'');this.time=0;this.smallMode=names.length<=5;this.mediumMode=names.length>=6&&names.length<=20;this.mode=this.smallMode?'small':this.mediumMode?'medium':'normal';this.viewScale=this.smallMode?2:this.mediumMode?1.5:1;this.baseRadius=this.smallMode?185:this.mediumMode?250:385;this.radius=this.baseRadius;this.suddenDeath=options.suddenDeath!==false;this.units=[];this.shots=[];this.zones=[];this.effects=[];this.events=[];this.seq=0;this.finished=false;this.sudden=false;this.result=null;this.initialCount=names.length;this.tickCount=0;
   this.participantFamilies=new Set(names.map(find).filter(Boolean).map(p=>p.baseId||p.id));
   // Full Grade 1/2 cohorts use a seeded turn order, avoiding fixed catalog-order advantages.
@@ -22,7 +38,7 @@ class World {
    names=entrants.sort((a,b)=>a.profile.id<b.profile.id?-1:a.profile.id>b.profile.id?1:0).map(e=>e.name);
    for(let i=names.length-1;i>0;i--){const j=Math.floor(this.rng()*(i+1));[names[i],names[j]]=[names[j],names[i]];}
   }
-  for(const name of names){const r=resolve(name),saved=Object.hasOwn(options.overrides||{},name)?options.overrides[name]:null;const s=saved?{...r.stats,...saved}:r.stats;const f=this.make(name,saved?.skill||r.skill,s,false);f.profile=r.profile;this.units.push(f);}
+  for(const name of names){const r=resolve(name),saved=Object.hasOwn(options.overrides||{},name)?options.overrides[name]:null;const s=saved?{...r.stats,...saved}:r.stats;const f=this.make(name,saved?.skill||r.skill,s,false,teams.get(name));f.profile=r.profile;this.units.push(f);}
  }
  make(name,skill,stats,minion,team){const angle=this.rng()*Math.PI*2,r=(80+this.rng()*210)*(this.baseRadius/385);const f={id:++this.seq,name,skill,profile:null,team:team||this.seq,minion,kind:'person',x:400+Math.cos(angle)*r,y:400+Math.sin(angle)*r,angle:this.rng()*Math.PI*2,radius:15,atk:stats.atk,maxHp:stats.hp,hp:stats.hp,speed:stats.speed,baseAtk:stats.atk,alive:true,shield:0,status:{},cool:{},powers:[{id:skill,scale:1}],dots:[],history:[],kills:0,damage:0,healing:0,revived:false,form:0,luck:0,poison:0,ready:false,expires:Infinity,deathTime:null};
   if(skill==='empress'){f.powers.push(...this.startingPredationPowers());this.event(name+'の開始能力：'+f.powers.slice(1).map(p=>profiles.find(q=>q.id===p.id).name).join('、'));}
@@ -46,7 +62,7 @@ class World {
  heal(f,n){if(!f.alive)return;const amount=Math.max(0,Math.min(n,f.maxHp-f.hp));f.hp+=amount;f.healing+=amount;if(amount>5)this.effect(f,'+'+Math.round(amount),'#9addb1');}
  push(f,t,force){t.angle=Math.atan2(t.y-f.y,t.x-f.x);t.x+=Math.cos(t.angle)*force;t.y+=Math.sin(t.angle)*force;}
  hit(a,t,amount,type='spell',reflect=false){
-  if(!t?.alive||amount<=0)return 0;
+  if(!t?.alive||amount<=0||(a&&a.team===t.team))return 0;
   if((this.has(t,'air')&&type==='contact')||(this.has(t,'invulnerable')&&this.enabled(t)&&type!=='erase'))return 0;
   // Base SPD adds at most 5 percentage points, independent of movement buffs and ability sealing.
   const enabled=this.enabled(t);let evasion=Math.min(.05,Math.max(0,t.speed)*.005);
@@ -80,15 +96,15 @@ class World {
    for(const p of t.powers)if(p.id!=='empress'&&!a.powers.some(q=>q.id===p.id)){a.powers.push({id:p.id,scale:p.scale*t.baseAtk/a.baseAtk});this.event(a.name+'が'+(profiles.find(q=>q.id===p.id)?.title||p.id)+'を獲得');}
    this.heal(a,a.maxHp*.12);
   }}
-  if(!t.minion)for(const m of this.units)if(m.minion&&m.team===t.team){m.alive=false;m.hp=0;}
+  if(!t.minion)for(const m of this.units)if(m.minion&&(m.summonerId??m.team)===t.id&&m.team===t.team){m.alive=false;m.hp=0;}
  }
- dot(f,t,seconds,damage,type='poison'){t.dots.push({owner:f,until:this.time+seconds,next:this.time+.5,damage,type});if(t.dots.length>12)t.dots.shift();}
+ dot(f,t,seconds,damage,type='poison'){if(f.team===t.team)return;t.dots.push({owner:f,until:this.time+seconds,next:this.time+.5,damage,type});if(t.dots.length>12)t.dots.shift();}
  shield(f,amount){f.shield=Math.min(f.maxHp*.65,f.shield+amount);}
  shot(f,t,damage,icon='✦',extra={}){if(!t)return;const angle=Math.atan2(t.y-f.y,t.x-f.x)+(extra.spread||0);this.shots.push({owner:f,x:f.x,y:f.y,vx:Math.cos(angle)*450,vy:Math.sin(angle)*450,damage,icon,end:this.time+2.5,hit:new Set(),...extra});}
  volley(f,t,n,damage,icon,extra={}){for(let i=0;i<n;i++)this.shot(f,t,damage,icon,{...extra,spread:(i-(n-1)/2)*.13});}
  zone(f,x,y,r,seconds,kind,power){this.zones.push({owner:f,x,y,r,end:this.time+seconds,next:this.time+.2,kind,power});if(this.zones.length>150)this.zones.shift();}
- summon(f,kind,count,hp,atk){const alive=this.units.filter(m=>m.alive&&m.minion&&m.team===f.team&&m.kind===kind);if(alive.length>=count)return;
-  const m=this.make(f.name+'の'+({golem:'ゴーレム',clone:'分身',animal:'友達',machine:'砲台',diamond:'ダイヤ兵'}[kind]||kind),'basic',{atk:f.atk*atk,hp:f.maxHp*hp,speed:kind==='machine'?0:4.2},true,f.team);m.kind=kind;m.x=f.x+20;m.y=f.y+20;m.radius=kind==='golem'?19:11;m.expires=this.time+(kind==='clone'?12:18);this.units.push(m);this.effect(f,'支援 '+kind);
+ summon(f,kind,count,hp,atk){const alive=this.units.filter(m=>m.alive&&m.minion&&m.summonerId===f.id&&m.team===f.team&&m.kind===kind);if(alive.length>=count)return;
+  const m=this.make(f.name+'の'+({golem:'ゴーレム',clone:'分身',animal:'友達',machine:'砲台',diamond:'ダイヤ兵'}[kind]||kind),'basic',{atk:f.atk*atk,hp:f.maxHp*hp,speed:kind==='machine'?0:4.2},true,f.team);m.summonerId=f.id;m.kind=kind;m.x=f.x+20;m.y=f.y+20;m.radius=kind==='golem'?19:11;m.expires=this.time+(kind==='clone'?12:18);this.units.push(m);this.effect(f,'支援 '+kind);
  }
  cast(f,p){
   const id=p.id,t=passivePowers.has(id)?null:this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.4:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,profiles.find(q=>q.id===id)?.title||id);
@@ -111,7 +127,7 @@ class World {
    case 'dancho':if(cd(6))this.status(f,'invulnerable',1);break;
    case 'dankachi':if(cd(4)){f.form=1-f.form;if(f.form)this.status(f,'guard',3);else this.status(f,'strong',3);label();}break;
    case 'deji':if(t&&cd(4)){this.shield(f,f.maxHp*.15);this.zone(f,t.x,t.y,65,3,'bind',b*.4);}break;
-   case 'devil':if(this.cd(f,'arenaTurret',7))this.summon(f,'machine',1,.4,1);if(cd(2)){for(const e of near(280))if(e.minion&&e.kind==='machine'){e.team=f.team;this.event(f.name+'が砲台を掌握');}label();}break;
+   case 'devil':if(this.cd(f,'arenaTurret',7))this.summon(f,'machine',1,.4,1);if(cd(2)){for(const e of near(280))if(e.minion&&e.kind==='machine'){e.team=f.team;e.summonerId=f.id;this.event(f.name+'が砲台を掌握');}label();}break;
    case 'doma':if(t&&cd(3))this.shot(f,t,b*4,'━',{pierce:true});break;
    case 'don':if(cd(6)){this.status(f,'hidden',3);label();}break;
    case 'doppel':if(cd(6)){f.form=1-f.form;for(const e of near(150))this.status(e,'blind',1);label();}break;
@@ -144,7 +160,7 @@ class World {
    case 'meimei':if(t&&cd(3.5))this.shot(f,t,b*2,'➰',{stun:.8,pull:65});break;
    case 'mikael':if(cd(6)){if(t){const a=Math.atan2(f.y-t.y,f.x-t.x);f.x=t.x+Math.cos(a)*30;f.y=t.y+Math.sin(a)*30;this.hit(f,t,b*6,'contact');this.status(f,'guard',1.5);}const a={x:f.x,y:f.y},ang=this.rng()*Math.PI*2;const z=this.radius*.75;this.zones.push({owner:f,x:a.x,y:a.y,r:24,end:this.time+6,kind:'gate',to:{x:400+Math.cos(ang)*z,y:400+Math.sin(ang)*z}});this.zones.push({owner:f,x:400+Math.cos(ang)*z,y:400+Math.sin(ang)*z,r:24,end:this.time+6,kind:'gate',to:a});label();}break;
    case 'milk':if(cd(3)){this.heal(f,f.maxHp*.09*p.scale);for(const a of this.units)if(a.alive&&a!==f&&a.team===f.team&&distance(f,a)<150)this.heal(a,a.maxHp*.1*p.scale);label();}break;
-   case 'mimari':if(t&&cd(5)){const pet=this.foes(f).find(e=>e.minion&&distance(f,e)<220);if(pet){pet.team=f.team;this.event(f.name+'が支援者を洗脳');}this.status(t,'drunk',2.2);label();}break;
+   case 'mimari':if(t&&cd(5)){const pet=this.foes(f).find(e=>e.minion&&distance(f,e)<220);if(pet){pet.team=f.team;pet.summonerId=f.id;this.event(f.name+'が支援者を洗脳');}this.status(t,'drunk',2.2);label();}break;
    case 'minus':if(t&&cd(3)){this.status(t,'heavy',2.3);this.status(f,'dash',1.3);this.hit(f,t,b*5.5);for(const e of near(175))if(e!==t){this.status(e,'slow',1.5);this.hit(f,e,b*2.4);}label();}break;
    case 'morpheus':{const sleeper=this.foes(f).find(e=>this.has(e,'sleep')&&distance(f,e)<240);if(sleeper&&cd(4.5)){this.status(sleeper,'sleep',2.5);label();}}break;
    case 'mu':if(this.cd(f,'diamondSoldier',6))this.summon(f,'diamond',1,.24,.5);if(t&&cd(3)){this.shield(f,f.maxHp*.11);this.volley(f,t,3,b*2.4,'◆');}break;
@@ -183,7 +199,7 @@ class World {
   if(['chaka','kobal','kobal_final'].includes(id)&&f.cool['charge:'+id]&&f.cool['charge:'+id]<=this.time){f.ready=true;delete f.cool['charge:'+id];}
   if(id==='oga'&&cd(3))for(const a of this.units)if(a.alive&&a.team===f.team&&a!==f&&distance(f,a)<200)this.status(a,'boost',3.5);
  }
- contact(f,t){if(!f.alive||!t.alive||this.has(f,'stun')||this.has(f,'sleep')||!this.cd(f,'contact:'+t.id,this.power(f,'sakuo')?.22:.4))return;
+ contact(f,t){if(!f.alive||!t.alive||f.team===t.team||this.has(f,'stun')||this.has(f,'sleep')||!this.cd(f,'contact:'+t.id,this.power(f,'sakuo')?.22:.4))return;
   let b=f.atk*(.85+this.rng()*.3);if(this.has(f,'strong'))b*=1.7;if(this.has(f,'weak'))b*=.6;
   if(this.power(f,'lance'))b*=1.45;if(this.power(f,'kagachi'))b*=1.6;
   if(this.power(f,'kirara'))b*=1+(1-t.hp/t.maxHp)*2;
@@ -214,7 +230,8 @@ class World {
   for(let i=0;i<live.length;i++)for(let j=i+1;j<live.length;j++){const a=live[i],b=live[j];if(this.has(a,'air')||this.has(b,'air'))continue;const d=distance(a,b),r=a.radius+b.radius;if(d<r){const nx=d?(b.x-a.x)/d:1,ny=d?(b.y-a.y)/d:0,over=(r-d)/2;a.x-=nx*over;a.y-=ny*over;b.x+=nx*over;b.y+=ny*over;a.angle=Math.atan2(-ny,-nx);b.angle=Math.atan2(ny,nx);if(a.team!==b.team){this.contact(a,b);this.contact(b,a);}}}
   this.updateShots(dt);this.updateZones();this.units=this.units.filter(f=>!f.minion||f.alive);this.effects=this.effects.filter(e=>e.end>this.time);this.shots=this.shots.filter(s=>s.end>this.time);
   const remaining=this.units.filter(f=>f.alive&&!f.minion);
-  if(remaining.length<=1||this.time>=180){this.finished=true;this.result={winner:remaining.length===1?remaining[0]:null,draw:remaining.length===0,timeout:remaining.length>1,time:this.time,ranking:this.units.filter(f=>!f.minion).sort((a,b)=>(b.alive-a.alive)||((b.deathTime||Infinity)-(a.deathTime||Infinity))||b.kills-a.kills)};this.shots=[];this.zones=[];this.effects=[];}
+  const teamsLeft=new Set(remaining.map(f=>f.team)).size;
+  if(teamsLeft<=1||this.time>=180){this.finished=true;this.result={winner:remaining.length===1?remaining[0]:null,winners:teamsLeft===1?remaining:[],teamVictory:teamsLeft===1&&remaining.length>1,draw:remaining.length===0,timeout:teamsLeft>1,time:this.time,ranking:this.units.filter(f=>!f.minion).sort((a,b)=>(b.alive-a.alive)||((b.deathTime||Infinity)-(a.deathTime||Infinity))||b.kills-a.kills)};this.shots=[];this.zones=[];this.effects=[];}
  }
  updateShots(dt){for(const s of this.shots){if(s.end<=this.time)continue;
   if(s.homing){const t=this.target(s.owner);if(t){const a=Math.atan2(t.y-s.y,t.x-s.x);s.vx=Math.cos(a)*400;s.vy=Math.sin(a)*400;}}
@@ -242,5 +259,5 @@ class World {
   }
  }this.zones=this.zones.filter(z=>z.end>this.time&&!z.exploded);}
 }
-const api={World,roster,finalModes,profiles,find,resolve,norm,hash,random};if(typeof module!=='undefined')module.exports=api;else root.KasuBattle=api;
+const api={World,roster,finalModes,profiles,find,resolve,norm,hash,random,parseEntries,formatEntries};if(typeof module!=='undefined')module.exports=api;else root.KasuBattle=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

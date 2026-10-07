@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/engine.cjs tests/grade5.cjs tests/grade4.cjs tests/grade3.cjs tests/final-modes.cjs tests/overflow.cjs tests/speed-evasion.cjs tests/target-selection.cjs tests/grade5-equal.cjs tests/empress-start.cjs tests/grade12.cjs",
+    "test": "node --test tests/alliances.cjs tests/engine.cjs tests/grade5.cjs tests/grade4.cjs tests/grade3.cjs tests/final-modes.cjs tests/overflow.cjs tests/speed-evasion.cjs tests/target-selection.cjs tests/grade5-equal.cjs tests/empress-start.cjs tests/grade12.cjs",
     "test:ui": "node tests/ui.cjs && node tests/ui-hold.cjs && node tests/ui-overflow.cjs",
     "serve": "python -m http.server 8000",
     "simulate:grade5": "node scripts/simulate-final-modes.cjs",
@@ -20,3 +20,4 @@
     "node": ">=20"
   }
 }
+
