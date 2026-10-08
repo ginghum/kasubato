@@ -35,7 +35,7 @@
   if (!Array.isArray(roster)) { $('count').textContent = '読み込みに失敗しました'; $('character-list').textContent = 'ページを再読み込みしてください。'; return; }
   const query = normalize($('query').value), grade = $('grade').value, sort = $('sort').value;
   const list = roster.filter(p => (!grade || p.grade === grade) && normalize([p.name,p.realName,p.title,p.desc,p.sourceAbility,p.club,...p.aliases,notes[p.id] || ''].join(' ')).includes(query));
-  list.sort((a,b) => (sort === 'grade' ? Number(b.grade)-Number(a.grade) : sort === 'name' ? 0 : b.stats[sort]-a.stats[sort]) || a.name.localeCompare(b.name, 'ja'));
+  list.sort((a,b) => (sort === 'grade' ? Number(b.grade)-Number(a.grade) : sort === 'name' ? 0 : b.stats[sort]-a.stats[sort]) || baseRoster.compareNames(a,b));
   $('count').textContent = `${list.length} / ${roster.length}人`;
   $('character-list').innerHTML = list.length ? list.map(p => `<article class="char"><div class="char-head"><span class="char-icon" aria-hidden="true">${escape(p.icon)}</span><div><h3>${escape(p.name)}</h3><small>Grade ${escape(p.grade)} / ${escape(p.club)}</small></div></div><p>${escape(p.realName)}</p><div class="ability">${escape(p.title)}</div><p>${escape(p.desc)}</p><div class="stats"><span>ATK ${p.stats.atk}</span><span>HP ${p.stats.hp}</span><span>SPD ${p.stats.speed}</span></div>${notes[p.id] ? `<p class="tip">${escape(notes[p.id])}</p>` : ''}<a href="https://ginghum.github.io/START/characters/${encodeURIComponent(p.baseId || p.id)}.html" target="_blank" rel="noopener">名鑑で設定を読む ↗</a></article>`).join('') : '<p class="empty">該当するキャラクターがいません。検索語やGradeを変えてください。</p>';
  }

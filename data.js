@@ -2607,6 +2607,10 @@ const finalSpecs=[
  {baseId:'kobal',title:'最終モード・極限チャージパンチ',desc:'1秒で力を溜め、軽い防御をまとう。次の接触で8倍のチャージパンチを放つ。',stats:{atk:45.8,hp:2585,speed:6}}
 ];
 const finalModes=finalSpecs.map(spec=>{const base=roster.find(p=>p.id===spec.baseId);return {...base,...spec,id:base.id+'_final',name:base.name+'+',realName:base.realName+'+',aliases:base.aliases.filter(Boolean).map(n=>n+'+'),grade:'5',finalMode:true,summary:base.name+'のゲーム用最終モード。名前の末尾に「+」を付けて参加。'};});
+const nameCollator=new Intl.Collator('ja',{usage:'sort',sensitivity:'variant'});
+const kanaName=p=>{const name=String(p.name).normalize('NFKC').replace(/\+$/,'');return /^x$/i.test(name)?'エックス':name.replace(/[ぁ-ゖ]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60));};
+const compareNames=(a,b)=>nameCollator.compare(kanaName(a),kanaName(b))||Number(/\+$/.test(a.name))-Number(/\+$/.test(b.name))||nameCollator.compare(a.name,b.name);
+Object.defineProperty(roster,'compareNames',{value:compareNames});
 Object.defineProperty(roster,'finalModes',{value:finalModes});
 if(typeof module!=="undefined") module.exports=roster; else {root.KASU_ROSTER=roster;root.KASU_FINAL_MODES=finalModes;}
 })(typeof globalThis!=="undefined"?globalThis:this);
