@@ -51,6 +51,8 @@ class World {
  }
  enabled(f){return !this.has(f,'seal');}
  power(f,id){return this.enabled(f)&&f.powers.some(p=>p.id===id);}
+ controlled(f){return this.has(f,'controlled')&&f.controlOwner?.alive&&this.enabled(f.controlOwner);}
+ command(f){const owner=f.controlOwner;let target,best=Infinity;for(const e of this.foes(owner)){if(e===f)continue;const d=distance(f,e);if(d<best){best=d;target=e;}}if(target){f.angle=Math.atan2(target.y-f.y,target.x-f.x);if(best<80&&this.cd(f,'commandStrike',.8))this.hit(owner,target,f.atk*(f.controlScale||1)*1.1,'contact');}else f.angle=Math.atan2(f.y-owner.y,f.x-owner.x);}
  has(f,s){return (f.status[s]||0)>this.time;}
  status(f,s,seconds){if(f.alive)f.status[s]=Math.max(f.status[s]||0,this.time+seconds);}
  cd(f,key,seconds){if((f.cool[key]??0)>this.time)return false;f.cool[key]=this.time+seconds;return true;}
@@ -66,15 +68,15 @@ class World {
   if((this.has(t,'air')&&type==='contact')||(this.has(t,'invulnerable')&&this.enabled(t)&&type!=='erase'))return 0;
   // Base SPD adds at most 5 percentage points, independent of movement buffs and ability sealing.
   const enabled=this.enabled(t);let evasion=Math.min(.05,Math.max(0,t.speed)*.005);
-  if(enabled){if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.24;
+  if(enabled){if(this.has(t,'foresight'))evasion+=.18;if(this.power(t,'beret'))evasion+=Math.min(.48,.1+t.luck*.04);if(this.power(t,'titan'))evasion+=.24;
    if(type==='contact'&&['bonbori','vine','tsukuyomi'].some(id=>this.power(t,id)))evasion+=.22;
    if(this.power(t,'muchiko')&&this.has(t,'dash'))evasion+=.30;
    if(this.has(t,'hidden'))evasion+=.4;
   }
-  if(type!=='erase'&&this.rng()<Math.min(.65,evasion)){this.effect(t,'回避','#bec8ed');return 0;}
-  if(a&&type!=='erase'&&(this.has(a,'blind')||this.has(a,'drunk')||this.has(a,'unlucky'))&&this.rng()<.35)return 0;
+  if(type!=='erase'&&!(a&&this.power(a,'nine'))&&this.rng()<Math.min(.65,evasion)){this.effect(t,'回避','#bec8ed');return 0;}
+  if(a&&type!=='erase'&&!this.power(a,'nine')&&(this.has(a,'blind')||(this.has(a,'drunk')&&!this.power(a,'dream'))||this.has(a,'unlucky'))&&this.rng()<.35)return 0;
   if(type!=='erase'){
-   if(this.power(t,'oriha'))amount*=.5;
+   if(this.power(t,'oriha'))amount*=.5;if(this.has(t,'earth')&&this.enabled(t)&&type==='contact')amount*=.55;
    if(this.power(t,'dancho')&&type==='contact')amount*=.35;
    if(this.power(t,'hime')&&type==='contact'&&!this.has(t,'air'))amount*=.45;
    if(this.power(t,'yayoi')&&type==='contact')amount*=.6;
@@ -84,9 +86,11 @@ class World {
   }
   if(type==='poison'&&this.power(t,'an')){t.poison=Math.min(6,t.poison+1);return 0;}
   const actual=Math.min(t.hp,amount);t.hp-=amount;if(a)a.damage+=actual;delete t.status.sleep;
+  if(a?.alive&&this.power(a,'luka'))this.heal(a,actual*.12);if(a?.alive&&type==='contact'&&this.has(t,'slime')&&this.enabled(t))this.status(a,'slow',.8);
   if(actual>0&&this.cd(t,'hitText',.3))this.effect(t,'−'+Math.round(actual),'#f4a29b');
   if(t.hp<=0){
    if(this.power(t,'soi')&&!t.revived){t.revived=true;t.hp=t.maxHp;this.event(t.name+'が一度限りの不死身で生還');this.effect(t,'不死身');}
+   else if(this.power(t,'darkness')&&!t.revived){t.revived=true;t.hp=t.maxHp*.4;this.event(t.name+'が生命創造で一度だけ再生');this.effect(t,'再生');}
    else this.die(t,a);
   }
   return actual;
@@ -104,7 +108,7 @@ class World {
  volley(f,t,n,damage,icon,extra={}){for(let i=0;i<n;i++)this.shot(f,t,damage,icon,{...extra,spread:(i-(n-1)/2)*.13});}
  zone(f,x,y,r,seconds,kind,power){this.zones.push({owner:f,x,y,r,end:this.time+seconds,next:this.time+.2,kind,power});if(this.zones.length>150)this.zones.shift();}
  summon(f,kind,count,hp,atk){const alive=this.units.filter(m=>m.alive&&m.minion&&m.summonerId===f.id&&m.team===f.team&&m.kind===kind);if(alive.length>=count)return;
-  const m=this.make(f.name+'の'+({golem:'ゴーレム',clone:'分身',animal:'友達',machine:'砲台',diamond:'ダイヤ兵'}[kind]||kind),'basic',{atk:f.atk*atk,hp:f.maxHp*hp,speed:kind==='machine'?0:4.2},true,f.team);m.summonerId=f.id;m.kind=kind;m.x=f.x+20;m.y=f.y+20;m.radius=kind==='golem'?19:11;m.expires=this.time+(kind==='clone'?12:18);this.units.push(m);this.effect(f,'支援 '+kind);
+  const m=this.make(f.name+'の'+({golem:'ゴーレム',clone:'分身',animal:'友達',machine:'砲台',diamond:'ダイヤ兵',life:'生命体'}[kind]||kind),'basic',{atk:f.atk*atk,hp:f.maxHp*hp,speed:kind==='machine'?0:4.2},true,f.team);m.summonerId=f.id;m.kind=kind;m.x=f.x+20;m.y=f.y+20;m.radius=kind==='golem'?19:11;m.expires=this.time+(kind==='clone'?12:18);this.units.push(m);this.effect(f,'支援 '+kind);
  }
  cast(f,p){
   const id=p.id,t=passivePowers.has(id)?null:this.target(f),b=f.atk*p.scale*(this.has(f,'boost')?1.6:1),near=r=>this.nearby(f,r),cd=s=>this.cd(f,'cast:'+id,s),label=()=>this.effect(f,profiles.find(q=>q.id===id)?.title||id);
@@ -193,19 +197,35 @@ class World {
    case 'yukimero':if(t&&cd(4)){this.shield(f,f.maxHp*.16);this.zone(f,t.x,t.y,90,3,'cotton',0);}break;
    case 'zenomura':if(t&&cd(4)){this.status(t,'blind',2.5);this.status(t,'drunk',2.5);label();}break;
    case 'zeta':if(cd(4)){f.form=1-f.form;this.status(f,f.form?'dash':'guard',3.5);label();}break;
+
+   case 'darkness':if(cd(5)){this.heal(f,f.maxHp*.12*p.scale);for(const a of this.units)if(a.alive&&a.team===f.team&&a!==f&&distance(f,a)<180)this.heal(a,a.maxHp*.08*p.scale);this.summon(f,'life',2,.22,.6);label();}break;
+   case 'luka':if(t&&cd(3.2))this.shot(f,t,b*3,'🩸',{poison:b*.2});break;
+   case 'dream':if(t&&cd(4)){this.zone(f,t.x,t.y,160,3,'alcohol',b*.9);label();}break;
+   case 'satera':if(t&&cd(5)){this.zone(f,t.x,t.y,130,3,'smoke',0);this.status(f,'hidden',2.5);label();}break;
+   case 'matsumaro':if(cd(3.5)){for(const e of near(245)){this.hit(f,e,b*4.5);this.push(f,e,75);this.status(e,'heavy',1.2);}this.status(f,'guard',1);label();}break;
+   case 'ganashu':if(cd(3)){this.status(f,'dash',1.5);if(t&&distance(f,t)<175){this.hit(f,t,b*4);if(t.alive)this.dot(f,t,6,b*.4,'poison');}label();}break;
+   case 'nine':if(t&&distance(f,t)<300&&cd(3)){this.hit(f,t,b*5.5);label();}break;
+   case 'ripia':if(cd(5)){this.status(f,'earth',2.5);this.shield(f,f.maxHp*.1*p.scale);if(t)this.zone(f,t.x,t.y,150,3,'earth',b*.8);label();}break;
+   case 'daiya':if(cd(4)){for(const e of near(145)){this.hit(f,e,b*2.3);this.push(f,e,40);}label();}break;
+   case 'aqua':if(cd(5)){this.status(f,'foresight',2);if(t)this.shot(f,t,b*2,'🔮',{homing:true});label();}break;
+   case 'ruby':if(t&&distance(f,t)<210&&cd(3.5)){this.status(t,'rubySlow',2.7);this.hit(f,t,b*2.2);label();}break;
+   case 'garnet':if(t&&distance(f,t)<125&&cd(3.4)){this.hit(f,t,b*1.6,'contact');if(t.alive)this.hit(f,t,b*1.6,'contact');if(t.alive)this.dot(f,t,3,b*.12,'poison');label();}break;
+   case 'emerald':if(t&&cd(4)){this.volley(f,t,3,b*1.3,'🪨',{stun:.3});this.status(f,'air',1.6);label();}break;
+   case 'spinel':if(cd(6)){this.status(f,'slime',3.5);this.status(f,'guard',3.5);label();}break;
+   case 'menou':case 'menou_final':if(cd(id==='menou'?5.5:4.5)){const targets=this.foes(f).filter(e=>distance(f,e)<(id==='menou'?220:260)).sort((a,b)=>distance(f,a)-distance(f,b)).slice(0,id==='menou'?1:2);for(const e of targets){this.hit(f,e,b*(id==='menou'?2.5:3.8));if(e.alive){e.controlOwner=f;e.controlScale=p.scale;this.status(e,'controlled',id==='menou'?2.2:3.2);this.effect(e,'支配','#c5a7ed');}}if(targets.length)label();}break;
    case 'basic':break;
    default:throw Error('Unimplemented ability: '+id);
   }
   if(['chaka','kobal','kobal_final'].includes(id)&&f.cool['charge:'+id]&&f.cool['charge:'+id]<=this.time){f.ready=true;delete f.cool['charge:'+id];}
   if(id==='oga'&&cd(3))for(const a of this.units)if(a.alive&&a.team===f.team&&a!==f&&distance(f,a)<320)this.status(a,'boost',4);
  }
- contact(f,t){if(!f.alive||!t.alive||f.team===t.team||this.has(f,'stun')||this.has(f,'sleep')||!this.cd(f,'contact:'+t.id,this.power(f,'sakuo')?.22:.4))return;
+ contact(f,t){if(!f.alive||!t.alive||f.team===t.team||this.controlled(f)||this.has(f,'stun')||this.has(f,'sleep')||!this.cd(f,'contact:'+t.id,this.power(f,'sakuo')?.22:.4))return;
   let b=f.atk*(.85+this.rng()*.3)*(this.has(f,'boost')?1.4:1);if(this.has(f,'strong'))b*=1.7;if(this.has(f,'weak'))b*=.6;
-  if(this.power(f,'lance'))b*=1.45;if(this.power(f,'kagachi'))b*=1.6;
+  if(this.power(f,'garnet'))b*=1.2;if(this.power(f,'lance'))b*=1.45;if(this.power(f,'kagachi'))b*=1.6;
   if(this.power(f,'kirara'))b*=1+(1-t.hp/t.maxHp)*2;
   if((this.power(f,'beret')&&this.rng()<Math.min(.6,.12+f.luck*.04))||(this.power(f,'titan')&&this.rng()<.28))b*=2.5;
   if(f.ready){b*=this.power(f,'kobal_final')?8:this.power(f,'kobal')?7:3;f.ready=false;this.effect(f,'会心');}
-  this.hit(f,t,b,'contact');if(this.power(f,'kirara')&&t.alive)this.dot(f,t,2,b*.2,'spell');
+  this.hit(f,t,b,'contact');if(this.power(f,'ganashu')&&t.alive&&this.cd(f,'wound:'+t.id,2))this.dot(f,t,4,b*.18,'poison');if(this.power(f,'kirara')&&t.alive)this.dot(f,t,2,b*.2,'spell');
   if(this.power(f,'yayoi')||this.power(f,'bunbu'))this.push(f,t,35);delete f.status.hidden;
  }
  step(dt=1/60){
@@ -217,11 +237,12 @@ class World {
    for(const d of f.dots)if(d.until>this.time&&d.next<=this.time){d.next+=.5;this.hit(d.owner,f,d.damage,d.type);}f.dots=f.dots.filter(d=>d.until>this.time);
    if(!f.alive)continue;
    if(f.hp<f.maxHp*.25&&!this.has(f,'sleep')&&this.cd(f,'rest',12)){this.status(f,'sleep',1.2);this.effect(f,'休息');}
-   if(this.enabled(f)&&!this.has(f,'stun')&&!this.has(f,'sleep'))for(const p of [...f.powers])this.cast(f,p);
-   if(f.kind==='machine'){const t=this.target(f);if(t&&this.cd(f,'turret',1.2))this.shot(f,t,f.atk*3*(this.has(f,'boost')?1.6:1),'•',{mechanical:true});}
-   if(this.has(f,'drunk')&&this.cd(f,'drunkAngle',.3))f.angle+=(this.rng()-.5)*2;
-   if(this.enabled(f)&&['hoozuki','wan','tsukichiyo'].some(id=>this.power(f,id))&&this.cd(f,'aim',1)){const t=this.target(f);if(t)f.angle=Math.atan2(t.y-f.y,t.x-f.x);}
-   let speed=f.speed*60*(this.sudden?3:1);if(this.has(f,'dash')&&this.enabled(f))speed*=1.8;if(this.has(f,'heavy'))speed*=.2;if(this.has(f,'slow'))speed*=.55;if(this.has(f,'thinking'))speed*=.4;if(this.has(f,'stun')||this.has(f,'sleep'))speed=0;
+   if(this.controlled(f)&&!this.has(f,'stun')&&!this.has(f,'sleep'))this.command(f);
+   if(this.enabled(f)&&!this.controlled(f)&&!this.has(f,'stun')&&!this.has(f,'sleep'))for(const p of [...f.powers])this.cast(f,p);
+   if(f.kind==='machine'&&!this.controlled(f)){const t=this.target(f);if(t&&this.cd(f,'turret',1.2))this.shot(f,t,f.atk*3*(this.has(f,'boost')?1.6:1),'•',{mechanical:true});}
+   if(this.has(f,'drunk')&&!this.power(f,'dream')&&this.cd(f,'drunkAngle',.3))f.angle+=(this.rng()-.5)*2;
+   if(!this.controlled(f)&&this.enabled(f)&&['hoozuki','wan','tsukichiyo'].some(id=>this.power(f,id))&&this.cd(f,'aim',1)){const t=this.target(f);if(t)f.angle=Math.atan2(t.y-f.y,t.x-f.x);}
+   let speed=f.speed*60*(this.sudden?3:1);if(this.has(f,'dash')&&this.enabled(f))speed*=1.8;if(this.has(f,'heavy'))speed*=.2;if(this.has(f,'slow'))speed*=.55;if(this.has(f,'rubySlow'))speed*=.35;if(this.has(f,'thinking'))speed*=.4;if(this.has(f,'stun')||this.has(f,'sleep'))speed=0;
    f.x+=Math.cos(f.angle)*speed*dt;f.y+=Math.sin(f.angle)*speed*dt;
    const dx=f.x-400,dy=f.y-400,d=Math.hypot(dx,dy),r=this.radius-f.radius;
    if(d>r){const nx=dx/d,ny=dy/d;f.x=400+nx*r;f.y=400+ny*r;const vx=Math.cos(f.angle),vy=Math.sin(f.angle),dot=vx*nx+vy*ny;f.angle=Math.atan2(vy-2*dot*ny,vx-2*dot*nx);}
@@ -254,6 +275,7 @@ class World {
   for(const f of this.foes(z.owner)){if(distance(f,z)>z.r||this.has(f,'air'))continue;
    if(z.kind==='pit'){this.hit(z.owner,f,z.power);this.status(f,'stun',1.2);z.end=0;break;}
    if(['bind','snow','cotton','gravity'].includes(z.kind))this.status(f,'slow',.35);
+   if(z.kind==='smoke'){this.status(f,'blind',.5);this.status(f,'slow',.35);}if(z.kind==='alcohol')this.status(f,'drunk',.75);if(z.kind==='earth')this.status(f,'slow',.35);
    if(z.kind==='rain')f.angle+=(this.rng()-.5);
    if(z.kind==='gravity'){f.x+=(z.x-f.x)*.12;f.y+=(z.y-f.y)*.12;}
    if(z.power&&z.kind!=='bomb')this.hit(z.owner,f,z.power*.25);

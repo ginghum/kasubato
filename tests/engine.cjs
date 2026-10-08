@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict');
 const {World,roster,find,resolve}=require('../engine.js');
-assert.equal(roster.length,93);
+assert.equal(roster.length,108);
 for(const p of roster){for(const n of p.aliases)if(n)assert.equal(find(n)?.id,p.id);assert.deepEqual(resolve(p.name).stats,resolve(p.realName).stats);}
 assert.equal(find(' Ｘ ')?.id,'x');assert.equal(find('エックス')?.id,'x');assert.equal(find('プラスチック'),null);
 for(const n of ['自由な参加者','__proto__','constructor','<img src=x onerror=alert(1)>']){const w=new World([n,'プラス'],{seed:1});assert.deepEqual({atk:w.units[0].atk,hp:w.units[0].maxHp,speed:w.units[0].speed},{atk:18,hp:1250,speed:5.5});assert.equal(resolve(n).skill,resolve(n).skill);}
@@ -63,4 +63,4 @@ function duel(a,b){const w=new World([a,b],{seed:'mechanics'});w.rng=()=>.99;ret
 const summaries=[];
 for(let i=0;i<roster.length;i+=20){const ns=roster.slice(i,i+20).map(p=>p.name);const w=new World(ns,{seed:'coverage:'+i});while(!w.finished){w.step();for(const f of w.units)assert([f.hp,f.x,f.y,f.atk].every(Number.isFinite));assert(w.effects.length<=220);assert(w.zones.length<=150);}assert(!w.result.timeout);assert.equal(w.effects.length,0);assert.equal(w.shots.length,0);summaries.push({players:ns.length,seconds:Math.round(w.time),winner:w.result.winner?.name});}
 const ns=roster.slice(0,60).map(p=>p.name);function simulate(seed){const w=new World(ns,{seed});while(!w.finished)w.step();return [w.result.winner?.name,w.tickCount,w.result.ranking.map(f=>[f.name,f.kills,Math.round(f.damage)])];}assert.deepEqual(simulate('repro'),simulate('repro'));
-console.log('PASS: 93キャラ・全別名・固有能力・60人試合・シード再現・エフェクト上限');console.log(JSON.stringify(summaries,null,2));
+console.log('PASS: 108キャラ・全別名・固有能力・60人試合・シード再現・エフェクト上限');console.log(JSON.stringify(summaries,null,2));

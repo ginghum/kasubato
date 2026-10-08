@@ -2236,10 +2236,371 @@ const roster = [
       "speed": 5.4
     },
     "sourcePath": "characters-data/zeta/profile.json"
+  },
+  {
+    "icon": "🧬",
+    "title": "生命創造",
+    "desc": "生命体を最大2体作り、自分と近い味方を治癒。致命傷から一度だけHP40%で再生する。",
+    "id": "darkness",
+    "name": "ダークネス",
+    "realName": "ダークネス・イノゥエ",
+    "aliases": [
+      "ダークネス",
+      "ダークネス・イノゥエ"
+    ],
+    "grade": "5",
+    "height": 185,
+    "club": "医学サークル",
+    "position": "医学サークル部長・反生徒会連合リーダー",
+    "sourceAbility": "生命を創造する",
+    "summary": "低グレードの生徒を救う天才医師にして、格好よさを追求する反生徒会連合のリーダー。",
+    "stats": {
+      "atk": 80,
+      "hp": 3100,
+      "speed": 6.7
+    },
+    "sourcePath": "characters-data/darkness/profile.json"
+  },
+  {
+    "icon": "🩸",
+    "title": "血液操作",
+    "desc": "血の刃を飛ばして出血させ、与えたダメージの12%を自分の治癒に使う。",
+    "id": "luka",
+    "name": "ルカ",
+    "realName": "ルカ・シャーデン",
+    "aliases": [
+      "ルカ",
+      "ルカ・シャーデン"
+    ],
+    "grade": "3",
+    "height": 168,
+    "club": "医学サークル",
+    "position": "",
+    "sourceAbility": "血液を操る",
+    "summary": "気弱で優しい心と確かな医療技術を持ち、ダークネスを慕う医学サークルの一年生。",
+    "stats": {
+      "atk": 31,
+      "hp": 1650,
+      "speed": 5.7
+    },
+    "sourcePath": "characters-data/luka/profile.json"
+  },
+  {
+    "icon": "🍸",
+    "title": "アルコール支配",
+    "desc": "アルコールの領域で敵を酔わせ、持続ダメージを与える。自分は酔いによる照準・方向の乱れを受けない。",
+    "id": "dream",
+    "name": "ドリーム",
+    "realName": "ジェム・ドリー",
+    "aliases": [
+      "ドリーム",
+      "ジェム・ドリー"
+    ],
+    "grade": "5",
+    "height": 188,
+    "club": "ナイトクラブ",
+    "position": "ナイトクラブ部長",
+    "sourceAbility": "アルコールを操る",
+    "summary": "意味深な言葉と華やかなDJで場を沸かせる、酔いの醒めないナイトクラブ部長。",
+    "stats": {
+      "atk": 48,
+      "hp": 2670,
+      "speed": 6.1
+    },
+    "sourcePath": "characters-data/dream/profile.json"
+  },
+  {
+    "icon": "💨",
+    "title": "煙操作",
+    "desc": "煙幕で敵の狙いを乱し、自分は煙に隠れる。煙幕内の敵は減速する。",
+    "id": "satera",
+    "name": "サテラ",
+    "realName": "サテラー・ライト",
+    "aliases": [
+      "サテラ",
+      "サテラー・ライト"
+    ],
+    "grade": "3",
+    "height": 174,
+    "club": "ナイトクラブ",
+    "position": "",
+    "sourceAbility": "煙を操る",
+    "summary": "静かなカウンターと賑やかなステージを行き来する、世話焼きなクラブスタッフ。",
+    "stats": {
+      "atk": 34,
+      "hp": 1750,
+      "speed": 5.8
+    },
+    "sourcePath": "characters-data/satera/profile.json"
+  },
+  {
+    "icon": "🌀",
+    "title": "気圧支配",
+    "desc": "周囲の敵を圧力で攻撃し、押し返して重くする。自身は短い防御を得る。",
+    "id": "matsumaro",
+    "name": "マツマロ",
+    "realName": "蕎麦之小路松麻呂",
+    "aliases": [
+      "マツマロ",
+      "蕎麦之小路松麻呂"
+    ],
+    "grade": "5",
+    "height": 187,
+    "club": "茶道サークル",
+    "position": "茶道サークル部長",
+    "sourceAbility": "気圧を操る",
+    "summary": "作法と敬意を重んじ、美しい振る舞いを追求する茶道サークル部長。",
+    "stats": {
+      "atk": 46,
+      "hp": 2720,
+      "speed": 6.1
+    },
+    "sourcePath": "characters-data/matsumaro/profile.json"
+  },
+  {
+    "icon": "🖤",
+    "title": "侵食する傷",
+    "desc": "接触や能力攻撃でつけた傷が持続ダメージへ広がる。加速して接近し、傷を重ねる。",
+    "id": "ganashu",
+    "name": "がなしゅ",
+    "realName": "倉本奏",
+    "aliases": [
+      "がなしゅ",
+      "倉本奏"
+    ],
+    "grade": "5",
+    "height": 170,
+    "club": "メイドカフェ",
+    "position": "メイドカフェ部長",
+    "sourceAbility": "傷が侵食する",
+    "summary": "可愛い接客に誇りを持つ、ケンカ好きなメイドカフェ部長。",
+    "stats": {
+      "atk": 47,
+      "hp": 2610,
+      "speed": 6.3
+    },
+    "sourcePath": "characters-data/ganashu/profile.json"
+  },
+  {
+    "icon": "⚾",
+    "title": "必中攻撃",
+    "desc": "必中の一撃を放ち、自分の攻撃は回避と照準ミスを無視。盾・防御軽減・無敵は通常通り有効。",
+    "id": "nine",
+    "name": "ナイン",
+    "realName": "ダ・メジャー・ナイン",
+    "aliases": [
+      "ナイン",
+      "ダ・メジャー・ナイン"
+    ],
+    "grade": "5",
+    "height": 190,
+    "club": "野球サークル",
+    "position": "野球サークル部長",
+    "sourceAbility": "攻撃が必中する",
+    "summary": "仲間の個性を大らかに受け止める、元気で常識的な野球サークル部長。",
+    "stats": {
+      "atk": 47,
+      "hp": 2700,
+      "speed": 6.2
+    },
+    "sourcePath": "characters-data/nine/profile.json"
+  },
+  {
+    "icon": "🌸",
+    "title": "大地同化",
+    "desc": "大地と一体化して接触攻撃を軽減し、地面の領域で敵を減速・攻撃する。",
+    "id": "ripia",
+    "name": "リピア",
+    "realName": "リピ・フランソワ",
+    "aliases": [
+      "リピア",
+      "リピ・フランソワ"
+    ],
+    "grade": "5",
+    "height": 160,
+    "club": "園芸サークル",
+    "position": "園芸サークル部長",
+    "sourceAbility": "大地と一体化する",
+    "summary": "花のように穏やかで、自然の変化に心を揺らす園芸サークル部長。🌸",
+    "stats": {
+      "atk": 45,
+      "hp": 2740,
+      "speed": 6.0
+    },
+    "sourcePath": "characters-data/ripia/profile.json"
+  },
+  {
+    "icon": "💥",
+    "title": "衝撃波",
+    "desc": "近い敵へ衝撃波を放ち、まとめて押し返す。",
+    "id": "daiya",
+    "name": "ダイヤ",
+    "realName": "金剛一石",
+    "aliases": [
+      "ダイヤ",
+      "金剛一石"
+    ],
+    "grade": "2",
+    "height": 177,
+    "club": "遊び人サークル",
+    "position": "",
+    "sourceAbility": "衝撃波を起こす",
+    "summary": "学園中の遊びと知り合いを増やして回る、遊び人サークルの元気なまとめ役。",
+    "stats": {
+      "atk": 43,
+      "hp": 1500,
+      "speed": 5.6
+    },
+    "sourcePath": "characters-data/daiya/profile.json"
+  },
+  {
+    "icon": "🔮",
+    "title": "近未来予言",
+    "desc": "少し先を読んで2秒間回避率を18ポイント上げ、予測した敵へ攻撃する。原作の5分後の予言を試合用に短縮。",
+    "id": "aqua",
+    "name": "アクア",
+    "realName": "玉藻前藍人",
+    "aliases": [
+      "アクア",
+      "玉藻前藍人"
+    ],
+    "grade": "3",
+    "height": 180,
+    "club": "遊び人サークル",
+    "position": "",
+    "sourceAbility": "5分後の予言",
+    "summary": "眠そうな顔で話題を広げ、時々さらりと怖いことを言う遊び人サークルの物知り。",
+    "stats": {
+      "atk": 32,
+      "hp": 1700,
+      "speed": 5.6
+    },
+    "sourcePath": "characters-data/aqua/profile.json"
+  },
+  {
+    "icon": "🐢",
+    "title": "動作遅延",
+    "desc": "近い敵を攻撃し、2.7秒間その移動速度を35%にする。",
+    "id": "ruby",
+    "name": "ルビー",
+    "realName": "紅石茜",
+    "aliases": [
+      "ルビー",
+      "紅石茜"
+    ],
+    "grade": "3",
+    "height": 162,
+    "club": "遊び人サークル",
+    "position": "",
+    "sourceAbility": "相手の動きを遅くする",
+    "summary": "気だるげな言葉の裏で仲間を気にかける、遊び人サークルの頼れるお姉ちゃん。",
+    "stats": {
+      "atk": 33,
+      "hp": 1750,
+      "speed": 5.7
+    },
+    "sourcePath": "characters-data/ruby/profile.json"
+  },
+  {
+    "icon": "💅",
+    "title": "金属の爪",
+    "desc": "伸ばした金属の爪で近距離を2回切り裂き、出血させる。通常接触攻撃も1.2倍。",
+    "id": "garnet",
+    "name": "ガーネット",
+    "realName": "野々ザクロ",
+    "aliases": [
+      "ガーネット",
+      "野々ザクロ"
+    ],
+    "grade": "2",
+    "height": 160,
+    "club": "遊び人サークル",
+    "position": "",
+    "sourceAbility": "金属の爪をのばす",
+    "summary": "こだわりのネイルと軽快なお喋りで場を沸かせる、遊び人サークルのムードメーカー。",
+    "stats": {
+      "atk": 41,
+      "hp": 1460,
+      "speed": 5.7
+    },
+    "sourcePath": "characters-data/garnet/profile.json"
+  },
+  {
+    "icon": "🪨",
+    "title": "物質浮遊",
+    "desc": "浮かせた物質を3連射し、短い拘束を与える。自身も浮き、接触攻撃を避ける。",
+    "id": "emerald",
+    "name": "エメラルド",
+    "realName": "翡翠みどり",
+    "aliases": [
+      "エメラルド",
+      "翡翠みどり"
+    ],
+    "grade": "3",
+    "height": 179,
+    "club": "遊び人サークル",
+    "position": "",
+    "sourceAbility": "物質を浮かせる",
+    "summary": "だるいとぼやきながら仲間を放っておけない、遊び人サークルの面倒見のよい兄貴。",
+    "stats": {
+      "atk": 33,
+      "hp": 1730,
+      "speed": 5.7
+    },
+    "sourcePath": "characters-data/emerald/profile.json"
+  },
+  {
+    "icon": "🫠",
+    "title": "泥状変身",
+    "desc": "一定時間ドロドロの化け物に変身し、防御を強化。変身中に触れた敵を減速させる。",
+    "id": "spinel",
+    "name": "スピネル",
+    "realName": "尖晶寺ねる",
+    "aliases": [
+      "スピネル",
+      "尖晶寺ねる"
+    ],
+    "grade": "1",
+    "height": 155,
+    "club": "遊び人サークル",
+    "position": "",
+    "sourceAbility": "ドロドロの化け物に変身する",
+    "summary": "自分も皆も可愛いと笑い、先輩たちに甘えて遊ぶ遊び人サークルの元気な後輩。",
+    "stats": {
+      "atk": 34,
+      "hp": 1540,
+      "speed": 5.4
+    },
+    "sourcePath": "characters-data/spinel/profile.json"
+  },
+  {
+    "icon": "👁",
+    "title": "視線の支配",
+    "desc": "近い敵1人を2.2秒操り、通常攻撃と能力発動を封じて別の敵へ向かわせる。原作の1分間の支配を試合用に短縮。",
+    "id": "menou",
+    "name": "メノウ",
+    "realName": "蛍火瑪瑙",
+    "aliases": [
+      "メノウ",
+      "蛍火瑪瑙"
+    ],
+    "grade": "4",
+    "height": 190,
+    "club": "遊び人サークル",
+    "position": "部長",
+    "sourceAbility": "相手を支配する",
+    "summary": "七人が好きに生きるための居場所を作った、怠惰で悪辣な遊び人サークル部長。",
+    "stats": {
+      "atk": 37,
+      "hp": 2050,
+      "speed": 5.9
+    },
+    "sourcePath": "characters-data/menou/profile.json"
   }
 ];
 // Name-triggered simulator forms; canonical profiles and random pools stay unchanged.
 const finalSpecs=[
+ {baseId:'menou',title:'最終モード・絶対支配',desc:'近い敵を最大2人、3.2秒支配して攻撃を封じ、別の敵を殴らせる。通常版より広い範囲と強い支配攻撃を持つ。',stats:{atk:49,hp:2740,speed:6.4}},
  {baseId:'plus',title:'最終モード・質量支配',desc:'軽量化で加速し、重量化で攻撃と防御を強化。重量化時は周囲へ質量の衝撃波を放つ。',stats:{atk:47.2,hp:2732,speed:6.4}},
  {baseId:'hikaru',title:'最終モード・万物変形',desc:'敵の盾を大きく変形させて削り、物体を4本の貫通刃へ変えて連射する。',stats:{atk:52.9,hp:2760,speed:6.2}},
  {baseId:'hattan',title:'最終モード・多重分身',desc:'自分の強化分身を最大4体作る。分身は本体の攻撃力・HPを元に戦い、本体脱落で消える。',stats:{atk:48,hp:2818,speed:6.2}},

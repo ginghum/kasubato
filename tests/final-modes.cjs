@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),{World,roster,finalModes,profiles,find,resolve}=require('../engine.js');
-assert.equal(roster.length,93);assert.equal(finalModes.length,4);assert.equal(profiles.length,97);
+assert.equal(roster.length,108);assert.equal(finalModes.length,5);assert.equal(profiles.length,113);
 for(const p of finalModes){
  const base=roster.find(b=>b.id===p.baseId);assert.equal(p.grade,'5');assert.equal(p.name,base.name+'+');assert(p.stats.atk>base.stats.atk&&p.stats.hp>base.stats.hp&&p.stats.speed>base.stats.speed);
  for(const alias of base.aliases){assert.equal(find(alias+'+').id,p.id);assert.equal(find(alias+'＋').id,p.id);assert.equal(find(alias).id,base.id);}
