@@ -1,0 +1,204 @@
+{
+  "count": 400,
+  "prefix": "expanded-baseline",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "overrides": {},
+  "cohorts": [
+    {
+      "elite": false,
+      "participants": 31,
+      "count": 400,
+      "draws": 0,
+      "timeouts": 0,
+      "rows": [
+        {
+          "name": "ダークネス",
+          "played": 400,
+          "wins": 399,
+          "winRate": 0.9975
+        },
+        {
+          "name": "リピア",
+          "played": 400,
+          "wins": 1,
+          "winRate": 0.0025
+        },
+        {
+          "name": "アシャラ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ベレー",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "クラリーヌ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ダンチョー",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "デビル",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "グモン",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ジェンド",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ジャッジ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "カガチ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ミカエル",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "マイナス",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ミュー",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "オジョー",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "パスター",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "セレナ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "タナカ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "タイタン",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ツキチヨ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "X",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ヤオイ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ドリーム",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "マツマロ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "がなしゅ",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ナイン",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "メノウ+",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "プラス+",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ヒカル+",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "ハッタン+",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        },
+        {
+          "name": "コバル+",
+          "played": 400,
+          "wins": 0,
+          "winRate": 0
+        }
+      ]
+    }
+  ]
+}

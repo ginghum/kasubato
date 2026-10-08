@@ -1,0 +1,52 @@
+{
+  "parentCommit": "952aac340f8ef764a112a39ea1104126e7b625a3",
+  "targets": [
+    "ashara",
+    "beret",
+    "clarine",
+    "dancho",
+    "devil",
+    "gumon",
+    "jend",
+    "judge",
+    "kagachi",
+    "mikael",
+    "minus",
+    "mu",
+    "ojo",
+    "paster",
+    "serena",
+    "tanaka",
+    "titan",
+    "tsukichiyo",
+    "x",
+    "yaoi",
+    "darkness",
+    "dream",
+    "matsumaro",
+    "ganashu",
+    "nine",
+    "ripia",
+    "menou_final",
+    "plus_final",
+    "hikaru_final",
+    "hattan_final",
+    "kobal_final"
+  ],
+  "favored": [
+    "minus",
+    "darkness",
+    "plus_final"
+  ],
+  "preserved": [
+    "empress",
+    "itoguchi"
+  ],
+  "engineSha256": "d88c09e82519271f7b9ebf18bcad8afcd46c6e1ea16401d445234f0600140e56",
+  "targetWeights": {
+    "favored": 1.6,
+    "others": 1
+  },
+  "speedUnchanged": true,
+  "method": "Six 700-match calibration rounds, geometric mean of final four candidates, followed by two damped corrections from independent development checks (1,000+1,000, then 3,000+2,000). Final validation uses new seeds."
+}

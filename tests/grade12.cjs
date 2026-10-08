@@ -1,10 +1,12 @@
 'use strict';
+const expandedStats=require('../balance/grade5-expanded/after-stats.json');
+const expanded=p=>expandedStats[p.name]?{...p,stats:expandedStats[p.name]}:p;
 const assert=require('node:assert/strict'),{profiles,resolve}=require('../engine.js'),scope=require('../balance/grade12/scope.json'),after=require('../balance/grade12/after-stats.json');
 assert.equal(scope.targets.length,36);assert.equal(Object.keys(after).length,36);
 for(const before of scope.beforeProfiles){
  const current=profiles.find(p=>p.id===before.id),stats=after[before.name];
  assert.equal(Boolean(stats),scope.targets.includes(before.id));
- assert.deepEqual(current,stats?{...before,stats}:before,'only Grade 1/2 ATK and HP change: '+before.id);
+ assert.deepEqual(current,expanded(stats?{...before,stats}:before),'only Grade 1/2 ATK and HP change: '+before.id);
  if(stats){assert(['1','2'].includes(current.grade));assert.equal(stats.speed,before.stats.speed);assert.deepEqual(resolve(current.realName).stats,stats);for(const v of Object.values(stats))assert(Number.isFinite(v)&&v>0);}
 }
 const {World,roster}=require('../engine.js');

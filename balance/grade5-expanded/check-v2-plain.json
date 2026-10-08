@@ -1,0 +1,204 @@
+{
+  "count": 3000,
+  "prefix": "expanded-final-plain-20261008",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "overrides": {},
+  "cohorts": [
+    {
+      "elite": false,
+      "participants": 31,
+      "count": 3000,
+      "draws": 2,
+      "timeouts": 0,
+      "rows": [
+        {
+          "name": "プラス+",
+          "played": 3000,
+          "wins": 172,
+          "winRate": 0.05733333333333333
+        },
+        {
+          "name": "ダークネス",
+          "played": 3000,
+          "wins": 163,
+          "winRate": 0.05433333333333333
+        },
+        {
+          "name": "マイナス",
+          "played": 3000,
+          "wins": 151,
+          "winRate": 0.050333333333333334
+        },
+        {
+          "name": "ミュー",
+          "played": 3000,
+          "wins": 148,
+          "winRate": 0.04933333333333333
+        },
+        {
+          "name": "カガチ",
+          "played": 3000,
+          "wins": 133,
+          "winRate": 0.044333333333333336
+        },
+        {
+          "name": "リピア",
+          "played": 3000,
+          "wins": 114,
+          "winRate": 0.038
+        },
+        {
+          "name": "メノウ+",
+          "played": 3000,
+          "wins": 97,
+          "winRate": 0.03233333333333333
+        },
+        {
+          "name": "クラリーヌ",
+          "played": 3000,
+          "wins": 96,
+          "winRate": 0.032
+        },
+        {
+          "name": "コバル+",
+          "played": 3000,
+          "wins": 96,
+          "winRate": 0.032
+        },
+        {
+          "name": "ドリーム",
+          "played": 3000,
+          "wins": 95,
+          "winRate": 0.03166666666666667
+        },
+        {
+          "name": "デビル",
+          "played": 3000,
+          "wins": 93,
+          "winRate": 0.031
+        },
+        {
+          "name": "ナイン",
+          "played": 3000,
+          "wins": 93,
+          "winRate": 0.031
+        },
+        {
+          "name": "ジェンド",
+          "played": 3000,
+          "wins": 91,
+          "winRate": 0.030333333333333334
+        },
+        {
+          "name": "X",
+          "played": 3000,
+          "wins": 91,
+          "winRate": 0.030333333333333334
+        },
+        {
+          "name": "ダンチョー",
+          "played": 3000,
+          "wins": 90,
+          "winRate": 0.03
+        },
+        {
+          "name": "マツマロ",
+          "played": 3000,
+          "wins": 90,
+          "winRate": 0.03
+        },
+        {
+          "name": "オジョー",
+          "played": 3000,
+          "wins": 89,
+          "winRate": 0.029666666666666668
+        },
+        {
+          "name": "ミカエル",
+          "played": 3000,
+          "wins": 88,
+          "winRate": 0.029333333333333333
+        },
+        {
+          "name": "セレナ",
+          "played": 3000,
+          "wins": 87,
+          "winRate": 0.029
+        },
+        {
+          "name": "ヤオイ",
+          "played": 3000,
+          "wins": 86,
+          "winRate": 0.028666666666666667
+        },
+        {
+          "name": "アシャラ",
+          "played": 3000,
+          "wins": 83,
+          "winRate": 0.027666666666666666
+        },
+        {
+          "name": "ツキチヨ",
+          "played": 3000,
+          "wins": 83,
+          "winRate": 0.027666666666666666
+        },
+        {
+          "name": "タナカ",
+          "played": 3000,
+          "wins": 82,
+          "winRate": 0.027333333333333334
+        },
+        {
+          "name": "ベレー",
+          "played": 3000,
+          "wins": 81,
+          "winRate": 0.027
+        },
+        {
+          "name": "タイタン",
+          "played": 3000,
+          "wins": 81,
+          "winRate": 0.027
+        },
+        {
+          "name": "ヒカル+",
+          "played": 3000,
+          "wins": 78,
+          "winRate": 0.026
+        },
+        {
+          "name": "ジャッジ",
+          "played": 3000,
+          "wins": 76,
+          "winRate": 0.025333333333333333
+        },
+        {
+          "name": "グモン",
+          "played": 3000,
+          "wins": 72,
+          "winRate": 0.024
+        },
+        {
+          "name": "パスター",
+          "played": 3000,
+          "wins": 68,
+          "winRate": 0.02266666666666667
+        },
+        {
+          "name": "ハッタン+",
+          "played": 3000,
+          "wins": 66,
+          "winRate": 0.022
+        },
+        {
+          "name": "がなしゅ",
+          "played": 3000,
+          "wins": 65,
+          "winRate": 0.021666666666666667
+        }
+      ]
+    }
+  ]
+}

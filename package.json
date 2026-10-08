@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/alliances.cjs tests/engine.cjs tests/grade5.cjs tests/grade4.cjs tests/grade3.cjs tests/final-modes.cjs tests/overflow.cjs tests/speed-evasion.cjs tests/target-selection.cjs tests/grade5-equal.cjs tests/empress-start.cjs tests/grade12.cjs tests/new-characters.cjs",
+    "test": "node --test tests/alliances.cjs tests/engine.cjs tests/grade5.cjs tests/grade4.cjs tests/grade3.cjs tests/final-modes.cjs tests/overflow.cjs tests/speed-evasion.cjs tests/target-selection.cjs tests/grade5-equal.cjs tests/empress-start.cjs tests/grade12.cjs tests/new-characters.cjs tests/grade5-expanded.cjs",
     "test:ui": "node tests/ui.cjs && node tests/ui-hold.cjs && node tests/ui-overflow.cjs",
     "serve": "python -m http.server 8000",
     "simulate:grade5": "node scripts/simulate-final-modes.cjs",
@@ -11,7 +11,8 @@
     "simulate:grade4": "node scripts/simulate-grade4.cjs",
     "simulate:grade12": "node scripts/simulate-grade12.cjs",
     "simulate:grade3": "node scripts/simulate-grade3.cjs",
-    "simulate:final-modes": "node scripts/simulate-final-modes.cjs"
+    "simulate:final-modes": "node scripts/simulate-final-modes.cjs",
+    "simulate:grade5-expanded": "node scripts/simulate-grade5-expanded.cjs"
   },
   "devDependencies": {
     "jsdom": "30.1.2"

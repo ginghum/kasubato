@@ -1,12 +1,14 @@
 'use strict';
+const expandedStats=require('../balance/grade5-expanded/after-stats.json');
+const expanded=p=>expandedStats[p.name]?{...p,stats:expandedStats[p.name]}:p;
 const grade12Stats=require('../balance/grade12/after-stats.json');
 const assert=require('node:assert/strict'),{profiles,resolve}=require('../engine.js'),scope=require('../balance/grade5-equal/scope.json'),after=require('../balance/grade5-equal/after-stats.json');
 assert.equal(scope.targets.length,25);assert.equal(Object.keys(after).length,25);
 for(const before of scope.beforeProfiles){
  const current=profiles.find(p=>p.id===before.id),stats=after[before.name];
  assert.equal(Boolean(stats),scope.targets.includes(before.id));
- const expected=stats?{...before,stats}:before;assert.deepEqual(current,grade12Stats[before.name]?{...expected,stats:grade12Stats[before.name]}:expected,'only recorded ATK/HP changes: '+before.id);
- if(stats){assert.equal(current.grade,'5');assert.equal(current.stats.speed,before.stats.speed);assert(current.id!=='empress');assert.deepEqual(resolve(current.realName).stats,stats);for(const value of Object.values(stats))assert(Number.isFinite(value)&&value>0);}
+ const expected=stats?{...before,stats}:before;assert.deepEqual(current,expanded(grade12Stats[before.name]?{...expected,stats:grade12Stats[before.name]}:expected),'only recorded ATK/HP changes: '+before.id);
+ if(stats){assert.equal(current.grade,'5');assert.equal(current.stats.speed,before.stats.speed);assert(current.id!=='empress');assert.deepEqual(resolve(current.realName).stats,expandedStats[current.name]||stats);for(const value of Object.values(stats))assert(Number.isFinite(value)&&value>0);}
 }
 const before=scope.beforeProfiles.find(p=>p.id==='itoguchi'),now=profiles.find(p=>p.id==='itoguchi');assert(now.stats.atk>=before.stats.atk&&now.stats.hp>=before.stats.hp,'Itoguchi is strengthened');
 assert.equal(profiles.filter(p=>scope.beforeProfiles.some(b=>b.id===p.id)&&p.grade==='5'&&!['empress','itoguchi'].includes(p.id)).length,24);

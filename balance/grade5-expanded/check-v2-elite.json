@@ -1,0 +1,210 @@
+{
+  "count": 2000,
+  "prefix": "expanded-final-elite-20261008",
+  "suddenDeath": true,
+  "dt": 0.016666666666666666,
+  "overrides": {},
+  "cohorts": [
+    {
+      "elite": true,
+      "participants": 32,
+      "count": 2000,
+      "draws": 2,
+      "timeouts": 0,
+      "rows": [
+        {
+          "name": "イトグチ",
+          "played": 2000,
+          "wins": 544,
+          "winRate": 0.272
+        },
+        {
+          "name": "プラス+",
+          "played": 2000,
+          "wins": 83,
+          "winRate": 0.0415
+        },
+        {
+          "name": "ダークネス",
+          "played": 2000,
+          "wins": 70,
+          "winRate": 0.035
+        },
+        {
+          "name": "マイナス",
+          "played": 2000,
+          "wins": 69,
+          "winRate": 0.0345
+        },
+        {
+          "name": "ミカエル",
+          "played": 2000,
+          "wins": 67,
+          "winRate": 0.0335
+        },
+        {
+          "name": "ミュー",
+          "played": 2000,
+          "wins": 60,
+          "winRate": 0.03
+        },
+        {
+          "name": "カガチ",
+          "played": 2000,
+          "wins": 56,
+          "winRate": 0.028
+        },
+        {
+          "name": "ダンチョー",
+          "played": 2000,
+          "wins": 52,
+          "winRate": 0.026
+        },
+        {
+          "name": "コバル+",
+          "played": 2000,
+          "wins": 52,
+          "winRate": 0.026
+        },
+        {
+          "name": "ジェンド",
+          "played": 2000,
+          "wins": 50,
+          "winRate": 0.025
+        },
+        {
+          "name": "アシャラ",
+          "played": 2000,
+          "wins": 49,
+          "winRate": 0.0245
+        },
+        {
+          "name": "ヤオイ",
+          "played": 2000,
+          "wins": 49,
+          "winRate": 0.0245
+        },
+        {
+          "name": "オジョー",
+          "played": 2000,
+          "wins": 48,
+          "winRate": 0.024
+        },
+        {
+          "name": "ベレー",
+          "played": 2000,
+          "wins": 47,
+          "winRate": 0.0235
+        },
+        {
+          "name": "メノウ+",
+          "played": 2000,
+          "wins": 45,
+          "winRate": 0.0225
+        },
+        {
+          "name": "デビル",
+          "played": 2000,
+          "wins": 44,
+          "winRate": 0.022
+        },
+        {
+          "name": "グモン",
+          "played": 2000,
+          "wins": 44,
+          "winRate": 0.022
+        },
+        {
+          "name": "パスター",
+          "played": 2000,
+          "wins": 44,
+          "winRate": 0.022
+        },
+        {
+          "name": "リピア",
+          "played": 2000,
+          "wins": 44,
+          "winRate": 0.022
+        },
+        {
+          "name": "マツマロ",
+          "played": 2000,
+          "wins": 42,
+          "winRate": 0.021
+        },
+        {
+          "name": "ツキチヨ",
+          "played": 2000,
+          "wins": 41,
+          "winRate": 0.0205
+        },
+        {
+          "name": "X",
+          "played": 2000,
+          "wins": 41,
+          "winRate": 0.0205
+        },
+        {
+          "name": "ハッタン+",
+          "played": 2000,
+          "wins": 41,
+          "winRate": 0.0205
+        },
+        {
+          "name": "セレナ",
+          "played": 2000,
+          "wins": 38,
+          "winRate": 0.019
+        },
+        {
+          "name": "タナカ",
+          "played": 2000,
+          "wins": 37,
+          "winRate": 0.0185
+        },
+        {
+          "name": "がなしゅ",
+          "played": 2000,
+          "wins": 36,
+          "winRate": 0.018
+        },
+        {
+          "name": "ナイン",
+          "played": 2000,
+          "wins": 36,
+          "winRate": 0.018
+        },
+        {
+          "name": "クラリーヌ",
+          "played": 2000,
+          "wins": 35,
+          "winRate": 0.0175
+        },
+        {
+          "name": "ジャッジ",
+          "played": 2000,
+          "wins": 34,
+          "winRate": 0.017
+        },
+        {
+          "name": "タイタン",
+          "played": 2000,
+          "wins": 34,
+          "winRate": 0.017
+        },
+        {
+          "name": "ドリーム",
+          "played": 2000,
+          "wins": 34,
+          "winRate": 0.017
+        },
+        {
+          "name": "ヒカル+",
+          "played": 2000,
+          "wins": 32,
+          "winRate": 0.016
+        }
+      ]
+    }
+  ]
+}
